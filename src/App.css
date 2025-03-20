@@ -1,0 +1,32 @@
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 2), rgba(0, 0, 0, 0.6)),
+    url("./assets/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-blend-mode: multiply;
+  font-family: "Gotham Rounded", sans-serif;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 100px;
+  background: linear-gradient(black, black) padding-box,
+    linear-gradient(90deg, #7670ff 0%, #5b42ff 100%) border-box;
+  border: 2px solid transparent;
+  background-clip: padding-box, border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

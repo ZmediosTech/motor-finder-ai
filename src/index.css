@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@font-face {
+  font-family: "Gotham Rounded";
+  src: url("/fonts/GothamRounded-Bold.woff2") format("woff2"),
+    url("/fonts/GothamRounded-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gotham Rounded";
+  src: url("/fonts/GothamRounded-Medium.woff2") format("woff2"),
+    url("/fonts/GothamRounded-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  cursor: "pointer";
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  display: flex;
+  min-width: fit-content;
+  animation: scroll 30s linear infinite;
+  animation-delay: 0s; /* Starts Immediately */
+  will-change: transform; /* Optimized for smooth animation */
+}
+
+.marquee-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.card-gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(118, 112, 255, 0.17) 0%,
+    rgba(91, 66, 255, 0.17) 100%
+  );
+}
+
+.icon-gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(118, 112, 255, 0.17) 0%,
+    rgba(91, 66, 255, 0.17) 100%
+  );
+}
+
+.tab-active {
+  color: #f800c0;
+}
+
+.TabsTrigger[data-state="active"] {
+  @apply text-[#F800C0];
+}
+
+@keyframes expandOut {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(
+        calc(-50% + var(--target-x)),
+        calc(-50% + var(--target-y))
+      )
+      scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes collapse {
+  0% {
+    transform: translate(
+        calc(-50% + var(--target-x)),
+        calc(-50% + var(--target-y))
+      )
+      scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.animate-expandOut {
+  animation: expandOut 1s ease-out forwards;
+}
+
+.animate-collapse {
+  animation: collapse 1s ease-in forwards;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate {
+  animation: rotate 5s linear infinite;
+}
