@@ -13,12 +13,16 @@ const Hero = () => {
   const [animate, setAnimate] = useState(false);
   const [positions, setPositions] = useState([]);
 
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setAnimate(false);
+  //     setTimeout(() => setAnimate(true), 1000);
+  //   }, 5000);
+  //   return () => clearInterval(interval);
+  // }, []);
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimate(false);
-      setTimeout(() => setAnimate(true), 1000);
-    }, 5000);
-    return () => clearInterval(interval);
+    setAnimate(true);
   }, []);
 
   useEffect(() => {
@@ -27,48 +31,47 @@ const Hero = () => {
 
       if (width >= 1920) {
         setPositions([
-          { x: "-12%", y: "-35%" },
-          { x: "-30%", y: "-15%" },
-          { x: "25%", y: "-10%" },
+          { x: "-8%", y: "-35%" },
+          { x: "-20%", y: "-15%" },
+          { x: "10%", y: "-30%" },
           { x: "-40%", y: "10%" },
           { x: "35%", y: "12%" },
           { x: "-20%", y: "35%" },
-          { x: "28%", y: "25%" },
-          { x: "20%", y: "40%" },
+          { x: "20%", y: "30%" },
+          { x: "0%", y: "0%" },
         ]);
       } else if (width >= 1440) {
         setPositions([
-          { x: "-10%", y: "-30%" },
-          { x: "-25%", y: "-12%" },
+          { x: "-5%", y: "-30%" },
+          { x: "-20%", y: "-12%" },
           { x: "20%", y: "-10%" },
           { x: "-35%", y: "8%" },
-          { x: "30%", y: "10%" },
+          { x: "35%", y: "10%" },
           { x: "-18%", y: "28%" },
-          { x: "22%", y: "28%" },
+          { x: "15%", y: "28%" },
           { x: "10%", y: "32%" },
         ]);
       } else if (width >= 1024) {
         setPositions([
-          { x: "-8%", y: "-25%" },
-          { x: "-20%", y: "-10%" },
+          { x: "-4%", y: "-25%" },
+          { x: "-25%", y: "-10%" },
           { x: "15%", y: "-8%" },
-          { x: "-30%", y: "5%" },
-          { x: "25%", y: "8%" },
-          { x: "-15%", y: "22%" },
-          { x: "18%", y: "22%" },
+          { x: "-40%", y: "5%" },
+          { x: "30%", y: "15%" },
+          { x: "-15%", y: "25%" },
+          { x: "15%", y: "35%" },
           { x: "8%", y: "26%" },
         ]);
       } else {
         // Mobile: Space things out more, center images better
         setPositions([
-          { x: "-5%", y: "-15%" },
-          { x: "-12%", y: "-5%" },
-          { x: "10%", y: "-5%" },
-          { x: "-20%", y: "5%" },
-          { x: "18%", y: "5%" },
-          { x: "-8%", y: "15%" },
-          { x: "12%", y: "15%" },
-          { x: "5%", y: "20%" },
+          { x: "-5%", y: "-25%" },
+          { x: "-24%", y: "-8%" },
+          { x: "20%", y: "-10%" },
+          { x: "-30%", y: "20%" },
+          { x: "14%", y: "38%" },
+          { x: "-10%", y: "47%" },
+          { x: "25%", y: "15%" },
         ]);
       }
     };
@@ -128,7 +131,7 @@ const Hero = () => {
       </div>
 
       {/* Title */}
-      <div className="flex justify-center md:mt-32 lg:mt-0 items-center">
+      <div className="flex justify-center md:mt-0 lg:mt-0 items-center">
         <h1 className="font-[Gotham Rounded] text-[#7670FF] text-sm md:text-3xl lg:text-5xl mt-10 text-center">
           Find Your Motor with AI-Powered Agent
         </h1>
