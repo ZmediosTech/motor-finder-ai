@@ -214,7 +214,7 @@ const Sell = () => {
             ))}
           </div>
 
-          <div className="flex justify-center mt-8 mb-4">
+          <div className="flex justify-center mt-8 mb-4 relative z-10">
             <button
               className="bg-[#7670FF] text-white px-5 py-2 rounded-full font-semibold text-lg hover:bg-[#5B42FF] transition duration-300"
               style={{ fontFamily: "Gotham Rounded, sans-serif" }}

@@ -185,7 +185,7 @@ const Page2 = () => {
             </div>
           </div>
           {/* Buttons */}
-          <div className="mt-6 flex space-x-4">
+          <div className="mt-6 flex space-x-4 relative z-10">
             <button className="bg-gradient-to-r from-[#7670FF] to-[#5B42FF] px-4 py-2 rounded-full text-sm">
               Enquiry Now
             </button>

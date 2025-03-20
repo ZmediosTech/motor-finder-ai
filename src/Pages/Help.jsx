@@ -7,19 +7,18 @@ import * as React from "react";
 import { Tabs } from "radix-ui";
 import { Accordion } from "radix-ui";
 import { AccordionContent, AccordionTrigger } from "@radix-ui/react-accordion";
-// import { AccordionContent } from "@redix/accordion";
 
-// import classNames from "classnames";
-// import { ChevronDownIcon } from "@radix-ui/react-icons";
-// import "./styles.css";
 const Help = () => {
+  const [openBuyItem, setBuyOpenItem] = React.useState("item-1");
+  const [openSellItem, setSellOpenItem] = React.useState("item-1");
+  const [openRentItem, setRentOpenItem] = React.useState("item-1");
   return (
     <>
-      <div className="w-[98%] p-4 lg:w-[992px] xl:w-[1200px] 2xl:w-[1400px] m-auto">
+      <div className="w-[98%] p-4  lg:w-[992px] xl:w-[1200px] 2xl:w-[1400px] m-auto">
         <h1 className="text-5xl font-normal pt-24 text-white mb-[52px]">
           Help Center
         </h1>
-        <div className="grid grid-cols-1 gap-6  xl:grid-cols-2 2xl:gap-14 mb-32">
+        <div className="grid grid-cols-1 gap-6  xl:grid-cols-2 2xl:gap-14 border-b border-[#F800C0] pb-20">
           <div className="flex gap-7 p-8 border border-[#5B42FF] rounded-3xl  card-gradient ">
             <div
               className="rounded-full h-[100px] w-[100px] p-2
@@ -104,7 +103,7 @@ const Help = () => {
         {/* vido  */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 xl:gap-5  pb-20 border-b-2 border-b-[#F800C0] mb-16">
           <div className="card">
-            <h2 className="text-5xl font-normal pt-24 text-white mb-[52px]">
+            <h2 className="text-5xl font-normal pt-20 text-white mb-[52px]">
               How to Buy
             </h2>
             <div className="lg:w-[90%] xl:w-[380px] w-[98%] h-[348px] border-2 border-[#4C45FF]  rounded-[21px]    ">
@@ -118,7 +117,7 @@ const Help = () => {
             </div>
           </div>
           <div className="card">
-            <h2 className="text-5xl font-normal pt-24 text-white mb-[52px]">
+            <h2 className="text-5xl font-normal pt-20 text-white mb-[52px]">
               How to Sell
             </h2>
             <div className="lg:w-[90%] xl:w-[380px] w-[98%] h-[348px] border-2 border-[#4C45FF]  rounded-[21px]   ">
@@ -133,7 +132,7 @@ const Help = () => {
             </div>
           </div>
           <div className="card">
-            <h2 className="text-5xl font-normal pt-24 text-white mb-[52px]">
+            <h2 className="text-5xl font-normal pt-20 text-white mb-[52px]">
               How to Rent
             </h2>
             <div className="xl:w-[380px] lg:w-[90%] w-[98%] h-[348px] border-2 border-[#4C45FF]  rounded-[21px]   ">
@@ -185,6 +184,8 @@ const Help = () => {
                     className="AccordionRoot flex flex-col gap-12"
                     type="single"
                     defaultValue="item-1"
+                    value={openBuyItem ?? ""}
+                    onValueChange={(value) => setBuyOpenItem(value)}
                     collapsible
                   >
                     <Accordion.Item
@@ -193,15 +194,27 @@ const Help = () => {
                     >
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         How much does it cost to sell on MyFinder?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openBuyItem === "item-1" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -228,15 +241,27 @@ const Help = () => {
                     >
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         What’s the best way to send my item?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openBuyItem === "item-2" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -264,15 +289,27 @@ const Help = () => {
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         Can I offer collection in person as an option for
                         buyers?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openBuyItem === "item-3" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -299,15 +336,27 @@ const Help = () => {
                     >
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         How much will it cost to post my item?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openBuyItem === "item-4" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -334,15 +383,27 @@ const Help = () => {
                     >
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         How will the buyer pay for my item?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openBuyItem === "item-5" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -369,15 +430,27 @@ const Help = () => {
                     >
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         How should I choose my listing price?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openBuyItem === "item-6" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -404,15 +477,27 @@ const Help = () => {
                     >
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         How does MyFinder protect sellers?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openBuyItem === "item-7" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -439,15 +524,27 @@ const Help = () => {
                     >
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         What can I sell on MyFinder?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openBuyItem === "item-8" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -474,6 +571,8 @@ const Help = () => {
                     className="AccordionRoot flex flex-col gap-12"
                     type="single"
                     defaultValue="item-1"
+                    value={openSellItem ?? ""}
+                    onValueChange={(value) => setSellOpenItem(value)}
                     collapsible
                   >
                     <Accordion.Item
@@ -482,15 +581,27 @@ const Help = () => {
                     >
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         How much does it cost to sell on MyFinder?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openSellItem === "item-1" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -517,15 +628,27 @@ const Help = () => {
                     >
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         What’s the best way to send my item?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openSellItem === "item-2" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -553,15 +676,27 @@ const Help = () => {
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         Can I offer collection in person as an option for
                         buyers?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openSellItem === "item-3" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -589,6 +724,8 @@ const Help = () => {
                     type="single"
                     defaultValue="item-1"
                     collapsible
+                    value={openRentItem ?? ""}
+                    onValueChange={(value) => setRentOpenItem(value)}
                   >
                     <Accordion.Item
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
@@ -596,15 +733,27 @@ const Help = () => {
                     >
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         How much does it cost to sell on MyFinder?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openRentItem === "item-1" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -631,15 +780,27 @@ const Help = () => {
                     >
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         What’s the best way to send my item?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openRentItem === "item-2" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -667,15 +828,27 @@ const Help = () => {
                       <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
                         Can I offer collection in person as an option for
                         buyers?
-                        <svg
-                          height={30}
-                          width={30}
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                        </svg>
+                        {openRentItem === "item-3" ? (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M19 13H5V11H19V13Z"></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            height={30}
+                            width={30}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
+                          </svg>
+                        )}
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
