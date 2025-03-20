@@ -7,19 +7,31 @@ import * as React from "react";
 import { Tabs } from "radix-ui";
 import { Accordion } from "radix-ui";
 import { AccordionContent, AccordionTrigger } from "@radix-ui/react-accordion";
+import { useState } from "react";
+// import { AccordionContent } from "@redix/accordion";
 
+// import classNames from "classnames";
+// import { ChevronDownIcon } from "@radix-ui/react-icons";
+// import "./styles.css";
 const Help = () => {
-  const [openBuyItem, setBuyOpenItem] = React.useState("item-1");
-  const [openSellItem, setSellOpenItem] = React.useState("item-1");
-  const [openRentItem, setRentOpenItem] = React.useState("item-1");
+  // const [isOpen, setIsOpen] = useState(false);
+  // const toggleAccordion = () => setIsOpen(!isOpen);
+  const [accordionStates, setAccordionStates] = useState({});
+
+  const toggleAccordion = (itemId) => {
+    setAccordionStates((prevStates) => ({
+      ...prevStates,
+      [itemId]: !prevStates[itemId],
+    }));
+  };
   return (
     <>
-      <div className="w-[98%] p-4  lg:w-[992px] xl:w-[1200px] 2xl:w-[1400px] m-auto">
-        <h1 className="text-5xl font-normal pt-24 text-white mb-[52px]">
+      <div className="w-[98%] p-4 lg:w-[992px] xl:w-[1200px] 2xl:w-[1400px] m-auto">
+        <h1 className="2xl:text-5xl xl:text-4xl lg:text-3xl text-2xl font-normal pt-24 text-white mb-[52px]">
           Help Center
         </h1>
         <div className="grid grid-cols-1 gap-6  xl:grid-cols-2 2xl:gap-14 border-b border-[#F800C0] pb-20">
-          <div className="flex gap-7 p-8 border border-[#5B42FF] rounded-3xl  card-gradient ">
+          <div className="flex flex-col sm:flex-row gap-7 p-8 border border-[#5B42FF] rounded-3xl  card-gradient ">
             <div
               className="rounded-full h-[100px] w-[100px] p-2
              sm:p-4 flex justify-center items-center icon-gradient border border-[#5B42FF] shadow shadow-[#4B4CFF]"
@@ -27,16 +39,16 @@ const Help = () => {
               <img
                 src="../../src/assets/email.png"
                 alt="email"
-                height={35}
-                width={35}
+                height={30}
+                width={30}
               />
             </div>
             <div className="flex flex-col gap-6 ">
-              <p className="text-2xl font-light leading-[150%] text-white">
+              <p className="lg:text-2xl md:text-xl  text-sm font-light leading-[150%] text-white">
                 Email Support
               </p>
               <Link
-                className="text-white text-3xl font-[350] leading-[125%]"
+                className="text-white 2xl:text-3xl lg:text-2xl text-lg break-words font-[350] leading-[125%]"
                 to="mailto:arihant@zmediostech.com"
               >
                 arihant@zmediostech.com
@@ -44,57 +56,59 @@ const Help = () => {
             </div>
           </div>
 
-          <div className="flex gap-7 p-8 border border-[#5B42FF] rounded-3xl  card-gradient ">
+          <div className="flex  flex-col sm:flex-row gap-7 p-8 border border-[#5B42FF] rounded-3xl  card-gradient ">
             <div className="rounded-full h-[100px] w-[100px] p-4 flex justify-center items-center icon-gradient border border-[#5B42FF] shadow shadow-[#4B4CFF]">
               <img
                 src="../../src/assets/whatsapp.png"
                 alt="email"
-                height={35}
-                width={35}
+                height={30}
+                width={30}
               />
             </div>
             <div className="flex flex-col gap-6 ">
-              <p className="text-2xl font-light leading-[150%] text-white">
+              <p className="lg:text-2xl md:text-xl  text-sm font-light leading-[150%] text-white">
                 WhatsApp Support
               </p>
               <Link
-                className="text-white text-3xl font-[350] leading-[125%]"
+                className="text-white 2xl:text-3xl lg:text-2xl text-lg font-[350] leading-[125%]"
                 to="tel:+918561073404"
               >
                 +91 8561073404
               </Link>
             </div>
           </div>
-          <div className="flex gap-7 p-8 border border-[#5B42FF] rounded-3xl  card-gradient ">
+          <div className="flex  flex-col sm:flex-row gap-7 p-8 border border-[#5B42FF] rounded-3xl  card-gradient ">
             <div className="rounded-full h-[100px] w-[100px] p-4 flex justify-center items-center icon-gradient border border-[#5B42FF] shadow shadow-[#4B4CFF]">
               <img
                 src="../../src/assets/contact.png"
                 alt="email"
-                height={35}
-                width={35}
+                height={30}
+                width={30}
               />
             </div>
             <div className="flex flex-col gap-6 ">
-              <p className="text-2xl font-light leading-[150%] text-white">
+              <p className="lg:text-2xl  md:text-xl  text-sm font-light leading-[150%] text-white">
                 Help us make your experience better.
               </p>
-              <p className="text-3xl text-white font-[350]">Leave Feedback</p>
+              <p className="2xl:text-3xl lg:text-2xl text-lg text-white font-[350]">
+                Leave Feedback
+              </p>
             </div>
           </div>
-          <div className="flex gap-7 p-8 border border-[#5B42FF] rounded-3xl  card-gradient ">
+          <div className="flex  flex-col sm:flex-row gap-7 p-8 border border-[#5B42FF] rounded-3xl  card-gradient ">
             <div className="rounded-full h-[100px] w-[100px] p-4 flex justify-center items-center icon-gradient border border-[#5B42FF] shadow shadow-[#4B4CFF]">
               <img
                 src="../../src/assets/form.png"
                 alt="email"
-                height={35}
-                width={35}
+                height={30}
+                width={30}
               />
             </div>
             <div className="flex flex-col gap-6 ">
-              <p className="text-2xl font-light leading-[150%] text-white">
+              <p className="lg:text-2xl md:text-xl  text-sm font-light leading-[150%] text-white">
                 Fill a Form
               </p>
-              <p className="text-3xl text-white font-[350]">
+              <p className="2xl:text-3xl lg:text-2xl text-lg text-white font-[350]">
                 Get Quick Solution
               </p>
             </div>
@@ -103,7 +117,7 @@ const Help = () => {
         {/* vido  */}
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 xl:gap-5  pb-20 border-b-2 border-b-[#F800C0] mb-16">
           <div className="card">
-            <h2 className="text-5xl font-normal pt-20 text-white mb-[52px]">
+            <h2 className="2xl:text-5xl xl:text-4xl lg:text-3xl text-2xl font-normal lg:pt-20 pt-10  text-white mb-[30px]">
               How to Buy
             </h2>
             <div className="lg:w-[90%] xl:w-[380px] w-[98%] h-[348px] border-2 border-[#4C45FF]  rounded-[21px]    ">
@@ -117,7 +131,7 @@ const Help = () => {
             </div>
           </div>
           <div className="card">
-            <h2 className="text-5xl font-normal pt-20 text-white mb-[52px]">
+            <h2 className="2xl:text-5xl xl:text-4xl lg:text-3xl text-2xl font-normal lg:pt-20 pt-10  text-white mb-[30px]">
               How to Sell
             </h2>
             <div className="lg:w-[90%] xl:w-[380px] w-[98%] h-[348px] border-2 border-[#4C45FF]  rounded-[21px]   ">
@@ -132,7 +146,7 @@ const Help = () => {
             </div>
           </div>
           <div className="card">
-            <h2 className="text-5xl font-normal pt-20 text-white mb-[52px]">
+            <h2 className="2xl:text-5xl xl:text-4xl lg:text-3xl text-2xl font-normal lg:pt-20 pt-10 text-white mb-[30px]">
               How to Rent
             </h2>
             <div className="xl:w-[380px] lg:w-[90%] w-[98%] h-[348px] border-2 border-[#4C45FF]  rounded-[21px]   ">
@@ -149,10 +163,12 @@ const Help = () => {
         </div>
         <div>
           <div className="faq-wrapper relative">
-            <h2 className="text-5xl font-normal  text-white mb-[52px]">FAQ</h2>
+            <h2 className="2xl:text-5xl xl:text-4xl lg:text-3xl text-2xl font-normal  text-white mb-[52px]">
+              FAQ
+            </h2>
             <div className="tabbing  ">
               <Tabs.Root className="TabsRoot" defaultValue="tab1">
-                <div className="absolute top-0 right-0 flex gap-10 bg-transparent">
+                <div className=" p-5 sm:p-0 sm:absolute sm:top-0 sm:right-0 flex gap-10 bg-transparent">
                   <Tabs.List
                     className="TabsList"
                     aria-label="Manage your account"
@@ -162,19 +178,25 @@ const Help = () => {
                         className="TabsTrigger data-[state=active]:tab-active"
                         value="tab1"
                       >
-                        <span className="text-3xl font-[400]">Buy</span>
+                        <span className="2xl:text-3xl lg:text-2xl text-lg font-[400]">
+                          Buy
+                        </span>
                       </Tabs.Trigger>
                       <Tabs.Trigger
                         className="TabsTrigger data-[state=active]:tab-active"
                         value="tab2"
                       >
-                        <span className="text-3xl font-[400]">Sell</span>
+                        <span className="2xl:text-3xl lg:text-2xl text-lg font-[400]">
+                          Sell
+                        </span>
                       </Tabs.Trigger>
                       <Tabs.Trigger
                         className="TabsTrigger data-[state=active]:tab-active"
                         value="tab3"
                       >
-                        <span className="text-3xl font-[400]">Rent</span>
+                        <span className="2xl:text-3xl lg:text-2xl text-lg font-[400]">
+                          Rent
+                        </span>
                       </Tabs.Trigger>
                     </div>
                   </Tabs.List>
@@ -184,37 +206,33 @@ const Help = () => {
                     className="AccordionRoot flex flex-col gap-12"
                     type="single"
                     defaultValue="item-1"
-                    value={openBuyItem ?? ""}
-                    onValueChange={(value) => setBuyOpenItem(value)}
                     collapsible
                   >
                     <Accordion.Item
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
-                      value="item-1"
+                      value="item-9"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full"
+                        onClick={() => toggleAccordion("item-9")}
+                      >
                         How much does it cost to sell on MyFinder?
-                        {openBuyItem === "item-1" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          {/* Show - sign if open, + sign if closed */}
+                          <path
+                            d={
+                              accordionStates["item-9"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          />
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -239,29 +257,26 @@ const Help = () => {
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
                       value="item-2"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
+                        onClick={() => toggleAccordion("item-2")}
+                      >
                         What’s the best way to send my item?
-                        {openBuyItem === "item-2" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d={
+                              accordionStates["item-2"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          ></path>
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -286,30 +301,27 @@ const Help = () => {
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
                       value="item-3"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between text-start items-center text-white font-[350] p-8 w-full "
+                        onClick={() => toggleAccordion("item-3")}
+                      >
                         Can I offer collection in person as an option for
                         buyers?
-                        {openBuyItem === "item-3" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d={
+                              accordionStates["item-3"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          ></path>
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -334,29 +346,26 @@ const Help = () => {
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
                       value="item-4"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
+                        onClick={() => toggleAccordion("item-4")}
+                      >
                         How much will it cost to post my item?
-                        {openBuyItem === "item-4" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d={
+                              accordionStates["item-4"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          ></path>
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -381,29 +390,26 @@ const Help = () => {
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
                       value="item-5"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
+                        onClick={() => toggleAccordion("item-5")}
+                      >
                         How will the buyer pay for my item?
-                        {openBuyItem === "item-5" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d={
+                              accordionStates["item-5"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          ></path>
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -428,29 +434,26 @@ const Help = () => {
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
                       value="item-6"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
+                        onClick={() => toggleAccordion("item-6")}
+                      >
                         How should I choose my listing price?
-                        {openBuyItem === "item-6" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d={
+                              accordionStates["item-6"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          ></path>
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -475,29 +478,26 @@ const Help = () => {
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
                       value="item-7"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
+                        onClick={() => toggleAccordion("item-7")}
+                      >
                         How does MyFinder protect sellers?
-                        {openBuyItem === "item-7" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d={
+                              accordionStates["item-7"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          ></path>
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -522,29 +522,26 @@ const Help = () => {
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
                       value="item-8"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
+                        onClick={() => toggleAccordion("item-8")}
+                      >
                         What can I sell on MyFinder?
-                        {openBuyItem === "item-8" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d={
+                              accordionStates["item-8"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          ></path>
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -571,37 +568,33 @@ const Help = () => {
                     className="AccordionRoot flex flex-col gap-12"
                     type="single"
                     defaultValue="item-1"
-                    value={openSellItem ?? ""}
-                    onValueChange={(value) => setSellOpenItem(value)}
                     collapsible
                   >
                     <Accordion.Item
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
-                      value="item-1"
+                      value="item-9"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full"
+                        onClick={() => toggleAccordion("item-9")}
+                      >
                         How much does it cost to sell on MyFinder?
-                        {openSellItem === "item-1" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          {/* Show - sign if open, + sign if closed */}
+                          <path
+                            d={
+                              accordionStates["item-9"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          />
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -626,29 +619,26 @@ const Help = () => {
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
                       value="item-2"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
+                        onClick={() => toggleAccordion("item-2")}
+                      >
                         What’s the best way to send my item?
-                        {openSellItem === "item-2" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d={
+                              accordionStates["item-2"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          ></path>
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -673,30 +663,27 @@ const Help = () => {
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
                       value="item-3"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
+                        onClick={() => toggleAccordion("item-3")}
+                      >
                         Can I offer collection in person as an option for
                         buyers?
-                        {openSellItem === "item-3" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d={
+                              accordionStates["item-3"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          ></path>
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -724,36 +711,31 @@ const Help = () => {
                     type="single"
                     defaultValue="item-1"
                     collapsible
-                    value={openRentItem ?? ""}
-                    onValueChange={(value) => setRentOpenItem(value)}
                   >
                     <Accordion.Item
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
-                      value="item-1"
+                      value="item-9"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
+                        onClick={() => toggleAccordion("item-9")}
+                      >
                         How much does it cost to sell on MyFinder?
-                        {openRentItem === "item-1" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d={
+                              accordionStates["item-9"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          ></path>
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -778,29 +760,26 @@ const Help = () => {
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
                       value="item-2"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
+                        onClick={() => toggleAccordion("item-2")}
+                      >
                         What’s the best way to send my item?
-                        {openRentItem === "item-2" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d={
+                              accordionStates["item-2"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          ></path>
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -825,30 +804,27 @@ const Help = () => {
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
                       value="item-3"
                     >
-                      <AccordionTrigger className="text-xl flex justify-between items-center text-white font-[350] p-8 w-full ">
+                      <AccordionTrigger
+                        className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
+                        onClick={() => toggleAccordion("item-3")}
+                      >
                         Can I offer collection in person as an option for
                         buyers?
-                        {openRentItem === "item-3" ? (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M19 13H5V11H19V13Z"></path>
-                          </svg>
-                        ) : (
-                          <svg
-                            height={30}
-                            width={30}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                          >
-                            <path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path>
-                          </svg>
-                        )}
+                        <svg
+                          height={30}
+                          width={30}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path
+                            d={
+                              accordionStates["item-3"]
+                                ? "M5 12H19V14H5V12Z"
+                                : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
+                            }
+                          ></path>
+                        </svg>
                       </AccordionTrigger>
                       <AccordionContent className="text-lg text-white leading-[150%] font-light p-8 pt-0">
                         <p>
@@ -895,21 +871,9 @@ const Help = () => {
             </Swiper>
           </div>
           <div className="flex flex-wrap  gap-16 justify-center py-10">
-            <img
-              src="../../src/assets/download_apple.png"
-              alt="apple"
-              className="h-5 md:h-6 lg:h-auto"
-            />
-            <img
-              src="../../src/assets/download_play.png"
-              alt="play"
-              className="h-5 md:h-6 lg:h-auto"
-            />
-            <img
-              src="../../src/assets/download_huawei.png"
-              alt="huawei"
-              className="h-5 md:h-6 lg:h-auto"
-            />
+            <img src="../../src/assets/download_apple.png" alt="apple" />
+            <img src="../../src/assets/download_huawei.png" alt="huawei" />
+            <img src="../../src/assets/download_play.png" alt="play" />
           </div>
         </div>
       </div>
