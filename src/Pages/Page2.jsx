@@ -187,18 +187,15 @@ const Page2 = () => {
           </div>
         </div>
 
-        {/* Right Section with Same Opacity Background */}
         <div className=" w-[100%] lg:w-[50%] relative rounded-lg">
           <div className="absolute inset-0 bg-gradient-to-r from-[#7670FF] to-[#5B42FF] opacity-10 rounded-lg"></div>
 
           <div className="relative p-2">
-            {/* Title & Filter Container */}
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-white text-xs md:text-2xl font-semibold">
                 Similar Motors 3843
               </h2>
 
-              {/* Filter Dropdown - Positioned to Right */}
               <div className="ml-auto">
                 <select
                   className=" px-2 md:px-4 py-2 text-xs md:text-base text-white rounded-full border border-[#5B42FF] bg-gradient-to-r from-[#7670FF] to-[#5B42FF] focus:outline-none focus:ring-2 focus:ring-[#7670FF]"
