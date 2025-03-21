@@ -4,11 +4,9 @@ import car11 from "../assets/car11.png";
 import car2 from "../assets/car2.png";
 import car3 from "../assets/car3.png";
 import car4 from "../assets/car4.png";
-import logo from "../assets/logo8.png";
 import ChatInput2 from "../components/ChatInput2";
 import Marquee from "../components/Marquee";
-import { Heart } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import CarCard from "../components/CarCard";
 
 const carList = [
   {
@@ -45,53 +43,7 @@ const carList = [
   },
 ];
 
-const CarCard = ({ car, navigate }) => (
-  <div onClick={() => navigate("/detail")} className="bg-[#010122] rounded-xl overflow-hidden shadow-lg text-white relative cursor-pointer">
-    <div className="relative">
-      <img
-        src={car.image}
-        alt={car.name}
-        className="w-full h-48 object-cover"
-      />
-      <button className="absolute top-4 right-4 p-1.5 bg-white/80 backdrop-blur-sm rounded-full">
-        <Heart className="w-5 h-5 text-gray-700" />
-      </button>
-      <div className="absolute right-13 bottom-0 w-16 h-16 bg-white rounded-full border-2 border-gray-200 shadow-md  flex items-center justify-center transform translate-x-1/2 translate-y-1/2">
-        <img src={logo} alt="logo" className="w-10 h-10 object-contain" />
-      </div>
-    </div>
-
-    {/* Card Content */}
-    <div className="p-4 mt-6">
-      <div className="flex justify-between items-start mb-3">
-        <div>
-          <h3 className="md:text-lg font-semibold">{car.name}</h3>
-          <p className="text-sm">{car.edition}</p>
-        </div>
-        <div className="text-right">
-          <p className="font-bold text-lg">{car.price}</p>
-        </div>
-      </div>
-
-      {/* Car Details */}
-      <div className="flex gap-2 text-sm text-gray-300 mb-4">
-        <span>{car.year}</span>
-        <span>|</span>
-        <span>{car.mileage}</span>
-        <span>|</span>
-        <span>{car.drive}</span>
-      </div>
-
-      {/* Chat Button */}
-      <button className="w-full bg-gradient-to-b from-[#FE8A70] to-[#F800C0] text-white py-3 px-4 rounded-full font-medium flex items-center justify-center hover:opacity-90 transition-opacity cursor-pointer">
-        Chat with Us
-      </button>
-    </div>
-  </div>
-);
-
 const Sell = () => {
-  const navigate = useNavigate();
   const [activeButton, setActiveButton] = useState("Featured");
 
   return (
@@ -200,7 +152,7 @@ const Sell = () => {
           {/* Car Listings - 4 cards per row on large screens, 2 per row on medium */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 px-4">
             {carList.map((car, index) => (
-              <CarCard key={index} car={car} navigate={navigate} />
+              <CarCard key={index} car={car} />
             ))}
           </div>
           <div className="flex justify-center mt-8 mb-4 relative z-10">
