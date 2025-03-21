@@ -117,7 +117,7 @@ const Page3 = () => {
 
         <div className="flex flex-wrap md:flex-nowrap items-center gap-4 border-b pb-6 border-[#F800C0]">
           {/* Company Logo */}
-          <div className="size-20 md:size-24 flex items-center justify-center bg-white rounded-full border border-[#5B42FF]">
+          <div className="size-16 sm:size-20 md:size-24 flex items-center justify-center bg-white rounded-full border border-[#5B42FF]  ">
             <img
               src={companyLogo}
               alt="Company Logo"
@@ -128,10 +128,12 @@ const Page3 = () => {
           {/* Company Info */}
           <div className="text-white flex-1 w-full">
             <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-4">
-              <h2 className="text-lg md:text-2xl font-bold">Company Name</h2>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-bold">
+                Company Name
+              </h2>
 
               {/* Stats */}
-              <div className="text-sm space-x-2 md:space-x-16 flex flex-wrap md:flex-nowrap items-center">
+              <div className="text-xs sm:text-sm flex flex-wrap gap-2 lg:gap-4 xl:gap-24  items-center">
                 <p className="text-[#F800C0]">
                   Active Listing /{" "}
                   <span className="font-bold text-white">5</span>
@@ -148,38 +150,35 @@ const Page3 = () => {
               </div>
 
               {/* Icons */}
-              <div className="flex space-x-2 md:space-x-4 text-white text-lg">
-                <button className="p-2 md:p-3 rounded-full hover:bg-white transition">
-                  <Heart className="w-5 h-5 md:w-6 md:h-6 text-white" />
+              <div className="flex gap-2 md:gap-4 text-white text-base sm:text-lg">
+                <button className="p-2 sm:p-3 rounded-full hover:bg-white/20 transition">
+                  <Heart className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                 </button>
-                <button className="p-2 md:p-3 rounded-full hover:bg-white transition">
-                  <MapPin className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                <button className="p-2 sm:p-3 rounded-full hover:bg-white/20 transition">
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                 </button>
-                <button className="p-2 md:p-3 rounded-full hover:bg-white transition">
-                  <Share2 className="w-5 h-5 md:w-6 md:h-6 text-white" />
+                <button className="p-2 sm:p-3 rounded-full hover:bg-white/20 transition">
+                  <Share2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                 </button>
               </div>
             </div>
 
             {/* Description */}
-            <p className="text-xs md:text-sm text-gray-300 mt-4">
+            <p className="text-xs sm:text-sm text-gray-300 mt-4 leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
               maximus euismod gravida. Morbi ultrices, quam ac scelerisque
               cursus, quam risus imperdiet ipsum, ac suscipit urna justo at est.
-              Donec nisl purus, aliquet ut placerat non, tincidunt eu leo. Donec
-              velit est, tempor nec lectus sed, sagittis hendrerit orci.
-              Phasellus sit amet tempus velit.ultrices, quam ac scelerisque
-              cursus, quam risus imperdiet ipsum, ac suscipit urna justo at est.
-              Donec nisl purus, aliquet ut placerat non, tincidunt eu leo. Donec
-              velit est, tempor nec lectus sed, sagittis hendrerit orci.
-              Phasellus sit amet tempus velit.
+              Donec nisl purus, aliquet ut placerat non, tincidunt eu leo. Morbi
+              ultrices, quam ac scelerisque cursus, quam risus imperdiet ipsum,
+              ac suscipit urna justo at est. Donec nisl purus, aliquet ut
+              placerat non, tincidunt eu leo.
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col lg:flex-row mx-2 md:mx-4 space-x-8 ">
+        <div className="flex flex-col xl:flex-row mx-2 md:mx-4 space-x-8 ">
           {/* Left Section */}
-          <div className="w-full lg:w-[45%] flex flex-col space-y-8 lg:space-y-12 items-center py-8 md:py-16 justify-around lg:h-[calc(100vh-7rem)]">
+          <div className="w-full xl:w-[45%] flex flex-col space-y-8 lg:space-y-12 items-center py-8 md:py-16 justify-around lg:h-[calc(100vh-7rem)]">
             <img
               src={latina}
               alt="Lina"
@@ -195,7 +194,7 @@ const Page3 = () => {
           </div>
 
           {/* Right Section with Same Opacity Background */}
-          <div className=" w-full lg:w-[55%] my-4 rounded-lg relative">
+          <div className=" w-full xl:w-[55%] my-4 rounded-lg relative">
             <div className=" ">
               {/* Buttons with Active Gradient Border */}
               <div className=" flex justify-center my-6">
@@ -239,7 +238,7 @@ const Page3 = () => {
         </div>
       </div>
       <div className="flex flex-col mb-6">
-        <div className="text-white  ml-4">
+        <div className="text-white  mx-8">
           <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
             <SwiperSlide className="text-white flex">
               <img src="../../src/assets/swiper.png" alt="swiper" />

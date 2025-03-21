@@ -290,7 +290,7 @@ const Page2 = () => {
         </div>
       </div>
       <div className="flex flex-col mb-6 ">
-        <div className="text-white ml-4">
+        <div className="text-white mx-8">
           <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
             <SwiperSlide className="text-white flex">
               <img src="../../src/assets/swiper.png" alt="swiper" />

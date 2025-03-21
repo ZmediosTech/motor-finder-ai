@@ -107,9 +107,9 @@ const Sell = () => {
   return (
     <>
       <Marquee />
-      <div className="flex flex-col lg:flex-row mx-2 md:mx-4 lg:mx-8">
+      <div className="flex flex-col xl:flex-row mx-2 md:mx-4 lg:mx-8">
         {/* Left Section */}
-        <div className="w-full lg:w-[45%] flex flex-col space-y-8 lg:space-y-12 items-center py-8 md:py-16 justify-around lg:h-[calc(100vh-7rem)]">
+        <div className="w-full xl:w-[45%] flex flex-col space-y-8 lg:space-y-12 items-center py-8 md:py-16 justify-around lg:h-[calc(100vh-7rem)]">
           <img
             src={latina}
             alt="Lina"
@@ -125,7 +125,7 @@ const Sell = () => {
         </div>
 
         {/* Right Section */}
-        <div className=" w-full lg:w-[55%] my-4 rounded-lg relative">
+        <div className=" w-full xl:w-[55%] my-4 rounded-lg relative">
           {/* Background with 10% opacity */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#7670FF] to-[#5B42FF] opacity-10 rounded-lg"></div>
 
