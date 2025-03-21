@@ -194,11 +194,11 @@ const Page3 = () => {
           </div>
 
           {/* Right Section with Same Opacity Background */}
-          <div className=" w-full xl:w-[55%] my-4 rounded-lg relative">
+          <div className=" w-full xl:w-[55%] lg:my-4 rounded-lg relative">
             <div className=" ">
               {/* Buttons with Active Gradient Border */}
               <div className=" flex justify-center my-6">
-                <div className="flex gradient-border items-center text-[8px] md:text-[12px] lg:text-base font-semibold  md:space-x-1 lg:space-x-5">
+                <div className="flex gradient-border items-center text-[8px] md:text-[12px] lg:text-[14px]  text-[10px] font-semibold  md:space-x-1 lg:space-x-5">
                   {["Featured Motor Listing", "Motor Listing", "Agents"].map(
                     (btn) => (
                       <button

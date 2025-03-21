@@ -136,8 +136,8 @@ const Sell = () => {
             </h1>
 
             {/* Buttons with Active Gradient Border */}
-            <div className="flex md:hidden w-full justify-around items center  ">
-              <div className="flex gradient-border items-center text-[8px] md:text-[12px] lg:text-base font-semibold  md:space-x-1 lg:space-x-5">
+            <div className="flex md:hidden w-full justify-between items center  ">
+              <div className="flex gradient-border items-center text-[8px] md:text-[12px] lg:text-[12px]  text-[14px] font-semibold  md:space-x-1 lg:space-x-5">
                 {["Featured", "Company", "Listing"].map((btn) => (
                   <button
                     key={btn}
