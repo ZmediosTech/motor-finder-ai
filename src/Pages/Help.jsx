@@ -35,7 +35,6 @@ const Help = () => {
 
   const toggleAccordion = (itemId) => {
     setAccordionStates((prevStates) => ({
-      ...prevStates,
       [itemId]: !prevStates[itemId],
     }));
   };
@@ -219,7 +218,7 @@ const Help = () => {
                 <Tabs.Content className="TabsContent" value="tab1">
                   <Accordion.Root
                     className="AccordionRoot flex flex-col gap-12"
-                    type="multiple"
+                    type="single"
                     collapsible
                   >
                     <Accordion.Item
@@ -580,7 +579,7 @@ const Help = () => {
                 <Tabs.Content className="TabsContent" value="tab2">
                   <Accordion.Root
                     className="AccordionRoot flex flex-col gap-12"
-                    type="multiple"
+                    type="single"
                     collapsible
                   >
                     <Accordion.Item
@@ -721,7 +720,7 @@ const Help = () => {
                 <Tabs.Content className="TabsContent" value="tab3">
                   <Accordion.Root
                     className="AccordionRoot flex flex-col gap-12"
-                    type="multiple"
+                    type="single"
                     collapsible
                   >
                     <Accordion.Item
