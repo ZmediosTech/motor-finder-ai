@@ -7,9 +7,8 @@ import car4 from "../assets/car4.png";
 import logo from "../assets/logo8.png";
 import ChatInput2 from "../components/ChatInput2";
 import Marquee from "../components/Marquee";
-import { Heart, MessageCircle } from "lucide-react";
+import { Heart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import cardLogo from "../assets/cardLogo.png";
 
 const carList = [
   {
@@ -47,8 +46,7 @@ const carList = [
 ];
 
 const CarCard = ({ car, navigate }) => (
-  <div className="bg-[#010122] rounded-xl overflow-hidden shadow-lg text-white relative">
-    {/* Car Image */}
+  <div onClick={() => navigate("/detail")} className="bg-[#010122] rounded-xl overflow-hidden shadow-lg text-white relative cursor-pointer">
     <div className="relative">
       <img
         src={car.image}
@@ -58,12 +56,7 @@ const CarCard = ({ car, navigate }) => (
       <button className="absolute top-4 right-4 p-1.5 bg-white/80 backdrop-blur-sm rounded-full">
         <Heart className="w-5 h-5 text-gray-700" />
       </button>
-
-      {/* Bottom Right Circle (End of Image) */}
-      <div
-        className="absolute right-13 bottom-0 w-16 h-16 bg-white rounded-full border-2 border-gray-200 shadow-md 
-                      flex items-center justify-center transform translate-x-1/2 translate-y-1/2"
-      >
+      <div className="absolute right-13 bottom-0 w-16 h-16 bg-white rounded-full border-2 border-gray-200 shadow-md  flex items-center justify-center transform translate-x-1/2 translate-y-1/2">
         <img src={logo} alt="logo" className="w-10 h-10 object-contain" />
       </div>
     </div>
@@ -90,10 +83,7 @@ const CarCard = ({ car, navigate }) => (
       </div>
 
       {/* Chat Button */}
-      <button
-        className="w-full bg-gradient-to-b from-[#FE8A70] to-[#F800C0] text-white py-3 px-4 rounded-full font-medium flex items-center justify-center hover:opacity-90 transition-opacity cursor-pointer"
-        onClick={() => navigate("/detail")}
-      >
+      <button className="w-full bg-gradient-to-b from-[#FE8A70] to-[#F800C0] text-white py-3 px-4 rounded-full font-medium flex items-center justify-center hover:opacity-90 transition-opacity cursor-pointer">
         Chat with Us
       </button>
     </div>
@@ -213,7 +203,6 @@ const Sell = () => {
               <CarCard key={index} car={car} navigate={navigate} />
             ))}
           </div>
-
           <div className="flex justify-center mt-8 mb-4 relative z-10">
             <button
               className="bg-[#7670FF] text-white px-5 py-2 rounded-full font-semibold text-lg hover:bg-[#5B42FF] transition duration-300"

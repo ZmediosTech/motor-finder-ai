@@ -13,6 +13,7 @@ import { Star, Upload } from "lucide-react";
 import { useState } from "react";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useNavigate } from "react-router-dom";
 
 const carList = [
   {
@@ -49,63 +50,10 @@ const carList = [
   },
 ];
 
-const CarCard = ({ car, navigate }) => (
-  <div className="bg-[#010122] rounded-xl overflow-hidden shadow-lg text-white relative">
-    {/* Car Image */}
-    <div className="relative">
-      <img
-        src={car.image}
-        alt={car.name}
-        className="w-full h-48 object-cover"
-      />
-      <button className="absolute top-4 right-4 p-1.5 bg-white/80 backdrop-blur-sm rounded-full">
-        <Heart className="w-5 h-5 text-gray-700" />
-      </button>
-
-      {/* Bottom Right Circle (End of Image) */}
-      <div
-        className="absolute right-13 bottom-0 w-16 h-16 bg-white rounded-full border-2 border-gray-200 shadow-md 
-                      flex items-center justify-center transform translate-x-1/2 translate-y-1/2"
-      >
-        <img src={logo} alt="logo" className="w-10 h-10 object-contain" />
-      </div>
-    </div>
-
-    {/* Card Content */}
-    <div className="p-4 mt-6">
-      <div className="flex justify-between items-start mb-3">
-        <div>
-          <h3 className="md:text-lg font-semibold">{car.name}</h3>
-          <p className="text-sm">{car.edition}</p>
-        </div>
-        <div className="text-right">
-          <p className="font-bold text-lg">{car.price}</p>
-        </div>
-      </div>
-
-      {/* Car Details */}
-      <div className="flex gap-2 text-sm text-gray-300 mb-4">
-        <span>{car.year}</span>
-        <span>|</span>
-        <span>{car.mileage}</span>
-        <span>|</span>
-        <span>{car.drive}</span>
-      </div>
-
-      {/* Chat Button */}
-      <button
-        className="w-full bg-gradient-to-b from-[#FE8A70] to-[#F800C0] text-white py-3 px-4 rounded-full font-medium flex items-center justify-center hover:opacity-90 transition-opacity cursor-pointer"
-        onClick={() => navigate("/detail")}
-      >
-        Chat with Us
-      </button>
-    </div>
-  </div>
-);
-
 const Page2 = () => {
   const [rating, setRating] = useState(1);
   const [review, setReview] = useState("");
+
   return (
     <>
       <div className="my-6 mx-2 md:mx-4 lg:mx-8 flex flex-col space-y-4 lg:flex-row space-x-4">
@@ -315,6 +263,64 @@ const Page2 = () => {
         </div>
       </div>
     </>
+  );
+};
+
+const CarCard = ({ car }) => {
+  const navigate = useNavigate();
+  return (
+    <div
+      onClick={() => navigate("/detail1")}
+      className="bg-[#010122] rounded-xl overflow-hidden shadow-lg text-white relative cursor-pointer"
+    >
+      {/* Car Image */}
+      <div className="relative">
+        <img
+          src={car.image}
+          alt={car.name}
+          className="w-full h-48 object-cover"
+        />
+        <button className="absolute top-4 right-4 p-1.5 bg-white/80 backdrop-blur-sm rounded-full">
+          <Heart className="w-5 h-5 text-gray-700" />
+        </button>
+
+        {/* Bottom Right Circle (End of Image) */}
+        <div
+          className="absolute right-13 bottom-0 w-16 h-16 bg-white rounded-full border-2 border-gray-200 shadow-md 
+                      flex items-center justify-center transform translate-x-1/2 translate-y-1/2"
+        >
+          <img src={logo} alt="logo" className="w-10 h-10 object-contain" />
+        </div>
+      </div>
+
+      {/* Card Content */}
+      <div className="p-4 mt-6">
+        <div className="flex justify-between items-start mb-3">
+          <div>
+            <h3 className="md:text-lg font-semibold">{car.name}</h3>
+            <p className="text-sm">{car.edition}</p>
+          </div>
+          <div className="text-right">
+            <p className="font-bold text-lg">{car.price}</p>
+          </div>
+        </div>
+
+        {/* Car Details */}
+        <div className="flex gap-2 text-sm text-gray-300 mb-4">
+          <span>{car.year}</span>
+          <span>|</span>
+          <span>{car.mileage}</span>
+          <span>|</span>
+          <span>{car.drive}</span>
+        </div>
+        <button
+          className="w-full bg-gradient-to-b from-[#FE8A70] to-[#F800C0] text-white py-3 px-4 rounded-full font-medium flex items-center justify-center hover:opacity-90 transition-opacity cursor-pointer"
+          onClick={() => navigate("/detail1")}
+        >
+          Chat with Us
+        </button>
+      </div>
+    </div>
   );
 };
 

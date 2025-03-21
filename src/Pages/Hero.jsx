@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
-import robot from "../assets/robot.png";
+
+import { useNavigate } from "react-router-dom";
+
+// Components
+import ChatInput from "../components/ChatInput";
+
+// Assets Images
 import popularBrands from "../assets/popularBrands.png";
+import suv from "../assets/suv.png";
+import robot from "../assets/robot.png";
 import rentalCars from "../assets/RentalCars.png";
 import luxuryCars from "../assets/luxuryCars.png";
-import carsForSell from "../assets/carsForSell.png";
-import suv from "../assets/suv.png";
 import topBrands from "../assets/topBrans.png";
-import ChatInput from "../components/ChatInput";
 import Register from "../assets/register.png";
+import carsForSell from "../assets/carsForSell.png";
 
 const Hero = () => {
+  const navigate = useNavigate();
   const [animate, setAnimate] = useState(false);
   const [positions, setPositions] = useState([]);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setAnimate(false);
-  //     setTimeout(() => setAnimate(true), 1000);
-  //   }, 5000);
-  //   return () => clearInterval(interval);
-  // }, []);
   useEffect(() => {
     setAnimate(true);
   }, []);
@@ -59,7 +59,6 @@ const Hero = () => {
           { x: "15%", y: "42%" },
         ]);
       } else {
-        // Mobile: Space things out more, center images better
         setPositions([
           { x: "-5%", y: "-25%" },
           { x: "-24%", y: "-8%" },
@@ -97,7 +96,7 @@ const Hero = () => {
           alt="AI-Powered Robot"
         />
         {/* Animated Images */}
-        {images.map((img, index) => (
+        {images?.map((img, index) => (
           <div
             key={index}
             className="absolute"
@@ -115,7 +114,9 @@ const Hero = () => {
               transition: `all 0.8s cubic-bezier(0.25, 1, 0.5, 1) ${
                 index * 0.1
               }s`,
+              cursor: "pointer"
             }}
+            onClick={()=> navigate("/sell")}
           >
             <img
               src={img.src}
@@ -133,10 +134,8 @@ const Hero = () => {
         </h1>
       </div>
 
-      {/* Chat Input */}
       <ChatInput />
 
-      {/* Register Section */}
       <div className="flex justify-center mt-8 items-center">
         <div className="flex justify-center space-x-2 items-center">
           <img
