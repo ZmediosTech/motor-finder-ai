@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import robot from "../assets/robot.png";
-import popularBrands from "../assets/RentalCars.png";
+import popularBrands from "../assets/popularBrands.png";
 import rentalCars from "../assets/RentalCars.png";
-import luxuryCars from "../assets/topBrans.png";
-import carsForSell from "../assets/RentalCars.png";
+import luxuryCars from "../assets/luxuryCars.png";
+import carsForSell from "../assets/carsForSell.png";
 import suv from "../assets/suv.png";
 import topBrands from "../assets/topBrans.png";
 import ChatInput from "../components/ChatInput";
@@ -20,7 +20,6 @@ const Hero = () => {
   //   }, 5000);
   //   return () => clearInterval(interval);
   // }, []);
-
   useEffect(() => {
     setAnimate(true);
   }, []);
@@ -38,7 +37,6 @@ const Hero = () => {
           { x: "35%", y: "12%" },
           { x: "-20%", y: "35%" },
           { x: "20%", y: "30%" },
-          { x: "0%", y: "0%" },
         ]);
       } else if (width >= 1440) {
         setPositions([
@@ -48,29 +46,27 @@ const Hero = () => {
           { x: "-35%", y: "8%" },
           { x: "35%", y: "10%" },
           { x: "-18%", y: "28%" },
-          { x: "15%", y: "28%" },
-          { x: "10%", y: "32%" },
+          { x: "16%", y: "28%" },
         ]);
       } else if (width >= 1024) {
         setPositions([
           { x: "-4%", y: "-25%" },
           { x: "-25%", y: "-10%" },
-          { x: "15%", y: "-8%" },
+          { x: "20%", y: "-16%" },
           { x: "-40%", y: "5%" },
           { x: "30%", y: "15%" },
           { x: "-15%", y: "25%" },
-          { x: "15%", y: "35%" },
-          { x: "8%", y: "26%" },
+          { x: "15%", y: "42%" },
         ]);
       } else {
         // Mobile: Space things out more, center images better
         setPositions([
           { x: "-5%", y: "-25%" },
           { x: "-24%", y: "-8%" },
-          { x: "20%", y: "-10%" },
+          { x: "22%", y: "-10%" },
           { x: "-30%", y: "20%" },
-          { x: "14%", y: "38%" },
-          { x: "-10%", y: "47%" },
+          { x: "16%", y: "38%" },
+          { x: "-12%", y: "40%" },
           { x: "25%", y: "15%" },
         ]);
       }
@@ -82,13 +78,13 @@ const Hero = () => {
   }, []);
 
   const images = [
-    { src: popularBrands, alt: "Popular Brands" },
+    { src: suv, alt: "SUV" },
     { src: topBrands, alt: "Top Brands" },
-    { src: rentalCars, alt: "Rental Cars" },
+    { src: popularBrands, alt: "Popular Brands" },
     { src: suv, alt: "SUV" },
     { src: luxuryCars, alt: "Luxury Cars" },
+    { src: rentalCars, alt: "Rental Cars" },
     { src: carsForSell, alt: "Cars for Sale" },
-    { src: suv, alt: "SUV" },
   ];
 
   return (
