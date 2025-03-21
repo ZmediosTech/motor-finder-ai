@@ -17,11 +17,16 @@ import carsForSell from "../assets/carsForSell.png";
 
 const Hero = () => {
   const navigate = useNavigate();
-  const [animate, setAnimate] = useState(false);
+  const [animate, setAnimate] = useState(true);
   const [positions, setPositions] = useState([]);
 
   useEffect(() => {
-    setAnimate(true);
+    const interval = setInterval(() => {
+      setAnimate(false);
+      setTimeout(() => setAnimate(true), 1000); // Reset animation after 1s
+    }, 5000); // Run every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   useEffect(() => {
@@ -114,9 +119,9 @@ const Hero = () => {
               transition: `all 0.8s cubic-bezier(0.25, 1, 0.5, 1) ${
                 index * 0.1
               }s`,
-              cursor: "pointer"
+              cursor: "pointer",
             }}
-            onClick={()=> navigate("/sell")}
+            onClick={() => navigate("/sell")}
           >
             <img
               src={img.src}

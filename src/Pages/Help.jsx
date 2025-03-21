@@ -16,7 +16,22 @@ import { useState } from "react";
 const Help = () => {
   // const [isOpen, setIsOpen] = useState(false);
   // const toggleAccordion = () => setIsOpen(!isOpen);
-  const [accordionStates, setAccordionStates] = useState({});
+  const [accordionStates, setAccordionStates] = useState({
+    "item-1": false,
+    "item-2": false,
+    "item-3": false,
+    "item-4": false,
+    "item-5": false,
+    "item-6": false,
+    "item-7": false,
+    "item-8": false,
+    "item-9": false,
+    "item-10": false,
+    "item-11": false,
+    "item-12": false,
+    "item-13": false,
+    "item-14": false,
+  });
 
   const toggleAccordion = (itemId) => {
     setAccordionStates((prevStates) => ({
@@ -204,17 +219,16 @@ const Help = () => {
                 <Tabs.Content className="TabsContent" value="tab1">
                   <Accordion.Root
                     className="AccordionRoot flex flex-col gap-12"
-                    type="single"
-                    defaultValue="item-1"
+                    type="multiple"
                     collapsible
                   >
                     <Accordion.Item
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
-                      value="item-9"
+                      value="item-1"
                     >
                       <AccordionTrigger
                         className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full"
-                        onClick={() => toggleAccordion("item-9")}
+                        onClick={() => toggleAccordion("item-1")}
                       >
                         How much does it cost to sell on MyFinder?
                         <svg
@@ -227,7 +241,7 @@ const Help = () => {
                           {/* Show - sign if open, + sign if closed */}
                           <path
                             d={
-                              accordionStates["item-9"]
+                              accordionStates["item-1"]
                                 ? "M5 12H19V14H5V12Z"
                                 : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
                             }
@@ -566,8 +580,7 @@ const Help = () => {
                 <Tabs.Content className="TabsContent" value="tab2">
                   <Accordion.Root
                     className="AccordionRoot flex flex-col gap-12"
-                    type="single"
-                    defaultValue="item-1"
+                    type="multiple"
                     collapsible
                   >
                     <Accordion.Item
@@ -617,11 +630,11 @@ const Help = () => {
 
                     <Accordion.Item
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
-                      value="item-2"
+                      value="item-10"
                     >
                       <AccordionTrigger
                         className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
-                        onClick={() => toggleAccordion("item-2")}
+                        onClick={() => toggleAccordion("item-10")}
                       >
                         What’s the best way to send my item?
                         <svg
@@ -633,7 +646,7 @@ const Help = () => {
                         >
                           <path
                             d={
-                              accordionStates["item-2"]
+                              accordionStates["item-10"]
                                 ? "M5 12H19V14H5V12Z"
                                 : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
                             }
@@ -661,11 +674,11 @@ const Help = () => {
 
                     <Accordion.Item
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
-                      value="item-3"
+                      value="item-11"
                     >
                       <AccordionTrigger
                         className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
-                        onClick={() => toggleAccordion("item-3")}
+                        onClick={() => toggleAccordion("item-11")}
                       >
                         Can I offer collection in person as an option for
                         buyers?
@@ -678,7 +691,7 @@ const Help = () => {
                         >
                           <path
                             d={
-                              accordionStates["item-3"]
+                              accordionStates["item-11"]
                                 ? "M5 12H19V14H5V12Z"
                                 : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
                             }
@@ -708,17 +721,16 @@ const Help = () => {
                 <Tabs.Content className="TabsContent" value="tab3">
                   <Accordion.Root
                     className="AccordionRoot flex flex-col gap-12"
-                    type="single"
-                    defaultValue="item-1"
+                    type="multiple"
                     collapsible
                   >
                     <Accordion.Item
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
-                      value="item-9"
+                      value="item-12"
                     >
                       <AccordionTrigger
                         className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
-                        onClick={() => toggleAccordion("item-9")}
+                        onClick={() => toggleAccordion("item-12")}
                       >
                         How much does it cost to sell on MyFinder?
                         <svg
@@ -730,7 +742,7 @@ const Help = () => {
                         >
                           <path
                             d={
-                              accordionStates["item-9"]
+                              accordionStates["item-12"]
                                 ? "M5 12H19V14H5V12Z"
                                 : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
                             }
@@ -758,11 +770,11 @@ const Help = () => {
 
                     <Accordion.Item
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
-                      value="item-2"
+                      value="item-13"
                     >
                       <AccordionTrigger
                         className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
-                        onClick={() => toggleAccordion("item-2")}
+                        onClick={() => toggleAccordion("item-13")}
                       >
                         What’s the best way to send my item?
                         <svg
@@ -774,7 +786,7 @@ const Help = () => {
                         >
                           <path
                             d={
-                              accordionStates["item-2"]
+                              accordionStates["item-13"]
                                 ? "M5 12H19V14H5V12Z"
                                 : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
                             }
@@ -802,11 +814,11 @@ const Help = () => {
 
                     <Accordion.Item
                       className="AccordionItem card-gradient  rounded-3xl border border-[#7670FF]"
-                      value="item-3"
+                      value="item-14"
                     >
                       <AccordionTrigger
                         className="text-start text-xl flex justify-between items-center text-white font-[350] p-8 w-full "
-                        onClick={() => toggleAccordion("item-3")}
+                        onClick={() => toggleAccordion("item-14")}
                       >
                         Can I offer collection in person as an option for
                         buyers?
@@ -819,7 +831,7 @@ const Help = () => {
                         >
                           <path
                             d={
-                              accordionStates["item-3"]
+                              accordionStates["item-14"]
                                 ? "M5 12H19V14H5V12Z"
                                 : "M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
                             }
