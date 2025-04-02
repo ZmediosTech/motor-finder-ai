@@ -9,6 +9,8 @@ import Page3 from "./Pages/Page3";
 import About from "./Pages/About";
 import Privacy from "./Pages/Privacy";
 import Help from "./Pages/Help";
+import AuthPage from "./Pages/Auth/Signup";
+
 function App() {
   return (
     <Router>
@@ -21,6 +23,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/help" element={<Help />} />
+        <Route path="/signup" element={<AuthPage />} />
       </Routes>
       <Footer />
     </Router>
