@@ -10,7 +10,7 @@ import car3 from "../assets/car3.png";
 import car4 from "../assets/car4.png";
 import { Star, Upload } from "lucide-react";
 import { useState } from "react";
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay  } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import CarCard from "../components/CarCard";
 
@@ -235,7 +235,12 @@ const Page2 = () => {
       </div>
       <div className="flex flex-col mb-6 ">
         <div className="text-white mx-8">
-          <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
+          <Swiper pagination={true}
+            modules={[Pagination, Autoplay]} // Add the Autoplay module here
+            autoplay={{
+              delay: 3000, // Set the autoplay delay to 3 seconds (3000ms)
+              disableOnInteraction: false, // Keep autoplay running after interaction
+            }} className="mySwiper">
             <SwiperSlide className="text-white flex">
               <img src="../../src/assets/swiper.png" alt="swiper" />
             </SwiperSlide>

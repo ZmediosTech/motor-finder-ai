@@ -11,7 +11,7 @@ body {
 
 .gradient-border {
   position: relative;
-  border-radius: 100px;
+  /* border-radius: 100px; */
   background: linear-gradient(black, black) padding-box,
     linear-gradient(90deg, #7670ff 0%, #5b42ff 100%) border-box;
   border: 2px solid transparent;
