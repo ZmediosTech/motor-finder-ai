@@ -29,19 +29,17 @@ const Navbar = () => {
         </div>
 
         {/* Sign In Button */}
-        <Link to="/signup">
-          <button
-            className="text-white px-3 md:px-4 py-1 md:py-2 rounded-full text-[2.5vw] md:text-[2vw] lg:text-[2vw] xl:text-[1vw]"
-            style={{
-              background: "linear-gradient(90deg, #7670FF 0%, #5B42FF 100%)",
-              boxShadow: "0px 0px 8px 0px #4B4CFF",
-              outline: "none",
-              cursor: "pointer",
-            }}
-          >
-            Sign In
-          </button>
-        </Link>
+        <button
+          className="text-white px-3 md:px-4 py-1 md:py-2 rounded-full text-[2.5vw] md:text-[2vw] lg:text-[2vw] xl:text-[1vw]"
+          style={{
+            background: "linear-gradient(90deg, #7670FF 0%, #5B42FF 100%)",
+            boxShadow: "0px 0px 8px 0px #4B4CFF",
+            outline: "none",
+            cursor: "pointer",
+          }}
+        >
+          Sign In
+        </button>
       </div>
     </div>
   );

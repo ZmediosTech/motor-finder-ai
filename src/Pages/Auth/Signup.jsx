@@ -237,7 +237,8 @@ export default function AuthPage() {
       ) : (
         <div className="flex flex-col items-center justify-center w-full h-[calc(90vh-86px)]">
           <h1 className="text-white text-3xl text-center mb-4">
-            Thanks for Choosing our Platform to find your dream Motor
+            You're all set! Keep an eye on your inbox for the next steps. Have a
+            fantastic day!
           </h1>
           <img src={SuccessImg} className="w-[250px] h-[250px]" alt="Success" />
         </div>
