@@ -61,9 +61,9 @@ const Page3 = () => {
       <div className="relative my-6 mx-8 p-6 relative rounded-lg  ">
         <div className="absolute inset-0 bg-gradient-to-r from-[#7670FF] to-[#5B42FF] opacity-10 rounded-lg"></div>
 
-        <div className="flex flex-wrap md:flex-nowrap items-center gap-4 border-b pb-6 border-[#F800C0]">
+        <div className="flex flex-wrap lg:flex-nowrap lg:items-center md:items-start items-center lg:gap-8 gap-4 border-b pb-6 border-[#F800C0]">
           {/* Company Logo */}
-          <div className="size-16 sm:size-20 md:size-24 flex items-center justify-center bg-white rounded-full border border-[#5B42FF]  ">
+          <div className="flex items-center justify-center bg-white rounded-full border border-[#5B42FF]">
             <img
               src={companyLogo}
               alt="Company Logo"
@@ -73,53 +73,52 @@ const Page3 = () => {
 
           {/* Company Info */}
           <div className="text-white flex-1 w-full">
-            <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-4">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-bold">
+            <div className="flex flex-wrap xl:flex-nowrap justify-between items-center gap-4">
+              <h2 className="text-lg md:text-xl lg:text-2xl xl:text-4xl font-bold whitespace-nowrap">
                 Company Name
               </h2>
 
               {/* Stats */}
-              <div className="text-xs sm:text-sm flex flex-wrap gap-2 lg:gap-4 xl:gap-24  items-center">
-                <p className="text-[#F800C0]">
+              <div className="text-lg lg:text-xl flex justify-between gap-2 lg:gap-2 xl:gap-4 xl:gap-y-5 lg:gap-x-6 md:gap-x-6 items-center flex-wrap md:order-3 xl:order-0 order-0 flex-grow">
+                <p className="text-[#F800C0] w-full md:w-auto">
                   Active Listing /{" "}
                   <span className="font-bold text-white">5</span>
                 </p>
-                <p className="text-[#F800C0]">
+                <p className="text-[#F800C0] w-full md:w-auto">
                   Agent / <span className="font-bold text-white">3</span>
                 </p>
-                <p className="text-[#F800C0]">
+                <p className="text-[#F800C0] w-full md:w-auto">
                   Location / <span className="font-bold text-white">Dubai</span>
                 </p>
-                <p className="text-[#F800C0]">
+                <p className="text-[#F800C0] w-full md:w-auto">
                   Review / <span className="font-bold text-white">8374</span>
                 </p>
               </div>
 
               {/* Icons */}
-              <div className="flex gap-2 md:gap-4 text-white text-base sm:text-lg">
-                <button className="p-2 sm:p-3 rounded-full hover:bg-white/20 transition">
-                  <Heart className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
+              <div className="flex text-white text-base sm:text-lg">
+                <button className="p-2 rounded-full hover:bg-white/20 transition">
+                  <Heart className="w-4 h-4 md:w-6 md:h-6 text-white" />
                 </button>
-                <button className="p-2 sm:p-3 rounded-full hover:bg-white/20 transition">
-                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
+                <button className="p-2 rounded-full hover:bg-white/20 transition">
+                  <MapPin className="w-4 h-4 md:w-6 md:h-6 text-white" />
                 </button>
-                <button className="p-2 sm:p-3 rounded-full hover:bg-white/20 transition">
-                  <Share2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
+                <button className="p-2 rounded-full hover:bg-white/20 transition">
+                  <Share2 className="w-4 h-4 md:w-6 md:h-6 text-white" />
                 </button>
               </div>
             </div>
 
-            {/* Description */}
-            <p className="text-xs sm:text-sm text-gray-300 mt-4 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              maximus euismod gravida. Morbi ultrices, quam ac scelerisque
-              cursus, quam risus imperdiet ipsum, ac suscipit urna justo at est.
-              Donec nisl purus, aliquet ut placerat non, tincidunt eu leo. Morbi
-              ultrices, quam ac scelerisque cursus, quam risus imperdiet ipsum,
-              ac suscipit urna justo at est. Donec nisl purus, aliquet ut
-              placerat non, tincidunt eu leo.
+            {/* Description (Hidden on small screens) */}
+            <p className="text-xl text-gray-300 mt-4 leading-relaxed font-light lg:block hidden text-justify">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus euismod gravida. Morbi ultrices, quam ac scelerisque cursus, quam risus imperdiet ipsum, ac suscipit urna justo at est. Donec nisl purus, aliquet ut placerat non, tincidunt eu leo. Donec velit est, tempor nec lectus sed, sagittis hendrerit orci. Phasellus sit amet tempus velit. Phasellus ac urna at augue vehicula posuere ac id ex. Pellentesque varius vulputate elit, et tempus ligula tincidunt id. Proin tempus congue imperdiet. Mauris ut euismod purus. Mauris egestas vulputate ante sed imperdiet. In placerat euismod justo.
             </p>
+
           </div>
+          {/* Description (Visible on smaller screens) */}
+          <p className="text-xl text-gray-300 leading-relaxed font-light lg:hidden text-justify flex-grow">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus euismod gravida. Morbi ultrices, quam ac scelerisque cursus, quam risus imperdiet ipsum, ac suscipit urna justo at est. Donec nisl purus, aliquet ut placerat non, tincidunt eu leo. Donec velit est, tempor nec lectus sed, sagittis hendrerit orci. Phasellus sit amet tempus velit. Phasellus ac urna at augue vehicula posuere ac id ex. Pellentesque varius vulputate elit, et tempus ligula tincidunt id. Proin tempus congue imperdiet. Mauris ut euismod purus. Mauris egestas vulputate ante sed imperdiet. In placerat euismod justo.
+          </p>
         </div>
 
         <div className="flex flex-col xl:flex-row mx-2 md:mx-4 space-x-8 ">
@@ -144,17 +143,16 @@ const Page3 = () => {
             <div className=" ">
               {/* Buttons with Active Gradient Border */}
               <div className=" flex justify-center my-6">
-                <div className="flex gradient-border items-center text-[8px] md:text-[12px] lg:text-[14px]  text-[10px] font-semibold  md:space-x-1 lg:space-x-5">
+                <div className="flex gradient-border rounded-full box-shadow items-center text-[8px] md:text-[12px] lg:text-[14px]  text-[10px] font-semibold  md:space-x-1 lg:space-x-5">
                   {["Featured Motor Listing", "Motor Listing", "Agents"].map(
                     (btn) => (
                       <button
                         key={btn}
                         onClick={() => setActiveButton(btn)}
-                        className={`px-2 lg:px-4 py-1 lg:py-2 rounded-full text-white transition-all duration-300 ${
-                          activeButton === btn
-                            ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white"
-                            : "hover:text-gray-200"
-                        }`}
+                        className={`px-2 lg:px-4 py-1 lg:py-2 rounded-full text-white transition-all duration-300 ${activeButton === btn
+                          ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white"
+                          : "hover:text-gray-200"
+                          }`}
                       >
                         {btn}
                       </button>

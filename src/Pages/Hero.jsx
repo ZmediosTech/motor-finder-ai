@@ -1,85 +1,97 @@
 import React, { useEffect, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 
 // Components
 import ChatInput from "../components/ChatInput";
 
 // Assets Images
-import popularBrands from "../assets/popularBrands.png";
+
+import robot from "../assets/robot-2.png";
 import suv from "../assets/suv.png";
-import robot from "../assets/robot.png";
-import rentalCars from "../assets/RentalCars.png";
-import luxuryCars from "../assets/luxuryCars.png";
 import topBrands from "../assets/topBrans.png";
-import Register from "../assets/register.png";
+import rentalCars from "../assets/RentalCars.png";
+import popularBrands from "../assets/popularBrands.png";
+import luxuryCars from "../assets/luxuryCars.png";
 import carsForSell from "../assets/carsForSell.png";
+import RegisterMotor from "../components/RegisterMotor";
+
+
 
 const Hero = () => {
   const navigate = useNavigate();
   const [animate, setAnimate] = useState(true);
   const [positions, setPositions] = useState([]);
+  const [isMobile, setIsMobile] = useState(false); // Track if it's a mobile device
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimate(false);
-      setTimeout(() => setAnimate(true), 1000); // Reset animation after 1s
-    }, 5000); // Run every 5 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
-
-  useEffect(() => {
-    const updatePositions = () => {
+    const updateScreenSize = () => {
       const width = window.innerWidth;
 
+      // Check if the screen is mobile size (e.g., smaller than 576px)
+      setIsMobile(width < 576);
+
+      // Set positions for different screen sizes
       if (width >= 1920) {
         setPositions([
-          { x: "-8%", y: "-35%" },
-          { x: "-20%", y: "-15%" },
-          { x: "10%", y: "-30%" },
-          { x: "-40%", y: "10%" },
-          { x: "35%", y: "12%" },
-          { x: "-20%", y: "35%" },
-          { x: "20%", y: "30%" },
+          { x: "35%", y: "10%" }, //last suv
+          { x: "-20%", y: "-22%" }, //Top
+          { x: "3.5%", y: "-34%" }, //popular
+          { x: "-35%", y: "10%" }, //first suv
+          { x: "15%", y: "-5%" }, //luxury
+          { x: "-17%", y: "23%" }, //rental
+          { x: "17%", y: "32%" }, //for sell
         ]);
       } else if (width >= 1440) {
         setPositions([
-          { x: "-5%", y: "-30%" },
-          { x: "-20%", y: "-12%" },
-          { x: "20%", y: "-10%" },
-          { x: "-35%", y: "8%" },
-          { x: "35%", y: "10%" },
-          { x: "-18%", y: "28%" },
-          { x: "16%", y: "28%" },
+          { x: "35%", y: "10%" }, //last suv
+          { x: "-20%", y: "-20%" }, //Top
+          { x: "3.5%", y: "-28%" }, //popular
+          { x: "-35%", y: "10%" }, //first suv
+          { x: "15%", y: "-5%" }, //luxury
+          { x: "-17%", y: "30%" }, //rental
+          { x: "17%", y: "32%" }, //for sell
         ]);
       } else if (width >= 1024) {
         setPositions([
-          { x: "-4%", y: "-25%" },
-          { x: "-25%", y: "-10%" },
-          { x: "20%", y: "-16%" },
-          { x: "-40%", y: "5%" },
-          { x: "30%", y: "15%" },
-          { x: "-15%", y: "25%" },
-          { x: "15%", y: "42%" },
+          { x: "35%", y: "10%" }, //last suv
+          { x: "-20%", y: "-15%" }, //Top
+          { x: "3.5%", y: "-22%" }, //popular
+          { x: "-35%", y: "10%" }, //first suv
+          { x: "15%", y: "-5%" }, //luxury
+          { x: "-17%", y: "20%" }, //rental
+          { x: "17%", y: "32%" }, //for sell
         ]);
       } else {
         setPositions([
-          { x: "-5%", y: "-25%" },
-          { x: "-24%", y: "-8%" },
-          { x: "22%", y: "-10%" },
-          { x: "-30%", y: "20%" },
-          { x: "16%", y: "38%" },
-          { x: "-12%", y: "40%" },
-          { x: "25%", y: "15%" },
+          { x: "35%", y: "10%" }, //last suv
+          { x: "-20%", y: "-15%" }, //Top
+          { x: "3.5%", y: "-22%" }, //popular
+          { x: "-35%", y: "10%" }, //first suv
+          { x: "17%", y: "-5%" }, //luxury
+          { x: "-18%", y: "20%" }, //rental
+          { x: "19%", y: "26%" }, //for sell
         ]);
       }
     };
 
-    updatePositions();
-    window.addEventListener("resize", updatePositions);
-    return () => window.removeEventListener("resize", updatePositions);
+    updateScreenSize();
+    window.addEventListener("resize", updateScreenSize);
+    return () => window.removeEventListener("resize", updateScreenSize);
   }, []);
+
+  useEffect(() => {
+    // If it's a mobile device, stop the animation
+    if (isMobile) {
+      setAnimate(false);
+    } else {
+      const interval = setInterval(() => {
+        setAnimate(false);
+        setTimeout(() => setAnimate(true), 1000); // Reset animation after 1s
+      }, 5000); // Run every 5 seconds
+
+      return () => clearInterval(interval); // Cleanup on unmount
+    }
+  }, [isMobile]); // Re-run the effect when isMobile changes
 
   const images = [
     { src: suv, alt: "SUV" },
@@ -92,19 +104,22 @@ const Hero = () => {
   ];
 
   return (
-    <div className="h-[calc(100vh-7rem)] relative overflow-hidden">
+    <div className="relative overflow-auto h-[calc(100vh-112px)]">
       {/* Main Container */}
-      <div className="relative h-[50%] md:h-[50%] flex items-center justify-center">
-        <img
-          src={robot}
-          className="w-[250px] md:w-[400px] lg:w-[500px] h-auto mt-20 relative"
-          alt="AI-Powered Robot"
-        />
+      <div className="relative h-[50vh] flex items-center justify-center">
+        <div className="relative">
+          <img
+            src={robot}
+            className="h-auto sm:h-[18vw] md:h-[16vw] lg:h-[14vw] xl:h-[13.5vw] transform transition-transform duration-500 hover:scale-105 active:scale-95 xl:mt-35 lg:mt-30 md:mt-25 md:p-0 p-5"
+            alt="AI-Powered Robot"
+          />
+        </div>
+
         {/* Animated Images */}
         {images?.map((img, index) => (
           <div
             key={index}
-            className="absolute"
+            className={isMobile ? "hidden" : "absolute"}
             style={{
               top: animate
                 ? `calc(50% + ${positions[index]?.y || "0%"})`
@@ -116,9 +131,8 @@ const Hero = () => {
                 ? "translate(-50%, -50%) scale(1)"
                 : "translate(-50%, -50%) scale(0.1)",
               opacity: animate ? 1 : 0,
-              transition: `all 0.8s cubic-bezier(0.25, 1, 0.5, 1) ${
-                index * 0.1
-              }s`,
+              transition: `all 0.8s cubic-bezier(0.25, 1, 0.5, 1) ${index * 0.1
+                }s`,
               cursor: "pointer",
             }}
             onClick={() => navigate("/sell")}
@@ -126,36 +140,21 @@ const Hero = () => {
             <img
               src={img.src}
               alt={img.alt}
-              className="h-14 md:h-20 lg:h-24 xl:h-28"
+              className="h-[10vw] sm:h-[10vw] md:h-[8vw] lg:h-[8vw] xl:h-[7.5vw]"
             />
           </div>
         ))}
       </div>
 
       {/* Title */}
-      <div className="flex justify-center md:mt-0 lg:mt-0 items-center">
-        <h1 className="font-[Gotham Rounded] text-[#7670FF] text-sm md:text-3xl lg:text-5xl mt-10 text-center">
+      <div className="flex justify-center items-center max-w-full px-4">
+        <h1 className="font-[Gotham Rounded] text-[#7670FF] text-lg md:text-[4vw] lg:text-[4vw] xl:text-[3.7vw] mt-2 md:mt-2 lg:mt-4 xl:mt-0 text-center">
           Find Your Motor with AI-Powered Agent
         </h1>
       </div>
 
       <ChatInput />
-
-      <div className="flex justify-center mt-8 items-center">
-        <div className="flex justify-center space-x-2 items-center">
-          <img
-            src={Register}
-            alt="Register"
-            className="size-8 md:size-10 animate-rotate"
-          />
-          <a
-            href="#"
-            className="text-[#F800C0] font-semibold text-sm md:text-base"
-          >
-            Register with Motors
-          </a>
-        </div>
-      </div>
+      <RegisterMotor />
     </div>
   );
 };
