@@ -65,7 +65,7 @@ const Help = () => {
                 className="text-white 2xl:text-3xl lg:text-2xl text-lg break-words font-[350] leading-[125%]"
                 to="mailto:arihant@zmediostech.com"
               >
-                arihant@zmediostech.com
+                info@motorfinder.ai
               </Link>
             </div>
           </div>
@@ -85,9 +85,9 @@ const Help = () => {
               </p>
               <Link
                 className="text-white 2xl:text-3xl lg:text-2xl text-lg font-[350] leading-[125%]"
-                to="tel:+918561073404"
+                to="tel:+971555955102"
               >
-                +91 8561073404
+                +971 55 5955102
               </Link>
             </div>
           </div>
