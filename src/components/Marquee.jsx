@@ -26,35 +26,42 @@ const carBrands = [
 
 const Marquee = () => {
   const navigate = useNavigate();
-  const [isPaused, setIsPaused] = useState(false);
+  const [hoveredBrand, setHoveredBrand] = useState(null);
 
   return (
-    <div
-      className="overflow-hidden bg-white py-2 shadow-lg mt-6"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <div className="overflow-hidden bg-white py-2 shadow-lg mt-6">
       <div className="marquee-container flex space-x-6">
         <div
-          className={`marquee flex space-x-6 ${isPaused ? "paused" : ""}`}
+          className="marquee flex space-x-6"
           style={{
-            animation: isPaused ? "none" : "scroll 30s linear infinite",
+            animation: hoveredBrand ? "none" : "scroll 30s linear infinite",
           }}
         >
           {carBrands.concat(carBrands).map((brand, index) => (
             <div
-              key={index}
-              className="flex items-center space-x-2 bg-white px-4 py-0.5 rounded-lg shadow-lg w-auto cursor-pointer"
+              className={`flex items-center gap-4 px-6 py-2 rounded-lg shadow-lg w-auto cursor-pointer transition-all duration-300 ${
+                hoveredBrand === brand.name
+                  ? "bg-[#7670FF] text-white scale-105 shadow-2xl"
+                  : "bg-white"
+              }`}
+              onMouseEnter={() => setHoveredBrand(brand.name)}
+              onMouseLeave={() => setHoveredBrand(null)}
               onClick={() => navigate("/detail1")}
             >
               <img
                 src={brand.logo}
                 alt={brand.name}
-                className="size-6 object-contain"
+                className="size-8 object-contain"
               />
-              <div className="text-gray-700 font-semibold">
-                <p className="text-xs">{brand.name}</p>
-                <p className="text-[8px] md:text-xs text-gray-500">
+              <div className="font-semibold">
+                <p className="text-xs md:text-sm">{brand.name}</p>
+                <p
+                  className={`text-[10px] md:text-xs ${
+                    hoveredBrand === brand.name
+                      ? "text-gray-200"
+                      : "text-gray-500"
+                  }`}
+                >
                   {brand.cars} Cars
                 </p>
               </div>
