@@ -45,3 +45,15 @@ button:hover {
   box-shadow: 0px 0px 8px 0px #4b4cff;
 }
 
+
+.box-shadow {
+  -webkit-box-shadow: 0px 0px 8px 0px #4b4cff;
+  -moz-box-shadow: 0px 0px 8px 0px #4b4cff;
+  box-shadow: 0px 0px 8px 0px #4b4cff;
+}
+
+
+.chatbox_input{
+  padding: 20px;
+  border-radius: 20px;
+}

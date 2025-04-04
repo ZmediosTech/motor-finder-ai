@@ -3,7 +3,7 @@ import { Facebook, Instagram, Linkedin, Youtube, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
-    <div className="flex lg:flex-row md:flex-col flex-col space-y-2 items-center justify-between px-2 md:px-4 lg:px-8 mb-2 mt-10">
+    <div className="flex lg:flex-row md:flex-col flex-col space-y-2 items-center justify-between px-2 md:px-4 lg:px-8 pb-2 mt-5">
 
       <h6 className="text-[#4B4CFF] text-[2.5vw] md:text-[1.5vw] lg:text-[1vw] xl:text-[.7vw]">
         © 2025 Copyright motorsfinder.ai / All Rights Reserved.

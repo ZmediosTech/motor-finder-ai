@@ -33,43 +33,43 @@ const Hero = () => {
       // Set positions for different screen sizes
       if (width >= 1920) {
         setPositions([
-          { x: "35%", y: "10%" },//last suv
+          { x: "35%", y: "10%" }, //last suv
           { x: "-20%", y: "-22%" }, //Top
-          { x: "3.5%", y: "-34%" },//popular
-          { x: "-35%", y: "10%" },//first suv
-          { x: "15%", y: "-5%" },//luxury
-          { x: "-17%", y: "23%" },//rental
-          { x: "17%", y: "32%" },//for sell
+          { x: "3.5%", y: "-34%" }, //popular
+          { x: "-35%", y: "10%" }, //first suv
+          { x: "15%", y: "-5%" }, //luxury
+          { x: "-17%", y: "23%" }, //rental
+          { x: "17%", y: "32%" }, //for sell
         ]);
       } else if (width >= 1440) {
         setPositions([
-          { x: "35%", y: "10%" },//last suv
+          { x: "35%", y: "10%" }, //last suv
           { x: "-20%", y: "-20%" }, //Top
-          { x: "3.5%", y: "-36%" },//popular
-          { x: "-35%", y: "10%" },//first suv
-          { x: "15%", y: "-5%" },//luxury
-          { x: "-17%", y: "24%" },//rental
-          { x: "17%", y: "32%" },//for sell
+          { x: "3.5%", y: "-28%" }, //popular
+          { x: "-35%", y: "10%" }, //first suv
+          { x: "15%", y: "-5%" }, //luxury
+          { x: "-17%", y: "30%" }, //rental
+          { x: "17%", y: "32%" }, //for sell
         ]);
       } else if (width >= 1024) {
         setPositions([
-          { x: "35%", y: "10%" },//last suv
+          { x: "35%", y: "10%" }, //last suv
           { x: "-20%", y: "-15%" }, //Top
-          { x: "3.5%", y: "-22%" },//popular
-          { x: "-35%", y: "10%" },//first suv
-          { x: "15%", y: "-5%" },//luxury
-          { x: "-17%", y: "20%" },//rental
-          { x: "17%", y: "32%" },//for sell
+          { x: "3.5%", y: "-22%" }, //popular
+          { x: "-35%", y: "10%" }, //first suv
+          { x: "15%", y: "-5%" }, //luxury
+          { x: "-17%", y: "20%" }, //rental
+          { x: "17%", y: "32%" }, //for sell
         ]);
       } else {
         setPositions([
-          { x: "35%", y: "10%" },//last suv
+          { x: "35%", y: "10%" }, //last suv
           { x: "-20%", y: "-15%" }, //Top
-          { x: "3.5%", y: "-22%" },//popular
-          { x: "-35%", y: "10%" },//first suv
-          { x: "17%", y: "-5%" },//luxury
-          { x: "-18%", y: "20%" },//rental
-          { x: "19%", y: "26%" },//for sell
+          { x: "3.5%", y: "-22%" }, //popular
+          { x: "-35%", y: "10%" }, //first suv
+          { x: "17%", y: "-5%" }, //luxury
+          { x: "-18%", y: "20%" }, //rental
+          { x: "19%", y: "26%" }, //for sell
         ]);
       }
     };
@@ -104,7 +104,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="relative overflow-hidden h-[calc(100vh-177px)]">
+    <div className="relative overflow-auto h-[calc(100vh-112px)]">
       {/* Main Container */}
       <div className="relative h-[50vh] flex items-center justify-center">
         <div className="relative">
@@ -113,12 +113,10 @@ const Hero = () => {
             className="h-auto sm:h-[18vw] md:h-[16vw] lg:h-[14vw] xl:h-[13.5vw] transform transition-transform duration-500 hover:scale-105 active:scale-95 xl:mt-35 lg:mt-30 md:mt-25 md:p-0 p-5"
             alt="AI-Powered Robot"
           />
-
         </div>
 
         {/* Animated Images */}
         {images?.map((img, index) => (
-
           <div
             key={index}
             className={isMobile ? "hidden" : "absolute"}
@@ -155,9 +153,7 @@ const Hero = () => {
         </h1>
       </div>
 
-
       <ChatInput />
-
       <RegisterMotor />
     </div>
   );

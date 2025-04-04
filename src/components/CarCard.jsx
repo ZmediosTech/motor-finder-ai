@@ -15,7 +15,7 @@ const CarCard = ({ car }) => {
           className="w-full h-50 object-cover"
         />
         <button className="absolute top-4 right-4 p-1.5">
-          <Heart className="w-5 h-5" fill="#fff"/>
+          <Heart className="w-5 h-5" fill="#fff" />
         </button>
 
         {/* Bottom Right Circle (End of Image) */}

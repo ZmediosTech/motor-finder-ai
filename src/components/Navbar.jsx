@@ -5,10 +5,14 @@ import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex justify-between items-end mx-4 md:mx-8 mt-6">
+    <div className="flex justify-between items-end mx-4 md:mx-8 pt-4">
       {/* Logo */}
       <Link to="/">
-        <img src={logo} alt="Logo" className="logo h-[10vw] sm:h-[8vw] md:h-[6vw] lg:h-[5vw] xl:h-[4vw]" />
+        <img
+          src={logo}
+          alt="Logo"
+          className="logo h-[10vw] sm:h-[8vw] md:h-[6vw] lg:h-[5vw] xl:h-[4vw]"
+        />
       </Link>
 
       {/* Navigation Buttons */}
@@ -30,7 +34,6 @@ const Navbar = () => {
           style={{
             background: "linear-gradient(90deg, #7670FF 0%, #5B42FF 100%)",
             boxShadow: "0px 0px 8px 0px #4B4CFF",
-            // border: "none",
             outline: "none",
             cursor: "pointer",
           }}
