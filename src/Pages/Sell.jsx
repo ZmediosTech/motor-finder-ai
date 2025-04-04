@@ -47,12 +47,10 @@ const carList = [
 const Sell = () => {
   const [activeButton, setActiveButton] = useState("Featured");
 
-
   return (
     <>
       <Marquee />
       <div className="flex flex-col xl:flex-row mx-2 md:mx-4 lg:mx-8">
-        {/* Left Section */}
         <div className="w-full xl:w-[45%] flex flex-col space-y-8 lg:space-y-12 items-center py-8 md:py-16 justify-around lg:h-[calc(100vh-7rem)]">
           <img
             src={latina}
@@ -68,7 +66,6 @@ const Sell = () => {
           <ChatInput2 />
         </div>
 
-        {/* Right Section */}
         <div className=" w-full xl:w-[55%] my-4 rounded-t-3xl relative">
           <div className="absolute inset-0 bg-gradient-to-r from-[#7670FF] to-[#5B42FF] opacity-10 rounded-3xl"></div>
 
@@ -83,10 +80,11 @@ const Sell = () => {
                     <button
                       key={btn}
                       onClick={() => setActiveButton(btn)}
-                      className={`px-2 lg:px-4 py-2 rounded-full text-white transition-all duration-300 ${activeButton === btn
-                        ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white box-shadow border-0 border-[#5B42FF]"
-                        : "hover:text-gray-200"
-                        }`}
+                      className={`px-2 lg:px-4 py-2 rounded-full text-white transition-all duration-300 ${
+                        activeButton === btn
+                          ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white box-shadow border-0 border-[#5B42FF]"
+                          : "hover:text-gray-200"
+                      }`}
                     >
                       {btn}
                     </button>
@@ -94,14 +92,10 @@ const Sell = () => {
                 </div>
 
                 <SortFilter />
-
               </div>
             </div>
           </div>
 
-
-
-          {/* Car Listings - 4 cards per row on large screens, 2 per row on medium */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 px-4">
             {carList.map((car, index) => (
               <CarCard key={index} car={car} />
