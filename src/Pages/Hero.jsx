@@ -13,7 +13,8 @@ import rentalCars from "../assets/RentalCars.png";
 import popularBrands from "../assets/popularBrands.png";
 import luxuryCars from "../assets/luxuryCars.png";
 import carsForSell from "../assets/carsForSell.png";
-import Register from "../assets/register.png";
+import RegisterMotor from "../components/RegisterMotor";
+
 
 
 const Hero = () => {
@@ -157,21 +158,7 @@ const Hero = () => {
 
       <ChatInput />
 
-      <div className="flex justify-center mt-8 items-center">
-        <div className="flex justify-center space-x-2 items-center">
-          <img
-            src={Register}
-            alt="Register"
-            className="size-[4vw] md:size-[3vw] lg:size-[3vw] xl:size-[2vw] animate-rotate"
-          />
-          <a
-            href="#"
-            className="text-[#F800C0] font-semibold text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] xl:text-[1vw]"
-          >
-            Register with Motors
-          </a>
-        </div>
-      </div>
+      <RegisterMotor />
     </div>
   );
 };

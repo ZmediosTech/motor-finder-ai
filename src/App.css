@@ -16,11 +16,13 @@ body {
     linear-gradient(90deg, #7670ff 0%, #5b42ff 100%) border-box;
   border: 2px solid transparent;
   background-clip: padding-box, border-box;
+  box-shadow: 0px 0px 8px 0px #4b4cff;
 }
 
 button {
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  transform: scale(1.01);
 }
 
 button:hover {
@@ -31,7 +33,15 @@ button:hover {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
+
+.box-shadow {
+  -webkit-box-shadow: 0px 0px 8px 0px #4b4cff;
+  -moz-box-shadow: 0px 0px 8px 0px #4b4cff;
+  box-shadow: 0px 0px 8px 0px #4b4cff;
+}
+

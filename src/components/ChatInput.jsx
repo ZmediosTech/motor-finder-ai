@@ -6,7 +6,7 @@ import mike from "../assets/mike.png"
 
 const ChatInput = () => {
   return (
-    <div className="flex items-center gradient-border bg-black rounded-full border-2 md:mt-6 mt-3 md:mx-8 xl:mx-auto mx-4 xl:px-3 md:px-3 xl:py-2 md:py-2 p-2 xl:w-[calc(100vw-400px)] h-[11vw] md:h-[8.5vw] lg:h-[6vw] xl:h-[4.5vw]">
+    <div className="flex items-center gradient-border bg-black rounded-full border-2 md:mt-6 mb-10 mt-3 md:mx-8 xl:mx-auto mx-4 xl:px-3 md:px-3 xl:py-2 md:py-2 p-2 xl:w-[calc(100vw-400px)] h-[11vw] md:h-[8.5vw] lg:h-[6vw] xl:h-[4.5vw]">
 
       {/* Input Field */}
       <input

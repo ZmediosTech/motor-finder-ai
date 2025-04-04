@@ -111,13 +111,7 @@ const Page3 = () => {
 
             {/* Description */}
             <p className="text-xs sm:text-sm text-gray-300 mt-4 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              maximus euismod gravida. Morbi ultrices, quam ac scelerisque
-              cursus, quam risus imperdiet ipsum, ac suscipit urna justo at est.
-              Donec nisl purus, aliquet ut placerat non, tincidunt eu leo. Morbi
-              ultrices, quam ac scelerisque cursus, quam risus imperdiet ipsum,
-              ac suscipit urna justo at est. Donec nisl purus, aliquet ut
-              placerat non, tincidunt eu leo.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus euismod gravida. Morbi ultrices, quam ac scelerisque cursus, quam risus imperdiet ipsum, ac suscipit urna justo at est. Donec nisl purus, aliquet ut placerat non, tincidunt eu leo. Donec velit est, tempor nec lectus sed, sagittis hendrerit orci. Phasellus sit amet tempus velit. Phasellus ac urna at augue vehicula posuere ac id ex. Pellentesque varius vulputate elit, et tempus ligula tincidunt id. Proin tempus congue imperdiet. Mauris ut euismod purus. Mauris egestas vulputate ante sed imperdiet. In placerat euismod justo.
             </p>
           </div>
         </div>
@@ -150,11 +144,10 @@ const Page3 = () => {
                       <button
                         key={btn}
                         onClick={() => setActiveButton(btn)}
-                        className={`px-2 lg:px-4 py-1 lg:py-2 rounded-full text-white transition-all duration-300 ${
-                          activeButton === btn
-                            ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white"
-                            : "hover:text-gray-200"
-                        }`}
+                        className={`px-2 lg:px-4 py-1 lg:py-2 rounded-full text-white transition-all duration-300 ${activeButton === btn
+                          ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white"
+                          : "hover:text-gray-200"
+                          }`}
                       >
                         {btn}
                       </button>

@@ -8,15 +8,17 @@ import car11 from "../assets/car11.png";
 import car2 from "../assets/car2.png";
 import car3 from "../assets/car3.png";
 import car4 from "../assets/car4.png";
-import { Star, Upload } from "lucide-react";
+import Upload from "../assets/upload.png";
+import { Star } from "lucide-react";
 import { useState } from "react";
-import { Pagination, Autoplay  } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import CarCard from "../components/CarCard";
+import SortFilter from "../components/SortFilter";
 
 const carList = [
   {
-    name: "sell-AED 345,000",
+    name: "sell - AED 345,000",
     edition: "cadliac Escalade premium luxury",
     image: car11,
     year: 2021,
@@ -24,7 +26,7 @@ const carList = [
     drive: "Left Hand",
   },
   {
-    name: "sell-AED 345,000",
+    name: "sell - AED 345,000",
     edition: "cadliac Escalade premium luxury",
     image: car2,
     year: 2022,
@@ -32,7 +34,7 @@ const carList = [
     drive: "Left Hand",
   },
   {
-    name: "sell-AED 345,000",
+    name: "sell - AED 345,000",
     edition: "cadliac Escalade premium luxury",
     image: car3,
     year: 2023,
@@ -40,13 +42,29 @@ const carList = [
     drive: "Left Hand",
   },
   {
-    name: "sell-AED 345,000",
+    name: "sell - AED 345,000",
     edition: "cadliac Escalade premium luxury",
     image: car4,
     year: 2021,
     mileage: "15,000 km",
     drive: "Left Hand",
   },
+  {
+    name: "sell - AED 345,000",
+    edition: "cadliac Escalade premium luxury",
+    image: car4,
+    year: 2021,
+    mileage: "15,000 km",
+    drive: "Left Hand",
+  },
+  {
+    name: "sell - AED 345,000",
+    edition: "cadliac Escalade premium luxury",
+    image: car4,
+    year: 2021,
+    mileage: "15,000 km",
+    drive: "Left Hand",
+  }
 ];
 
 const Page2 = () => {
@@ -55,9 +73,9 @@ const Page2 = () => {
 
   return (
     <>
-      <div className="my-6 mx-2 md:mx-4 lg:mx-8 flex flex-col space-y-4 lg:flex-row space-x-4">
+      <div className="my-6 mx-2 md:mx-4 lg:mx-8 flex flex-col lg:flex-row gap-4 xl:gap-8 lg:gap-4 md:gap-6">
         {/* Left Section */}
-        <div className="lg:w-[50%] relative rounded-lg p-4 text-white">
+        <div className="lg:w-[50%] relative rounded-lg p-5 text-white">
           {" "}
           <div className="absolute inset-0 bg-gradient-to-r from-[#7670FF] to-[#5B42FF] opacity-10 rounded-lg"></div>
           {/* Car Image & Icons */}
@@ -68,14 +86,14 @@ const Page2 = () => {
               className="w-full  object-cover h-[450px] rounded-lg"
             />
             <div className="absolute flex flex-col top-4 left-4 space-y-2">
-              <button className="p-2 bg-white/30 rounded-full">
-                <Heart className="text-white size-6" />
+              <button className="p-1">
+                <Heart className="text-white size-6" fill="#fff" />
               </button>
-              <button className="p-2 bg-white/30 rounded-full">
+              <button className="p-1">
                 <MapPin className="text-white size-6" />
               </button>
-              <button className="p-2 bg-white/30 rounded-full">
-                <Share2 className="text-white size-6" />
+              <button className="p-1">
+                <Share2 className="text-white size-6" fill="#fff" />
               </button>
             </div>
             <div className="absolute top-4 right-4 bg-white p-2 h-12 w-12 flex items-center justify-center rounded-full">
@@ -83,15 +101,15 @@ const Page2 = () => {
             </div>
           </div>
           {/* Pricing Section */}
-          <div className="flex justify-between text-pink-500 mt-4">
-            <span>Daily / AED 2500</span>
-            <span>Weekly / AED 2500</span>
-            <span>Monthly / AED 2500</span>
+          <div className="flex justify-between text-pink-500 mt-4 font-semibold">
+            <p className="text-pink-500">Daily <span className="opacity-80 text-white"> / AED 2500</span></p>
+            <p className="text-pink-500">Weekly <span className="opacity-80 text-white"> / AED 2500</span></p>
+            <p className="text-pink-500">Monthly <span className="opacity-80 text-white"> / AED 2500</span></p>
           </div>
           {/* Description */}
           <div className="mt-4 border-t border-pink-500 pt-4">
-            <h2 className="text-xl text-pink-500">Description</h2>
-            <p className="text-sm opacity-80">
+            <h2 className="text-xl text-pink-500 mb-3 font-semibold">Description</h2>
+            <p className="text-xl opacity-80 leading-relaxed font-light">
               Rent and Drive this Cadillac Escalade Platinum Sport 2023-model in
               Dubai, UAE for AED 950/day & AED 22000/month. Rental cost includes
               basic comprehensive insurance and standard mileage limit of 250
@@ -102,13 +120,13 @@ const Page2 = () => {
           </div>
           {/* Overview */}
           <div className="mt-4 border-t border-pink-500 pt-4">
-            <h2 className="text-xl text-pink-500 mb-2">Overview</h2>
-            <div className="text-sm flex flex-col space-y-2">
+            <h2 className="text-xl text-pink-500 mb-3 font-semibold">Overview</h2>
+            <div className="text-xl flex flex-col space-y-2 font-light">
               <p className="text-pink-500">
                 Body Type / <span className="opacity-80 text-white">SUV</span>
               </p>
               <p className="text-pink-500">
-                Salik / Toll Charges /{" "}
+                Salik / Toll Charges / {" "}
                 <span className="opacity-80 text-white">AED 5</span>
               </p>
               <p className="text-pink-500">
@@ -133,54 +151,58 @@ const Page2 = () => {
           </div>
           {/* Buttons */}
           <div className="mt-6 flex space-x-4 relative z-10">
-            <button className="bg-gradient-to-r from-[#7670FF] to-[#5B42FF] px-4 py-2 rounded-full text-sm">
+            <button className="bg-gradient-to-r from-[#7670FF] to-[#5B42FF] px-5 py-3 rounded-full text-sm box-shadow font-semibold">
               Enquiry Now
             </button>
-            <button className="bg-gradient-to-r from-[#7670FF] to-[#5B42FF] px-4 py-2 rounded-full text-sm">
+            <button className="bg-gradient-to-r from-[#7670FF] to-[#5B42FF] px-5 py-3 rounded-full text-sm box-shadow font-semibold">
               Talk to Agent
             </button>
           </div>
           {/* Review Section */}
           <div className="mt-6 border-t border-pink-500 pt-4 relative z-10">
             <div className="flex justify-between items-center">
-              <h2 className="text-xl text-pink-500">Write a Review</h2>
-              <button className="text-sm hover:text-pink-400">
+              <h2 className="text-xl text-pink-500 font-semibold">Write a Review</h2>
+              <button className="text-md hover:text-pink-400 font-semibold">
                 Read Reviews
               </button>
             </div>
-            <div className="mt-4 flex items-center gap-4">
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150"
-                className="w-12 h-12 rounded-full object-cover"
-                alt="User Profile"
-              />
+            <div className="mt-4 flex items-center gap-4 flex-wrap justify-between">
+              <div className="flex items-center gap-4">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150"
+                  className="w-12 h-12 rounded-full object-cover"
+                  alt="User Profile"
+                />
+                <p className="">Simon Quitzon</p>
+              </div>
               <div className="flex space-x-1">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <Star
                     key={star}
-                    className={`size-6 cursor-pointer ${
-                      star <= rating
-                        ? "fill-pink-500 text-pink-500"
-                        : "text-gray-500"
-                    }`}
+                    className={`size-6 cursor-pointer ${star <= rating
+                      ? "fill-pink-500 text-pink-500"
+                      : "text-gray-500"
+                      }`}
                     onClick={() => setRating(star)}
                   />
                 ))}
               </div>
-              <button className="ml-auto flex items-center gap-2 border border-pink-500 px-3 py-1 rounded-full">
-                <Upload className="size-5" /> Add photos
+              <button className="box-shadow flex items-center gap-5 border border-[#4b4cff] px-5 py-3 rounded-full bg-transparent">
+                Add some photos <img src={Upload} alt="Upload" />
               </button>
             </div>
-            <div className="mt-4 flex items-center">
-              <input
-                type="text"
-                className="w-full bg-transparent border border-pink-500 px-4 py-2 rounded-full placeholder-gray-400 focus:outline-none"
-                placeholder="Type your review here..."
-                value={review} // Bind value to state
-                onChange={(e) => setReview(e.target.value)}
-              />
-              <button className="ml-2 bg-pink-500 hover:bg-pink-400 px-6 py-2 rounded-full">
-                Submit
+            <div className="mt-4 flex items-center gap-5 mt-10 flex-wrap justify-between">
+              <div className="border border-[#4b4cff] box-shadow rounded-full md:p-6 p-3 xl:w-3/5 lg:w-full md:w-3/5 w-full">
+                <input
+                  type="text"
+                  className="w-full bg-transparent placeholder-white focus:outline-none font-semibold"
+                  placeholder="Type your review here..."
+                  value={review} // Bind value to state
+                  onChange={(e) => setReview(e.target.value)}
+                />
+              </div>
+              <button className="bg-gradient-to-b from-[#FE8A70] to-[#F800C0] border md:px-10 md:py-6 px-6 py-3 rounded-full border-transparent">
+                Submit Review
               </button>
             </div>
           </div>
@@ -189,28 +211,14 @@ const Page2 = () => {
         <div className=" w-[100%] lg:w-[50%] relative rounded-lg">
           <div className="absolute inset-0 bg-gradient-to-r from-[#7670FF] to-[#5B42FF] opacity-10 rounded-lg"></div>
 
-          <div className="relative p-2">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-white text-xs md:text-2xl font-semibold">
+          <div className="relative py-3 px-5">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-white xl:text-[1.2vw] lg:text-lg text-lg font-medium">
                 Similar Motors 3843
               </h2>
 
               <div className="ml-auto">
-                <select
-                  className=" px-2 md:px-4 py-2 text-xs md:text-base text-white rounded-full border border-[#5B42FF] bg-gradient-to-r from-[#7670FF] to-[#5B42FF] focus:outline-none focus:ring-2 focus:ring-[#7670FF]"
-                  style={{ boxShadow: "0px 0px 8px 0px #4B4CFF" }}
-                >
-                  <option value="latest">Sort and Filter</option>
-                  <option value="price-low-high" className=" text-black">
-                    Price: Low to High
-                  </option>
-                  <option value="price-high-low" className=" text-black">
-                    Price: High to Low
-                  </option>
-                  <option value="popular " className=" text-black">
-                    Most Popular
-                  </option>
-                </select>
+                <SortFilter />
               </div>
             </div>
 
