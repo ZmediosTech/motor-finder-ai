@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className="flex lg:flex-row md:flex-col flex-col space-y-2 items-center justify-between px-2 md:px-4 lg:px-8 pb-2 mt-5">
 
-      <h6 className="text-[#4B4CFF] text-[2.5vw] md:text-[1.5vw] lg:text-[1vw] xl:text-[.7vw]">
+      <h6 className="text-[#4B4CFF] text-[2.5vw] md:text-[1.5vw] lg:text-[1vw] xl:text-[1vw]">
         © 2025 Copyright motorsfinder.ai / All Rights Reserved.
       </h6>
 
@@ -46,7 +46,7 @@ const Footer = () => {
           <Instagram className="xl:size-[1vw] lg:size-[1.5vw] md:size-[2vw] size-[3vw] text-[#4B4CFF]" />
         </a>
       </div>
-      <div className="text-[#4B4CFF] font-semibold space-x-4 md:space-x-2 lg:space-x-4 text-[2.5vw] md:text-[1.5vw] lg:text-[1vw] xl:text-[.7vw]">
+      <div className="text-[#4B4CFF] font-semibold space-x-4 md:space-x-2 lg:space-x-4 text-[2.5vw] md:text-[1.5vw] lg:text-[1vw] xl:text-[1vw]">
         <a href="">
           Language:{" "} &nbsp;
           <span className="text-white font-thin lg:font-normal">

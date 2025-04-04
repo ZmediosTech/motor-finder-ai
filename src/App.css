@@ -57,3 +57,24 @@ button:hover {
   padding: 20px;
   border-radius: 20px;
 }
+
+
+/* width */
+.custom_scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.custom_scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+.custom_scrollbar::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+.custom_scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
