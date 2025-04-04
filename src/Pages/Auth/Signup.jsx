@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import logo from "../../assets/latina.png";
 import LeftImg from "../../assets/chatbotinp.png";
 import RightImg from "../../assets/userBotImg.png";
+import send from "../../assets/send.png";
+import lens from "../../assets/lens.png";
+import mike from "../../assets/mike.png";
+
+import WelcomeVideo from "../../assets/AudioFile/motor.mp4";
 
 import WelcomeAudio from "../../assets/AudioFile/welcome.mp3";
 import whatName from "../../assets/AudioFile/whatName.mp3";
@@ -36,6 +41,7 @@ export default function AuthPage() {
     },
   ];
 
+  const [IsVideoPlaying, setIsVideoPlaying] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [responses, setResponses] = useState([]);
@@ -153,95 +159,200 @@ export default function AuthPage() {
 
   return (
     <React.Fragment>
-      {currentStep !== 4 ? (
-        <div className="pl-[150px] pr-[150px] w-[80%] m-auto mt-[30px] h-[calc(90vh-86px)]">
-          <div className="flex justify-center">
-            <img src={logo} alt="Logo" className="h-[150px]" />
+      {IsVideoPlaying && (
+        <div className="top-0 left-0 w-full h-full overflow-hidden relative">
+          <div className="relative w-full h-screen">
+            <video className="w-full h-full object-cover" autoPlay muted loop>
+              <source src={WelcomeVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <button
+              className="absolute top-5 right-5 text-white px-3 md:px-4 py-1 md:py-2 rounded-full text-[2.5vw] md:text-[2vw] lg:text-[2vw] xl:text-[1vw]"
+              style={{
+                background: "linear-gradient(90deg, #7670FF 0%, #5B42FF 100%)",
+                boxShadow: "0px 0px 8px 0px #4B4CFF",
+                outline: "none",
+                cursor: "pointer",
+                marginRight: "12px",
+                width: "80px",
+              }}
+              onClick={() => setIsVideoPlaying(false)}
+            >
+              Skip
+            </button>
           </div>
+        </div>
+      )}
 
-          {displayedText && (
-            <div className="mt-5 text-center">
-              <h1 className="text-white text-3xl">{realText}</h1>
-            </div>
-          )}
+      {!IsVideoPlaying && (
+        <>
+          {currentStep !== 4 ? (
+            <div className="w-[90%] m-auto mt-[30px] h-[calc(90vh-86px)]">
+              <div className="flex items-center justify-center text-center">
+                <div>
+                  <img src={logo} alt="Logo" className="h-[150px]" />
+                </div>
+                <div className="ml-4">
+                  <h1 className="text-4xl text-white leading-tight">
+                    Hey, I’m Lina <br /> Your Personal AI Bot
+                  </h1>
+                </div>
+              </div>
 
-          {isWelcomeAudioCompleted && (
-            <div className="flex items-center justify-center">
-              <div className="flex flex-col items-center w-full max-w-lg rounded-2xl overflow-hidden shadow-lg p-4">
-                {responses.map((entry, index) => (
-                  <div key={index} className="p-2 border-b text-white w-100">
-                    <div className="flex items-center mb-2">
-                      <img
-                        src={LeftImg}
-                        alt="left_face"
-                        className="mr-2 w-9 h-9 rounded-4xl"
-                      />
-                      <strong>{entry?.question}</strong>
-                    </div>
-                    <div className="flex items-center">
-                      <p className="mr-2">{entry?.answer}</p>
-                      <img
-                        src={RightImg}
-                        alt="right_face"
-                        className="w-12 h-12 ml-2 rounded-4xl"
-                      />
-                      <button
-                        onClick={() => handleRetype(index)}
-                        className="ml-2 text-blue-500"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                  </div>
-                ))}
-                {currentStep < chatData.length && (
-                  <div className="p-2 mt-4 text-white flex items-center">
-                    <img
-                      src={LeftImg}
-                      alt="left_face"
-                      className="w-12 h-12 mr-2 rounded-4xl"
-                    />
-                    <strong>{chatData[currentStep].question}</strong>
-                  </div>
-                )}
+              {displayedText && (
+                <div className="mt-5 text-center">
+                  <h1 className="text-white text-3xl">{realText}</h1>
+                </div>
+              )}
 
-                {currentStep !== 4 && (
-                  <div className="flex items-center justify-center w-full mt-4">
+              {isWelcomeAudioCompleted && (
+                <div className="flex items-center justify-center">
+                  <div className="flex flex-col  w-full max-w-lg rounded-2xl overflow-hidden shadow-lg">
+                    {responses.map((entry, index) => (
+                      <div key={index} className="p-2 text-white w-100">
+                        <div className="flex items-center mb-2">
+                          <img
+                            src={logo}
+                            alt="left_face"
+                            className="mr-2 w-9 h-9 rounded-4xl"
+                          />
+                          <div
+                            style={{
+                              boxShadow: "0px 0px 8px 0px #4B4CFF",
+                              outline: "none",
+                              cursor: "pointer",
+                            }}
+                            className="bg-gradient-to-b from-[#FE8A70] to-[#F800C0] p-3 w-auto rounded-2xl"
+                          >
+                            <strong>{entry?.question}</strong>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center mt-3 justify-end">
+                          <div
+                            style={{
+                              background:
+                                "linear-gradient(90deg, #7670FF 0%, #5B42FF 100%)",
+                              boxShadow: "0px 0px 8px 0px #4B4CFF",
+                              outline: "none",
+                              cursor: "pointer",
+                            }}
+                            className="bg-gradient-to-b from-[#FE8A70] to-[#F800C0] p-3 w-auto rounded-2xl mr-2"
+                          >
+                            <p className="text-center">{entry?.answer}</p>
+                          </div>
+
+                          <div
+                            style={{
+                              background: "#fff",
+                              padding: "5px",
+                              borderRadius: "50%",
+                              color: "#000",
+                            }}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="lucide lucide-user-round-icon lucide-user-round"
+                            >
+                              <circle cx="12" cy="8" r="5" />
+                              <path d="M20 21a8 8 0 0 0-16 0" />
+                            </svg>
+                          </div>
+
+                          <button
+                            onClick={() => handleRetype(index)}
+                            className="ml-2 text-blue-500"
+                          >
+                            Edit
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+
                     {currentStep < chatData.length && (
-                      <>
-                        <input
-                          type="text"
-                          className="chatbox_input p-2 border text-white rounded w-full"
-                          placeholder="Type your response..."
-                          value={inputValue}
-                          onChange={(e) => setInputValue(e.target.value)}
-                          onKeyDown={handleInput}
-                          disabled={isAudioPlaying}
+                      <div className="p-2 mt-4 text-white flex items-left">
+                        <img
+                          src={logo}
+                          alt="left_face"
+                          className="w-12 h-12 mr-2 rounded-4xl"
                         />
+                        <div
+                          style={{
+                            boxShadow: "0px 0px 8px 0px #4B4CFF",
+                            outline: "none",
+                            cursor: "pointer",
+                          }}
+                          className="bg-gradient-to-b from-[#FE8A70] to-[#F800C0] p-3 w-auto rounded-2xl"
+                        >
+                          <strong>{chatData[currentStep].question}</strong>
+                        </div>
+                      </div>
+                    )}
 
-                        <button onClick={startListening} className="ml-2">
-                          {isListening ? (
-                            <CiMicrophoneOff color="red" size={25} />
-                          ) : (
-                            <CiMicrophoneOn color="#fff" size={25} />
-                          )}
-                        </button>
-                      </>
+                    {currentStep !== 4 && (
+                      <div className="flex items-center justify-center w-full mt-4">
+                        {currentStep < chatData.length && (
+                          <>
+                            <div className="flex items-center gradient-border bg-black rounded-full border-2 md:mt-6 mt-3 md:mx-8 xl:mx-auto mx-4 xl:px-3 md:px-3 xl:py-2 md:py-2 p-2 xl:w-[calc(100vw-400px)] h-[11vw] md:h-[8.5vw] lg:h-[6vw] xl:h-[4.5vw]">
+                              <input
+                                value={inputValue}
+                                onChange={(e) => setInputValue(e.target.value)}
+                                onKeyDown={handleInput}
+                                disabled={isAudioPlaying}
+                                type="text"
+                                placeholder="Type here..."
+                                className="flex-grow bg-transparent text-white font-thin outline-none placeholder-gray-400 text-[3vw] md:text-[2vw] lg:text-[2vw] xl:text-[1vw]"
+                              />
+                              <button onClick={startListening} className="">
+                                {isListening ? (
+                                  <CiMicrophoneOff color="red" size={25} />
+                                ) : (
+                                  <img
+                                    src={mike}
+                                    alt=""
+                                    className="size-[5vw] md:size-[4vw] lg:size-[3vw] xl:size-[2vw]"
+                                  />
+                                )}
+                              </button>
+                              <button className="">
+                                <img
+                                  src={send}
+                                  alt=""
+                                  className="md:ml-4 ml-2 size-[6vw] md:size-[6vw] lg:size-[4vw] xl:size-[3vw]"
+                                />
+                              </button>
+                            </div>
+                          </>
+                        )}
+                      </div>
                     )}
                   </div>
-                )}
-              </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center w-full h-[calc(90vh-86px)]">
+              <h1 className="text-white text-3xl text-center mb-4">
+                {
+                  "You're all set! Keep an eye on your inbox for the next steps. Have a fantastic day!"
+                }
+              </h1>
+              <img
+                src={SuccessImg}
+                className="w-[250px] h-[250px]"
+                alt="Success"
+              />
             </div>
           )}
-        </div>
-      ) : (
-        <div className="flex flex-col items-center justify-center w-full h-[calc(90vh-86px)]">
-          <h1 className="text-white text-3xl text-center mb-4">
-            You're all set! Keep an eye on your inbox for the next steps. Have a
-            fantastic day!
-          </h1>
-          <img src={SuccessImg} className="w-[250px] h-[250px]" alt="Success" />
-        </div>
+        </>
       )}
     </React.Fragment>
   );
