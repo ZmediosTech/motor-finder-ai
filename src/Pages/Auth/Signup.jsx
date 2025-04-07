@@ -53,46 +53,37 @@ export default function AuthPage() {
   const welcomeMessage =
     "Hello! Welcome to MotorsFinder.AI. Let’s get you started.";
 
-  useEffect(() => {
-    const handleUserInteraction = () => {
-      const audio = new Audio(WelcomeAudio);
-      setDisplayedText("");
-      let index = 0;
-      const words = welcomeMessage.split(" ");
-      setIsAudioPlaying(true);
+  const handleUserInteraction = () => {
+    const audio = new Audio(WelcomeAudio);
+    setDisplayedText("");
+    let index = 0;
+    const words = welcomeMessage.split(" ");
+    setIsAudioPlaying(true);
 
-      audio
-        .play()
-        .then(() => {
-          const interval = setInterval(() => {
-            if (index < words.length) {
-              setDisplayedText(
-                (prev) => prev + (prev ? " " : "") + words[index]
-              );
-              index++;
-            } else {
-              clearInterval(interval);
-            }
-          }, 300);
-          audio.onended = () => {
-            setIsAudioPlaying(false);
-            setIsWelcomeAudioCompleted(true);
-          };
-        })
-        .catch((error) => {
-          console.error("Audio playback failed:", error);
+    audio
+      .play()
+      .then(() => {
+        const interval = setInterval(() => {
+          if (index < words.length) {
+            setDisplayedText((prev) => prev + (prev ? " " : "") + words[index]);
+            index++;
+          } else {
+            clearInterval(interval);
+          }
+        }, 300);
+        audio.onended = () => {
           setIsAudioPlaying(false);
           setIsWelcomeAudioCompleted(true);
-        });
+        };
+      })
+      .catch((error) => {
+        console.error("Audio playback failed:", error);
+        setIsAudioPlaying(false);
+        setIsWelcomeAudioCompleted(true);
+      });
 
-      document.removeEventListener("click", handleUserInteraction);
-    };
-
-    document.addEventListener("click", handleUserInteraction);
-    return () => {
-      document.removeEventListener("click", handleUserInteraction);
-    };
-  }, []);
+    document.removeEventListener("click", handleUserInteraction);
+  };
 
   useEffect(() => {
     const playAudio = async () => {
@@ -157,13 +148,9 @@ export default function AuthPage() {
     .filter((val) => val !== "undefined" && val !== undefined)
     ?.join(" ");
 
-    
   return (
     <React.Fragment>
       {IsVideoPlaying && (
-
-
-
         <div className="top-0 left-0 w-full overflow-hidden relative">
           <div className="relative w-[100vw] h-[84vh]">
             <video className="w-full object-cover" autoPlay muted loop>
@@ -173,21 +160,21 @@ export default function AuthPage() {
             <button
               className="absolute bottom-0 right-0 transform -translate-x-1/2 -translate-y-1/2 text-white px-3 md:px-4 py-1 md:py-2 rounded-full text-[2.5vw] md:text-[2vw] lg:text-[2vw] xl:text-[1vw]"
               style={{
-
                 boxShadow: "0px 0px 8px 0px #4B4CFF",
                 outline: "none",
                 cursor: "pointer",
                 marginRight: "12px",
                 width: "80px",
               }}
-              onClick={() => setIsVideoPlaying(false)}
+              onClick={() => {
+                setIsVideoPlaying(false);
+                handleUserInteraction();
+              }}
             >
               Skip
             </button>
           </div>
         </div>
-
-
       )}
 
       {!IsVideoPlaying && (
@@ -303,8 +290,6 @@ export default function AuthPage() {
                           </div>
                         </div>
                       )}
-
-
                     </div>
                   </div>
                   {currentStep !== 4 && (
