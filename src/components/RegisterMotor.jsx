@@ -12,8 +12,11 @@ const RegisterMotor = () => {
           alt="Register"
           className="size-[4vw] md:size-[3vw] lg:size-[3vw] xl:size-[2vw] animate-rotate"
         />
-        <a
-          onClick={() => navigate("/signup")}
+        <a href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/signup");
+          }}
           className="text-[#F800C0] font-semibold text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] xl:text-[1vw]"
         >
           Register with Motors
