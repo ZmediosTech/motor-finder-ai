@@ -104,7 +104,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="relative overflow-auto h-[calc(100vh-112px)]">
+    <div className="relative overflow-auto h-[calc(100vh-112px)] ">
       {/* Main Container */}
       <div className="relative h-[50vh] flex items-center justify-center">
         <div className="relative">
