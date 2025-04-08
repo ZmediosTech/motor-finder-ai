@@ -109,7 +109,7 @@ const Page2 = () => {
           {/* Description */}
           <div className="mt-4 border-t border-pink-500 pt-4">
             <h2 className="text-xl text-pink-500 mb-3 font-semibold">Description</h2>
-            <p className="text-xl opacity-80 leading-relaxed font-light">
+            <p className="opacity-80 leading-relaxed font-light text-sm md:text-xl text-gray-300 leading-relaxed font-light">
               Rent and Drive this Cadillac Escalade Platinum Sport 2023-model in
               Dubai, UAE for AED 950/day & AED 22000/month. Rental cost includes
               basic comprehensive insurance and standard mileage limit of 250
@@ -121,7 +121,7 @@ const Page2 = () => {
           {/* Overview */}
           <div className="mt-4 border-t border-pink-500 pt-4">
             <h2 className="text-xl text-pink-500 mb-3 font-semibold">Overview</h2>
-            <div className="text-xl flex flex-col space-y-2 font-light">
+            <div className="md:text-xl text-md flex flex-col space-y-2 font-light">
               <p className="text-pink-500">
                 Body Type / <span className="opacity-80 text-white">SUV</span>
               </p>
