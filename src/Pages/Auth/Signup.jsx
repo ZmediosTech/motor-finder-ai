@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import logo from "../../assets/latina.png";
-import LeftImg from "../../assets/chatbotinp.png";
-import RightImg from "../../assets/userBotImg.png";
+//import LeftImg from "../../assets/chatbotinp.png";
+//import RightImg from "../../assets/userBotImg.png";
 import send from "../../assets/send.png";
-import lens from "../../assets/lens.png";
+//import lens from "../../assets/lens.png";
 import mike from "../../assets/mike.png";
 
 import WelcomeVideo from "../../assets/AudioFile/motor.mp4";
@@ -16,7 +16,7 @@ import ThankYou from "../../assets/AudioFile/thankyou.mp3";
 import AllSet from "../../assets/AudioFile/allset.mp3";
 import SuccessImg from "../../assets/image.png";
 import { CiMicrophoneOff, CiMicrophoneOn } from "react-icons/ci";
-import { EllipsisVertical } from "lucide-react";
+import { Pencil } from "lucide-react";
 
 export default function AuthPage() {
   const chatData = [
@@ -32,7 +32,7 @@ export default function AuthPage() {
     },
     {
       question:
-        "Thank you! Lastly, could you provide your email? We’ll send you a link to complete your listing.Thank you! Lastly, could you provide your email? We’ll send you a link to complete your listing.",
+        "Thank you! Lastly, could you provide your email? We’ll send you a link to complete your listing.",
       audioFile: ThankYou,
     },
     {
@@ -53,6 +53,8 @@ export default function AuthPage() {
 
   const welcomeMessage =
     "Hello! Welcome to MotorsFinder.AI. Let’s get you started.";
+
+  const chatBoxRef = useRef(null);
 
   const handleUserInteraction = () => {
     const audio = new Audio(WelcomeAudio);
@@ -149,6 +151,13 @@ export default function AuthPage() {
     .filter((val) => val !== "undefined" && val !== undefined)
     ?.join(" ");
 
+    useEffect(() => {
+      // Scroll to the bottom of the page after the content changes
+      window.scrollTo(0, document.body.scrollHeight);
+    }, [responses, currentStep, displayedText]);
+    
+    
+
   return (
     <React.Fragment>
       {IsVideoPlaying && (
@@ -183,7 +192,7 @@ export default function AuthPage() {
           {currentStep !== 4 ? (
             <div className="flex-1 w-full">
               <div className="relative mx-8 my-6">
-                <div class="absolute inset-0 bg-gradient-to-r from-[#7670FF] to-[#5B42FF] opacity-10 rounded-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#7670FF] to-[#5B42FF] opacity-10 rounded-3xl"></div>
                 <div className="flex items-center justify-center text-center flex-col md:flex-row py-6 gap-3">
                   <div>
                     <img src={logo} alt="Logo" className="h-[150px]" />
@@ -197,7 +206,7 @@ export default function AuthPage() {
                 </div>
 
                 {displayedText && (
-                  <div className="my-5 text-center px-4">
+                  <div className="py-5 text-center px-4">
                     <h3 className="text-white lg:text-3xl text-xl">{realText}</h3>
                   </div>
                 )}
@@ -205,7 +214,7 @@ export default function AuthPage() {
                 {isWelcomeAudioCompleted && (
                   <div className="w-full flex flex-col min-h-[calc(55vh-50px)] pb-8">
                     <div className="flex justify-center flex-1">
-                      <div className="flex flex-col shadow-lg lg:w-7/12 w-full md:px-5 px-3">
+                      <div className="flex flex-col shadow-lg xl:w-7/12 lg:w-10/12 w-full md:px-5 px-3">
                         {responses.map((entry, index) => (
                           <div key={index} className="p-2 text-white mb-6">
                             <div className="flex items-center mb-4 gap-4">
@@ -216,53 +225,53 @@ export default function AuthPage() {
                               />
                               <div
                                 style={{
-                                  boxShadow: "0px 0px 8px 0px #4B4CFF",
-                                  outline: "none",
                                   cursor: "pointer",
                                 }}
-                                className="bg-gradient-to-r from-[#F800C0] to-[#FE8A70] py-3 md:px-8 px-5 md:max-w-3/4 max-w-10/12 rounded-full"
+                                className="bg-gradient-to-r from-[#F800C0] to-[#FE8A70] py-3 md:px-8 px-5 md:max-w-3/4 max-w-10/12 rounded-full box-shadow"
                               >
-                                <p className="font-normal md:text-normal text-xs">{entry?.question}</p>
+                                <p className="font-normal md:text-base text-xs">{entry?.question}</p>
                               </div>
                             </div>
 
                             <div className="flex items-center mt-3 justify-end gap-4">
+
                               <div
                                 style={{
-                                  background:
-                                    "linear-gradient(90deg, #7670FF 0%, #5B42FF 100%)",
-                                  boxShadow: "0px 0px 8px 0px #4B4CFF",
-                                  outline: "none",
                                   cursor: "pointer",
                                 }}
-                                className="bg-gradient-to-r from-[#F800C0] to-[#FE8A70] py-3 md:px-8 px-5 md:max-w-3/4 max-w-10/12 rounded-full"
+                                className="py-3 md:px-8 px-5 rounded-full bg-gradient-to-r from-[#7670FF] to-[#5B42FF] md:max-w-3/4 max-w-10/12 relative group box-shadow"
                               >
-                                <p className="font-normal md:text-normal text-xs text-left">{entry?.answer}</p>
-                              </div>
-                              <div className="relative">
-                                <div className="flex justify-center items-center bg-white rounded-full text-black border border-[#4b4cff]">
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    class="lucide lucide-user-round-icon lucide-user-round md:w-13 md:h-13 w-8 h-8"
-                                  >
-                                    <circle cx="12" cy="8" r="5" />
-                                    <path d="M20 21a8 8 0 0 0-16 0" />
-                                  </svg>
-                                  
-                                </div>
-                                <button
+                                <p className="font-normal md:text-base text-xs">{entry?.answer}</p>
+                                <div className="absolute -bottom-4 right-0 bg-gray-200 rounded-lg p-2 flex items-center justify-center opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity duration-200">
+                                  <button
                                     onClick={() => handleRetype(index)}
-                                    className="ml-2 text-blue-500"
+                                    className="text-gray-500"
                                   >
-                                    <EllipsisVertical />
+                                    <Pencil size={18} />
                                   </button>
+                                </div>
                               </div>
+
+
+
+                              <div className="flex justify-center items-center bg-white rounded-full text-black border border-[#4b4cff]">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  className="lucide lucide-user-round-icon lucide-user-round md:w-13 md:h-13 w-8 h-8"
+                                >
+                                  <circle cx="12" cy="8" r="5" />
+                                  <path d="M20 21a8 8 0 0 0-16 0" />
+                                </svg>
+
+                              </div>
+
+
                             </div>
                           </div>
                         ))}
@@ -282,7 +291,7 @@ export default function AuthPage() {
                               }}
                               className="bg-gradient-to-r from-[#F800C0] to-[#FE8A70] py-3 md:px-8 px-5 rounded-2xl rounded-full md:max-w-3/4 max-w-10/12"
                             >
-                              <p className="font-normal md:text-normal text-xs">{chatData[currentStep].question}</p>
+                              <p className="font-normal md:text-base text-xs">{chatData[currentStep].question}</p>
                             </div>
                           </div>
                         )}
