@@ -1,25 +1,32 @@
 import React from "react";
 import Register from "../assets/register.png";
+import WelcomeVideo from "../assets/AudioFile/motor.mp4";
 import { useNavigate } from "react-router-dom";
 
 const RegisterMotor = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="flex justify-center items-center">
-      <div className="flex justify-center space-x-2 items-center">
-        <img
-          src={Register}
-          alt="Register"
-          className="size-[4vw] md:size-[3vw] lg:size-[3vw] xl:size-[2vw] animate-rotate"
-        />
-        <a
-          onClick={() => navigate("/signup")}
-          className="text-[#F800C0] font-semibold text-[3.5vw] md:text-[2vw] lg:text-[1.5vw] xl:text-[1vw]"
+      <div className="flex justify-center space-x-2 items- cursor-pointer">
+        <div
+          onClick={(e) => {
+            e.preventDefault();
+            navigate(`/signup?query=yes`);
+          }}
         >
-          Register with Motors
-        </a>
+          <video
+            style={{ width: "450px", height: "200px" }}
+            className="object-cover"
+            autoPlay
+            muted
+            loop
+          >
+            <source src={WelcomeVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 export default RegisterMotor;

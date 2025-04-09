@@ -104,7 +104,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="relative overflow-auto h-[calc(100vh-112px)]">
+    <div className="relative pb-10 flex-1">
       {/* Main Container */}
       <div className="relative h-[50vh] flex items-center justify-center">
         <div className="relative">
@@ -148,7 +148,7 @@ const Hero = () => {
 
       {/* Title */}
       <div className="flex justify-center items-center max-w-full px-4">
-        <h1 className="font-[Gotham Rounded] text-[#7670FF] text-lg md:text-[4vw] lg:text-[4vw] xl:text-[3.7vw] mt-2 md:mt-2 lg:mt-4 xl:mt-0 text-center">
+        <h1 className="font-[Gotham Rounded] text-[#7670FF] text-lg sm:text-[4vw] md:text-[4vw] lg:text-[4vw] xl:text-[3.7vw] mt-2 md:mt-2 lg:mt-4 xl:mt-0 text-center">
           Find Your Motor with AI-Powered Agent
         </h1>
       </div>
