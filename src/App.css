@@ -26,7 +26,7 @@ button {
 }
 
 button:hover {
-  transform: scale(1.03);
+  transform: scale(1);
 }
 
 @keyframes rotate {
@@ -44,14 +44,6 @@ button:hover {
   -moz-box-shadow: 0px 0px 8px 0px #4b4cff;
   box-shadow: 0px 0px 8px 0px #4b4cff;
 }
-
-
-.box-shadow {
-  -webkit-box-shadow: 0px 0px 8px 0px #4b4cff;
-  -moz-box-shadow: 0px 0px 8px 0px #4b4cff;
-  box-shadow: 0px 0px 8px 0px #4b4cff;
-}
-
 
 .chatbox_input{
   padding: 20px;
