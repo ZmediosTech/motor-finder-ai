@@ -48,7 +48,7 @@ export default function AuthPage() {
   const [isListening, setIsListening] = useState(false);
 
   const welcomeMessage =
-    "Hello! Welcome to MotorsFinder.AI. Let’s get you started.";
+    "Hello Welcome to MotorsFinder.AI. Let’s get you started.";
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -84,6 +84,7 @@ export default function AuthPage() {
 
     document.removeEventListener("click", handleUserInteraction);
   };
+
   useEffect(() => {
     if (queryValue) {
       handleUserInteraction();
@@ -148,10 +149,9 @@ export default function AuthPage() {
     recognition.start();
   };
 
-  const realText = displayedText
-    .split(" ")
-    .filter((val) => val !== "undefined" && val !== undefined)
-    ?.join(" ");
+  const realText = [...new Set(displayedText.split(" "))]
+    .filter((val) => val && val !== "undefined")
+    .join(" ");
 
   useEffect(() => {
     window.scrollTo(0, document.body.scrollHeight);
@@ -180,7 +180,9 @@ export default function AuthPage() {
 
               {displayedText && (
                 <div className="py-5 text-center px-4">
-                  <h3 className="text-white lg:text-3xl text-xl">{realText}</h3>
+                  <h3 className="text-white lg:text-3xl text-xl">
+                    Hello! {realText}
+                  </h3>
                 </div>
               )}
 
