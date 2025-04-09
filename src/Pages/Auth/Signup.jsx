@@ -17,7 +17,7 @@ import { Pencil } from "lucide-react";
 
 export default function AuthPage() {
   const chatData = [
-    { question: "Enter your name", audioFile: whatName },
+    { question: "Please enter your name", audioFile: whatName },
     {
       question:
         "Great! What would you like to list with us—products, services, or something else?",

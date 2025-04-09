@@ -10,6 +10,7 @@ import playStore from "../assets/download_play.png";
 import huwaiStore from "../assets/download_huawei.png";
 import ChatInput2 from "../components/ChatInput2";
 import CarCard from "../components/CarCard";
+import AgentCard from "../components/AgentCard";
 
 const carList = [
   {
@@ -53,9 +54,83 @@ const carList = [
     drive: "Left Hand",
   },
 ];
-
+const agentList = [
+  {
+    name: "Agent Name",
+    since: "2022",
+    nationality: "Indian",
+    listing: 202,
+    review: 84,
+    image:
+      "https://cdn.prod.website-files.com/673659649c948b4b79e06c64/67cbbaa04912026bb5dac5a7_Chris%20Zacharias%20profile%20pic.jpg",
+  },
+  {
+    name: "Agent Name",
+    since: "2022",
+    nationality: "Indian",
+    listing: 202,
+    review: 84,
+    image:
+      "https://cdn.prod.website-files.com/673659649c948b4b79e06c64/67cbbaa04912026bb5dac5a7_Chris%20Zacharias%20profile%20pic.jpg",
+  },
+  {
+    name: "Agent Name",
+    since: "2022",
+    nationality: "Indian",
+    listing: 202,
+    review: 84,
+    image:
+      "https://cdn.prod.website-files.com/673659649c948b4b79e06c64/67cbbaa04912026bb5dac5a7_Chris%20Zacharias%20profile%20pic.jpg",
+  },
+  {
+    name: "Agent Name",
+    since: "2022",
+    nationality: "Indian",
+    listing: 202,
+    review: 84,
+    image:
+      "https://cdn.prod.website-files.com/673659649c948b4b79e06c64/67cbbaa04912026bb5dac5a7_Chris%20Zacharias%20profile%20pic.jpg",
+  },
+  {
+    name: "Agent Name",
+    since: "2022",
+    nationality: "Indian",
+    listing: 202,
+    review: 84,
+    image:
+      "https://cdn.prod.website-files.com/673659649c948b4b79e06c64/67cbbaa04912026bb5dac5a7_Chris%20Zacharias%20profile%20pic.jpg",
+  },
+  {
+    name: "Agent Name",
+    since: "2022",
+    nationality: "Indian",
+    listing: 202,
+    review: 84,
+    image:
+      "https://cdn.prod.website-files.com/673659649c948b4b79e06c64/67cbbaa04912026bb5dac5a7_Chris%20Zacharias%20profile%20pic.jpg",
+  }
+];
 const Page3 = () => {
-  const [activeButton, setActiveButton] = useState("Featured Motor Listing");
+  const tabs = ["Featured Motor Listing", "Motor Listing", "Agents"];
+  const [activeButton, setActiveButton] = useState(tabs[0]);
+  const renderTabContent = () => {
+    switch (activeButton) {
+      case "Featured Motor Listing":
+        return carList.slice(0, 4).map((car, index) => (
+          <CarCard key={index} car={car} />
+        ));
+      case "Motor Listing":
+        return carList.map((car, index) => (
+          <CarCard key={index} car={car} />
+        ));
+      case "Agents":
+        return agentList.map((agent, index) => (
+          <AgentCard key={index} agent={agent} />
+        ));
+      default:
+        return null;
+    }
+  };
   return (
     <>
       <div className="relative md:my-6 my-4 md:mx-8 mx-4 md:p-6 p-4 relative rounded-lg  ">
@@ -144,28 +219,25 @@ const Page3 = () => {
               {/* Buttons with Active Gradient Border */}
               <div className=" flex justify-center my-6">
                 <div className="flex gradient-border rounded-full box-shadow items-center text-[12px] md:text-[2vw] lg:text-[2vw] xl:text-[1vw] font-semibold sm:gap-4 gap-2">
-                  {["Featured Motor Listing", "Motor Listing", "Agents"].map(
-                    (btn) => (
-                      <button
-                        key={btn}
-                        onClick={() => setActiveButton(btn)}
-                        className={`px-2 md:px-4 py-3 md:py-2 rounded-full text-white transition-all duration-300 h-full ${activeButton === btn
-                          ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white"
-                          : "hover:text-gray-200"
-                          }`}
-                      >
-                        {btn}
-                      </button>
-                    )
+                  {tabs.map((btn) => (
+                    <button
+                      key={btn}
+                      onClick={() => setActiveButton(btn)}
+                      className={`px-2 md:px-4 py-3 md:py-2 rounded-full text-white transition-all duration-300 h-full ${activeButton === btn
+                        ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white"
+                        : "hover:text-gray-200"
+                        }`}
+                    >
+                      {btn}
+                    </button>
+                  )
                   )}
                 </div>
               </div>
 
               {/* Car Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {carList.map((car, index) => (
-                  <CarCard key={index} car={car} />
-                ))}
+                {renderTabContent()}
               </div>
             </div>
 

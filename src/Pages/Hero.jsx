@@ -135,7 +135,7 @@ const Hero = () => {
                 }s`,
               cursor: "pointer",
             }}
-            onClick={() => navigate("/sell")}
+            onClick={() => navigate("/detail")}
           >
             <img
               src={img.src}
