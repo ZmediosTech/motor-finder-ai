@@ -37,7 +37,7 @@ const ChatInput = () => {
       <input
         type="text"
         placeholder={placeholder}
-        className="flex-grow bg-transparent text-white font-thin outline-none placeholder-gray-400 text-[3vw] md:text-[2vw] lg:text-[2vw] xl:text-[1vw]"
+        className="flex-grow bg-transparent text-white font-thin outline-none placeholder-gray-400 text-[3vw] md:text-[2vw] lg:text-[2vw] xl:text-[1vw] sm:ms-6 ms-4 border-l border-[#F800C0] ps-2"
       />
 
       {/* Icons */}
