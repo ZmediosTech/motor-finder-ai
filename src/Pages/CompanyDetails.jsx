@@ -8,6 +8,8 @@ import companyLogo from "../assets/comapnyLogo.png";
 import appleStore from "../assets/download_apple.png";
 import playStore from "../assets/download_play.png";
 import huwaiStore from "../assets/download_huawei.png";
+import agentImg1 from "../assets/agent1.png";
+import agentImg2 from "../assets/agent2.jpg";
 import ChatInput2 from "../components/ChatInput2";
 import CarCard from "../components/CarCard";
 import AgentCard from "../components/AgentCard";
@@ -54,6 +56,8 @@ const carList = [
     drive: "Left Hand",
   },
 ];
+
+
 const agentList = [
   {
     name: "Agent Name",
@@ -61,8 +65,7 @@ const agentList = [
     nationality: "Indian",
     listing: 202,
     review: 84,
-    image:
-      "https://cdn.prod.website-files.com/673659649c948b4b79e06c64/67cbbaa04912026bb5dac5a7_Chris%20Zacharias%20profile%20pic.jpg",
+    image: agentImg1
   },
   {
     name: "Agent Name",
@@ -70,8 +73,7 @@ const agentList = [
     nationality: "Indian",
     listing: 202,
     review: 84,
-    image:
-      "https://cdn.prod.website-files.com/673659649c948b4b79e06c64/67cbbaa04912026bb5dac5a7_Chris%20Zacharias%20profile%20pic.jpg",
+    image: agentImg2
   },
   {
     name: "Agent Name",
@@ -79,8 +81,7 @@ const agentList = [
     nationality: "Indian",
     listing: 202,
     review: 84,
-    image:
-      "https://cdn.prod.website-files.com/673659649c948b4b79e06c64/67cbbaa04912026bb5dac5a7_Chris%20Zacharias%20profile%20pic.jpg",
+    image: agentImg2
   },
   {
     name: "Agent Name",
@@ -88,8 +89,7 @@ const agentList = [
     nationality: "Indian",
     listing: 202,
     review: 84,
-    image:
-      "https://cdn.prod.website-files.com/673659649c948b4b79e06c64/67cbbaa04912026bb5dac5a7_Chris%20Zacharias%20profile%20pic.jpg",
+    image: agentImg1
   },
   {
     name: "Agent Name",
@@ -97,8 +97,7 @@ const agentList = [
     nationality: "Indian",
     listing: 202,
     review: 84,
-    image:
-      "https://cdn.prod.website-files.com/673659649c948b4b79e06c64/67cbbaa04912026bb5dac5a7_Chris%20Zacharias%20profile%20pic.jpg",
+    image: agentImg1
   },
   {
     name: "Agent Name",
@@ -106,11 +105,10 @@ const agentList = [
     nationality: "Indian",
     listing: 202,
     review: 84,
-    image:
-      "https://cdn.prod.website-files.com/673659649c948b4b79e06c64/67cbbaa04912026bb5dac5a7_Chris%20Zacharias%20profile%20pic.jpg",
+    image: agentImg2
   }
 ];
-const Page3 = () => {
+const CompanyDetails = () => {
   const tabs = ["Featured Motor Listing", "Motor Listing", "Agents"];
   const [activeButton, setActiveButton] = useState(tabs[0]);
   const renderTabContent = () => {
@@ -138,7 +136,7 @@ const Page3 = () => {
 
         <div className="flex flex-wrap lg:flex-nowrap lg:items-center md:items-start items-center lg:gap-8 gap-4 border-b pb-6 border-[#F800C0]">
           {/* Company Logo */}
-          <div className="flex items-center justify-center bg-white rounded-full border border-[#5B42FF]">
+          <div className="flex items-center justify-center bg-white rounded-full border border-[#F800C0]">
             <img
               src={companyLogo}
               alt="Company Logo"
@@ -281,4 +279,4 @@ const Page3 = () => {
   );
 };
 
-export default Page3;
+export default CompanyDetails;
