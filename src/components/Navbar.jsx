@@ -81,7 +81,7 @@ const Navbar = () => {
                 className="size-6 animate-rotate"
               />
               <Link
-                to="/"
+                to="/signup?query=yes"
                 className="text-[#F800C0] font-semibold text-sm"
                 onClick={() => setMenuOpen(false)}
               >
@@ -92,9 +92,9 @@ const Navbar = () => {
 
           {location.pathname !== "/signup" && (
             <>
-              <button onClick={() => setMenuOpen(false)}>Buy</button>
+              <button onClick={() => { navigate("/buy");setMenuOpen(false)}}>Buy</button>
               <button onClick={() => { navigate("/sell"); setMenuOpen(false); }}>Sell</button>
-              <button onClick={() => setMenuOpen(false)}>Rent</button>
+              <button onClick={() => { navigate("/rent");setMenuOpen(false)}}>Rent</button>
             </>
           )}
 
