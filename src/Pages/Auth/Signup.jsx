@@ -17,7 +17,7 @@ import { Pencil } from "lucide-react";
 
 export default function AuthPage() {
   const chatData = [
-    { question: "Enter your name", audioFile: whatName },
+    { question: "Please enter your name", audioFile: whatName },
     {
       question:
         "Great! What would you like to list with us—products, services, or something else?",
@@ -202,7 +202,7 @@ export default function AuthPage() {
                               style={{
                                 cursor: "pointer",
                               }}
-                              className="bg-gradient-to-r from-[#F800C0] to-[#FE8A70] py-3 md:px-8 px-5 md:max-w-3/4 max-w-10/12 rounded-full box-shadow"
+                              className="bg-gradient-to-r from-[#F800C0] to-[#FE8A70] py-3 md:px-8 px-5 md:max-w-3/4 max-w-10/12 rounded-[50px] box-shadow"
                             >
                               <p className="font-normal md:text-base text-xs">
                                 {entry?.question}
@@ -210,12 +210,12 @@ export default function AuthPage() {
                             </div>
                           </div>
 
-                          <div className="flex items-center mt-3 justify-end gap-4">
+                          <div className="flex items-start mt-3 justify-end gap-4">
                             <div
                               style={{
                                 cursor: "pointer",
                               }}
-                              className="py-3 md:px-8 px-5 rounded-full bg-gradient-to-r from-[#7670FF] to-[#5B42FF] md:max-w-3/4 max-w-10/12 relative group box-shadow"
+                              className="py-3 md:px-8 px-5 rounded-[50px] bg-gradient-to-r from-[#7670FF] to-[#5B42FF] md:max-w-3/4 max-w-10/12 relative group box-shadow"
                             >
                               <p className="font-normal md:text-base text-xs">
                                 {entry?.answer}
@@ -262,7 +262,7 @@ export default function AuthPage() {
                               outline: "none",
                               cursor: "pointer",
                             }}
-                            className="bg-gradient-to-r from-[#F800C0] to-[#FE8A70] py-3 md:px-8 px-5 rounded-2xl rounded-full md:max-w-3/4 max-w-10/12"
+                            className="bg-gradient-to-r from-[#F800C0] to-[#FE8A70] py-3 md:px-8 px-5 rounded-[50px] md:max-w-3/4 max-w-10/12"
                           >
                             <p className="font-normal md:text-base text-xs">
                               {chatData[currentStep].question}
@@ -273,7 +273,7 @@ export default function AuthPage() {
                     </div>
                   </div>
                   {currentStep !== 4 && (
-                    <div className="flex items-center justify-center lg:w-7/12 w-full mt-2 mx-auto">
+                    <div className="flex items-center justify-center xl:w-7/12 lg:w-10/12 w-full mt-2 mx-auto">
                       {currentStep < chatData.length && (
                         <>
                           <div className="flex items-center gradient-border bg-black rounded-full border-2 xl:mx-auto mx-4 xl:px-3 md:px-3 xl:py-2 md:py-2 p-2 w-full h-[11vw] md:h-[8.5vw] lg:h-[6vw] xl:h-[4.5vw]">

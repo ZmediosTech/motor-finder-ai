@@ -4,10 +4,12 @@ import car11 from "../assets/car11.png";
 import car2 from "../assets/car2.png";
 import car3 from "../assets/car3.png";
 import car4 from "../assets/car4.png";
+import companyImage from "../assets/company.jpg"
 import ChatInput2 from "../components/ChatInput2";
 import Marquee from "../components/Marquee";
 import CarCard from "../components/CarCard";
 import SortFilter from "../components/SortFilter";
+import CompanyCard from "../components/CompanyCard";
 
 const carList = [
   {
@@ -44,8 +46,55 @@ const carList = [
   },
 ];
 
-const Sell = () => {
-  const [activeButton, setActiveButton] = useState("Featured");
+const companyList = [
+  {
+    name: "Zmedios Pvt. Ltd.",
+    address: "Sec 58 Noida",
+    image: companyImage,
+    review: 5678
+  },
+  {
+    name: "Zmedios Pvt. Ltd.",
+    address: "Sec 58 Noida",
+    image: companyImage,
+    review: 5678
+  },
+  {
+    name: "Zmedios Pvt. Ltd.",
+    address: "Sec 58 Noida",
+    image: companyImage,
+    review: 5678
+  },
+  {
+    name: "Zmedios Pvt. Ltd.",
+    address: "Sec 58 Noida",
+    image: companyImage,
+    review: 5678
+  }
+];
+const Sell = ({ type }) => {
+  const pageType = type.charAt(0).toUpperCase() + type.slice(1);
+  const tabs = ["Featured", "Company", "Listing"];
+  const [activeButton, setActiveButton] = useState(tabs[0]);
+
+  const renderTabContent = () => {
+    switch (activeButton) {
+      case "Featured":
+        return carList.map((car, index) => (
+          <CarCard key={index} car={car} />
+        ));
+      case "Company":
+        return companyList.map((company, index) => (
+          <CompanyCard key={index} company={company}/>
+        ));
+      case "Listing":
+        return carList.slice(0, 4).map((car, index) => (
+          <CarCard key={index} car={car} />
+        ));
+        default:
+          return null;
+    }
+  }
 
   return (
     <>
@@ -72,19 +121,18 @@ const Sell = () => {
           <div className="relative p-4">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <h4 className="text-white mb-4 md:mb-0 xl:text-[1.2vw] lg:text-lg text-lg font-medium flex-grow">
-                Cars for Sale 12424
+                Cars for {pageType} 12424
               </h4>
               <div className="flex flex-row items-center justify-between md:w-auto w-full flex-grow">
                 <div className="flex gradient-border rounded-full box-shadow items-center 2xl:text-[1.2vw] lg:text-lg font-medium md:gap-1 lg:gap-3">
-                  {["Featured", "Company", "Listing"].map((btn) => (
+                  {tabs.map((btn) => (
                     <button
                       key={btn}
                       onClick={() => setActiveButton(btn)}
-                      className={`px-2 lg:px-4 py-2 rounded-full text-white transition-all duration-300 ${
-                        activeButton === btn
-                          ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white box-shadow border-0 border-[#5B42FF]"
-                          : "hover:text-gray-200"
-                      }`}
+                      className={`px-2 lg:px-4 py-2 rounded-full text-white transition-all duration-300 ${activeButton === btn
+                        ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white box-shadow border-0 border-[#5B42FF]"
+                        : "hover:text-gray-200"
+                        }`}
                     >
                       {btn}
                     </button>
@@ -97,9 +145,7 @@ const Sell = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 px-4">
-            {carList.map((car, index) => (
-              <CarCard key={index} car={car} />
-            ))}
+            {renderTabContent()}
           </div>
           <div className="flex justify-center mt-8 mb-4 relative z-10">
             <button

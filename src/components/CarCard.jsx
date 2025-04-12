@@ -29,7 +29,7 @@ const CarCard = ({ car }) => {
 
       {/* Card Content */}
       <div className="p-4">
-        <div className="flex justify-between items-start mb-3">
+        <div className="flex items-start mb-3 gap-3 lg:flex-row flex-col">
           <div>
             <h3 className="md:text-lg font-semibold mb-2">{car.name}</h3>
             <p className="text-sm font-light">{car.edition}</p>

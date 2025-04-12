@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo1 from "../assets/logo2.png";
 import logo2 from "../assets/t6.png";
@@ -26,48 +26,33 @@ const carBrands = [
 
 const Marquee = () => {
   const navigate = useNavigate();
-  const [hoveredBrand, setHoveredBrand] = useState(null);
 
   return (
-    <div className="overflow-hidden bg-white shadow-lg mt-6">
-      <div className="marquee-container flex space-x-6">
-        <div
-          className="marquee flex gap-3 py-2 px-2"
-          style={{
-            animation: hoveredBrand ? "none" : "scroll 30s linear infinite",
-          }}
-        >
+    <div className="bg-white shadow-lg mt-6">
+      <div className="marquee-container overflow-hidden">
+        <div className="marquee flex gap-3 py-2 px-2">
           {carBrands.concat(carBrands).map((brand, index) => (
             <div
-              className={`flex items-center gap-4 px-6 w-[200px] py-2 rounded-lg shadow-lg cursor-pointer transition-all duration-300 ${
-                hoveredBrand === brand.name
-                  ? "bg-[#7670FF] text-white shadow-2xl"
-                  : "bg-white"
-              }`}
-              onMouseEnter={() => setHoveredBrand(brand.name)}
-              onMouseLeave={() => setHoveredBrand(null)}
+              key={index}
+              className="group flex items-center flex-shrink-0 gap-4 py-2 px-4 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:bg-[#7670FF] hover:shadow-2xl"
               onClick={() => navigate("/detail1")}
             >
+
               <img
                 src={brand.logo}
                 alt={brand.name}
-                className="size-8 object-contain"
+                className="size-10 object-contain bg-white rounded-md p-1"
               />
-              <div className="font-semibold">
-                <p className="text-xs md:text-sm">{brand.name}</p>
-                <p
-                  className={`text-[10px] md:text-xs ${
-                    hoveredBrand === brand.name
-                      ? "text-gray-200"
-                      : "text-gray-500"
-                  }`}
-                >
+              <div className="font-semibold whitespace-nowrap">
+                <p className="text-xs md:text-sm group-hover:text-white">{brand.name}</p>
+                <p className="text-[10px] md:text-xs text-gray-500 group-hover:text-white">
                   {brand.cars} Cars
                 </p>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );

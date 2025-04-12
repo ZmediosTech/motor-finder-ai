@@ -8,8 +8,11 @@ import companyLogo from "../assets/comapnyLogo.png";
 import appleStore from "../assets/download_apple.png";
 import playStore from "../assets/download_play.png";
 import huwaiStore from "../assets/download_huawei.png";
+import agentImg1 from "../assets/agent1.png";
+import agentImg2 from "../assets/agent2.jpg";
 import ChatInput2 from "../components/ChatInput2";
 import CarCard from "../components/CarCard";
+import AgentCard from "../components/AgentCard";
 
 const carList = [
   {
@@ -54,32 +57,102 @@ const carList = [
   },
 ];
 
-const Page3 = () => {
-  const [activeButton, setActiveButton] = useState("Featured Motor Listing");
+
+const agentList = [
+  {
+    name: "Agent Name",
+    since: "2022",
+    nationality: "Indian",
+    listing: 202,
+    review: 84,
+    image: agentImg1
+  },
+  {
+    name: "Agent Name",
+    since: "2022",
+    nationality: "Indian",
+    listing: 202,
+    review: 84,
+    image: agentImg2
+  },
+  {
+    name: "Agent Name",
+    since: "2022",
+    nationality: "Indian",
+    listing: 202,
+    review: 84,
+    image: agentImg2
+  },
+  {
+    name: "Agent Name",
+    since: "2022",
+    nationality: "Indian",
+    listing: 202,
+    review: 84,
+    image: agentImg1
+  },
+  {
+    name: "Agent Name",
+    since: "2022",
+    nationality: "Indian",
+    listing: 202,
+    review: 84,
+    image: agentImg1
+  },
+  {
+    name: "Agent Name",
+    since: "2022",
+    nationality: "Indian",
+    listing: 202,
+    review: 84,
+    image: agentImg2
+  }
+];
+const CompanyDetails = () => {
+  const tabs = ["Featured Motor Listing", "Motor Listing", "Agents"];
+  const [activeButton, setActiveButton] = useState(tabs[0]);
+  const renderTabContent = () => {
+    switch (activeButton) {
+      case "Featured Motor Listing":
+        return carList.slice(0, 4).map((car, index) => (
+          <CarCard key={index} car={car} />
+        ));
+      case "Motor Listing":
+        return carList.map((car, index) => (
+          <CarCard key={index} car={car} />
+        ));
+      case "Agents":
+        return agentList.map((agent, index) => (
+          <AgentCard key={index} agent={agent} />
+        ));
+      default:
+        return null;
+    }
+  };
   return (
     <>
-      <div className="relative my-6 mx-8 p-6 relative rounded-lg  ">
+      <div className="relative md:my-6 my-4 md:mx-8 mx-4 md:p-6 p-4 relative rounded-lg  ">
         <div className="absolute inset-0 bg-gradient-to-r from-[#7670FF] to-[#5B42FF] opacity-10 rounded-lg"></div>
 
         <div className="flex flex-wrap lg:flex-nowrap lg:items-center md:items-start items-center lg:gap-8 gap-4 border-b pb-6 border-[#F800C0]">
           {/* Company Logo */}
-          <div className="flex items-center justify-center bg-white rounded-full border border-[#5B42FF]">
+          <div className="flex items-center justify-center bg-white rounded-full border border-[#F800C0]">
             <img
               src={companyLogo}
               alt="Company Logo"
-              className="w-full h-full object-contain"
+              className="sm:w-full sm:h-full w-28 object-contain"
             />
           </div>
 
           {/* Company Info */}
           <div className="text-white flex-1 w-full">
-            <div className="flex flex-wrap xl:flex-nowrap justify-between items-center gap-4">
+            <div className="flex flex-wrap xl:flex-nowrap justify-between items-center sm:gap-4">
               <h2 className="text-lg md:text-xl lg:text-2xl xl:text-4xl font-bold whitespace-nowrap">
                 Company Name
               </h2>
 
               {/* Stats */}
-              <div className="text-lg lg:text-xl flex justify-between gap-2 lg:gap-2 xl:gap-4 xl:gap-y-5 lg:gap-x-6 md:gap-x-6 items-center flex-wrap md:order-3 xl:order-0 order-0 flex-grow">
+              <div className="text-sm sm:text-lg lg:text-xl flex justify-between sm:gap-2 lg:gap-2 xl:gap-4 xl:gap-y-5 lg:gap-x-6 md:gap-x-6 items-center flex-wrap md:order-3 xl:order-0 order-0 flex-grow">
                 <p className="text-[#F800C0] w-full md:w-auto">
                   Active Listing /{" "}
                   <span className="font-bold text-white">5</span>
@@ -116,7 +189,7 @@ const Page3 = () => {
 
           </div>
           {/* Description (Visible on smaller screens) */}
-          <p className="text-xl text-gray-300 leading-relaxed font-light lg:hidden text-justify flex-grow">
+          <p className="text-sm md:text-xl text-gray-300 leading-relaxed font-light lg:hidden text-justify flex-grow">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus euismod gravida. Morbi ultrices, quam ac scelerisque cursus, quam risus imperdiet ipsum, ac suscipit urna justo at est. Donec nisl purus, aliquet ut placerat non, tincidunt eu leo. Donec velit est, tempor nec lectus sed, sagittis hendrerit orci. Phasellus sit amet tempus velit. Phasellus ac urna at augue vehicula posuere ac id ex. Pellentesque varius vulputate elit, et tempus ligula tincidunt id. Proin tempus congue imperdiet. Mauris ut euismod purus. Mauris egestas vulputate ante sed imperdiet. In placerat euismod justo.
           </p>
         </div>
@@ -127,7 +200,7 @@ const Page3 = () => {
             <img
               src={latina}
               alt="Lina"
-              className=" size-72 md:size-96 lg:size-72"
+              className="sm:size-72 size-60"
             />
             <div className="flex flex-col items-center">
               <h1 className="text-4xl md:text-5xl text-white">Hey, I’m Lina</h1>
@@ -143,29 +216,26 @@ const Page3 = () => {
             <div className=" ">
               {/* Buttons with Active Gradient Border */}
               <div className=" flex justify-center my-6">
-                <div className="flex gradient-border rounded-full box-shadow items-center text-[8px] md:text-[12px] lg:text-[14px]  text-[10px] font-semibold  md:space-x-1 lg:space-x-5">
-                  {["Featured Motor Listing", "Motor Listing", "Agents"].map(
-                    (btn) => (
-                      <button
-                        key={btn}
-                        onClick={() => setActiveButton(btn)}
-                        className={`px-2 lg:px-4 py-1 lg:py-2 rounded-full text-white transition-all duration-300 ${activeButton === btn
-                          ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white"
-                          : "hover:text-gray-200"
-                          }`}
-                      >
-                        {btn}
-                      </button>
-                    )
+                <div className="flex gradient-border rounded-full box-shadow items-center text-[12px] md:text-[2vw] lg:text-[2vw] xl:text-[1vw] font-semibold sm:gap-4 gap-2">
+                  {tabs.map((btn) => (
+                    <button
+                      key={btn}
+                      onClick={() => setActiveButton(btn)}
+                      className={`px-2 md:px-4 py-3 md:py-2 rounded-full text-white transition-all duration-300 h-full ${activeButton === btn
+                        ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white"
+                        : "hover:text-gray-200"
+                        }`}
+                    >
+                      {btn}
+                    </button>
+                  )
                   )}
                 </div>
               </div>
 
               {/* Car Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {carList.map((car, index) => (
-                  <CarCard key={index} car={car} />
-                ))}
+                {renderTabContent()}
               </div>
             </div>
 
@@ -209,4 +279,4 @@ const Page3 = () => {
   );
 };
 
-export default Page3;
+export default CompanyDetails;

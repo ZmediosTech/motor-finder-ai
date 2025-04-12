@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import send from "../assets/send.png";
 import lens from "../assets/lens.png";
 import mike from "../assets/mike.png";
 
 const ChatInput = () => {
+  const navigate = useNavigate();
   const [IsSearch, setIsSearch] = useState("");
   const [placeholder, setPlaceholder] = useState("");
 
@@ -37,7 +39,7 @@ const ChatInput = () => {
       <input
         type="text"
         placeholder={placeholder}
-        className="flex-grow bg-transparent text-white font-thin outline-none placeholder-gray-400 text-[3vw] md:text-[2vw] lg:text-[2vw] xl:text-[1vw]"
+        className="flex-grow bg-transparent text-white font-thin outline-none placeholder-gray-400 text-[3vw] md:text-[2vw] lg:text-[2vw] xl:text-[1vw] sm:ms-6 ms-4 border-l border-[#F800C0] ps-2"
       />
 
       {/* Icons */}
@@ -57,7 +59,7 @@ const ChatInput = () => {
       </button>
 
       {/* Send Button */}
-      <button className="">
+      <button className="" onClick={() => navigate("/detail")}>
         <img
           src={send}
           alt=""
