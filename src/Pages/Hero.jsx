@@ -15,14 +15,13 @@ import luxuryCars from "../assets/luxuryCars.png";
 import carsForSell from "../assets/carsForSell.png";
 import RegisterMotor from "../components/RegisterMotor";
 
-
-
 const Hero = () => {
   const navigate = useNavigate();
   const [animate, setAnimate] = useState(true);
   const [positions, setPositions] = useState([]);
   const [isMobile, setIsMobile] = useState(false); // Track if it's a mobile device
-
+  const [searchData, setSearchData] = useState("");
+  
   useEffect(() => {
     const updateScreenSize = () => {
       const width = window.innerWidth;
@@ -92,6 +91,7 @@ const Hero = () => {
       return () => clearInterval(interval); // Cleanup on unmount
     }
   }, [isMobile]); // Re-run the effect when isMobile changes
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const images = [
     { src: suv, alt: "SUV" },
@@ -102,6 +102,34 @@ const Hero = () => {
     { src: rentalCars, alt: "Rental Cars" },
     { src: carsForSell, alt: "Cars for Sale" },
   ];
+  const token = localStorage.getItem("token");
+
+  const fetchListing = async () => {
+    let id = 3;
+    try {
+      const response = await fetch(
+        `${API_URL}/public/search?page_num=0&page_size=10&search=${searchData}&category_id=${id}`,
+
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = await response.json();
+      searchData("")
+      console.log(data, "data");
+    } catch (error) {
+      console.error("Error fetching listings:", error);
+    }
+  };
+  useEffect(() => {
+    if (token) {
+      fetchListing();
+    }
+  }, [token]);
 
   return (
     <div className="relative pb-10 flex-1">
@@ -131,8 +159,9 @@ const Hero = () => {
                 ? "translate(-50%, -50%) scale(1)"
                 : "translate(-50%, -50%) scale(0.1)",
               opacity: animate ? 1 : 0,
-              transition: `all 0.8s cubic-bezier(0.25, 1, 0.5, 1) ${index * 0.1
-                }s`,
+              transition: `all 0.8s cubic-bezier(0.25, 1, 0.5, 1) ${
+                index * 0.1
+              }s`,
               cursor: "pointer",
             }}
             onClick={() => navigate("/detail")}
@@ -153,8 +182,14 @@ const Hero = () => {
         </h1>
       </div>
 
-      <ChatInput />
-      <RegisterMotor />
+      <ChatInput 
+      fetchListing={fetchListing}
+      
+      
+      setSearchData ={setSearchData} 
+      searchData ={searchData}/>
+
+      {localStorage.getItem("token") ? "" : <RegisterMotor />}
     </div>
   );
 };

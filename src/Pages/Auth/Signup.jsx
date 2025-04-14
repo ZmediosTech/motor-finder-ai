@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import logo from "../../assets/latina.png";
 import send from "../../assets/send.png";
@@ -44,6 +44,7 @@ export default function AuthPage() {
   const [responses, setResponses] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  console.log(isAudioPlaying, "isAudioPlaying");
   const [isWelcomeAudioCompleted, setIsWelcomeAudioCompleted] = useState(false);
   const [isListening, setIsListening] = useState(false);
 
@@ -53,7 +54,9 @@ export default function AuthPage() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const queryValue = searchParams.get("query");
-
+  const navigate = useNavigate();
+  const token =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IiIsImlkIjoxMDIsImV4cCI6MTc0NDY5Nzg5M30.0JsZd5s3WWwR9cXagd___-kx0smkYOyKzS1aRwbWjeU";
   const handleUserInteraction = () => {
     const audio = new Audio(WelcomeAudio);
     setDisplayedText("");
@@ -90,6 +93,64 @@ export default function AuthPage() {
       handleUserInteraction();
     }
   }, [queryValue]);
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  const registerionData = async (name, service, url, email) => {
+    const data = {
+      user_role_type: "CUSTOMER",
+      name: name,
+      username: "",
+      platform_type: "MotarFinder",
+      // business_type: service,
+      // business_name: url,
+      email: email,
+      mobile: "",
+      password: "Manish@12345678",
+
+      device_type: "",
+      device_id: "",
+    };
+
+    try {
+      const response = await fetch(
+        `${API_URL}/auth/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+      const result = await response.json();
+      if (result.status === "SUCCESS") {
+        console.log("Registration successful:", result);
+        localStorage.setItem("token", token);
+        window.dispatchEvent(new Event("authChanged"));
+
+        if (!isAudioPlaying) {
+          navigate("/");
+        }
+      } else {
+        console.error("Registration failed:", result);
+        // Handle error (e.g., show an error message)
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+      // Handle network error (e.g., show an error message)
+    }
+  };
+
+  useEffect(() => {
+    if (currentStep == 4) {
+      registerionData(
+        responses[0]?.answer,
+        responses[1]?.answer,
+        responses[2]?.answer,
+        responses[3]?.answer
+      );
+    }
+  }, [currentStep]);
 
   useEffect(() => {
     const playAudio = async () => {
@@ -297,7 +358,15 @@ export default function AuthPage() {
                                 />
                               )}
                             </button>
-                            <button className="">
+                            <button
+                              className=""
+                              onClick={() => {
+                                if (inputValue.trim() !== "") {
+                                  saveResponse(inputValue);
+                                }
+                                setInputValue("");
+                              }}
+                            >
                               <img
                                 src={send}
                                 alt=""
