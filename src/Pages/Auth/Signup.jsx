@@ -96,20 +96,35 @@ export default function AuthPage() {
   const API_URL = import.meta.env.VITE_API_URL;
 
   const registerionData = async (name, service, url, email) => {
-    const data = {
-      user_role_type: "CUSTOMER",
-      name: name,
-      username: "",
-      platform_type: "MotarFinder",
-      // business_type: service,
-      // business_name: url,
-      email: email,
-      mobile: "",
-      password: "Manish@12345678",
+    // const data = {
+    //   user_role_type: "CUSTOMER",
+    //   name: name,
+    //   username: "",
+    //   platform_type: "MotarFinder",
+    //   // business_type: service,
+    //   // business_name: url,
+    //   email: email,
+    //   mobile: "",
+    //   password: "Manish@12345678",
 
-      device_type: "",
-      device_id: "",
-    };
+    //   device_type: "",
+    //   device_id: "",
+    // };
+
+    const data = 
+      {
+        user_typ: "CUSTOMER",
+        name: '',
+        username: name,
+        platform_type: "Motarfinder",
+        business_type: service,
+        business_name: url,
+        email: email,
+        mobile: "",
+        device_type: "",
+        device_id: ""
+      
+    }
 
     try {
       const response = await fetch(

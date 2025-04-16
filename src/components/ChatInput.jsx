@@ -38,7 +38,7 @@ const ChatInput = ({setSearchData,searchData,fetchListing}) => {
 
   const fetchFilterListing = async () => {
     await fetchListing()
-    navigate("/detail")
+    navigate(`/detail/${searchData}`);
   
   };
   return (

@@ -14,14 +14,14 @@ import popularBrands from "../assets/popularBrands.png";
 import luxuryCars from "../assets/luxuryCars.png";
 import carsForSell from "../assets/carsForSell.png";
 import RegisterMotor from "../components/RegisterMotor";
-
+import { useListingData } from '../context/UserContext.jsx';
 const Hero = () => {
   const navigate = useNavigate();
   const [animate, setAnimate] = useState(true);
   const [positions, setPositions] = useState([]);
   const [isMobile, setIsMobile] = useState(false); // Track if it's a mobile device
   const [searchData, setSearchData] = useState("");
-  
+  const { setListingData } = useListingData(); // Access the context
   useEffect(() => {
     const updateScreenSize = () => {
       const width = window.innerWidth;
@@ -119,7 +119,9 @@ const Hero = () => {
         }
       );
       const data = await response.json();
-      searchData("")
+      console.log(data,"data")
+      setListingData(data?.data)
+      localStorage.setItem("searchData",searchData)
       console.log(data, "data");
     } catch (error) {
       console.error("Error fetching listings:", error);
