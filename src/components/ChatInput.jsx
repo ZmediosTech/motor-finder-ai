@@ -34,7 +34,7 @@ const ChatInput = () => {
   }, [IsSearch]);
 
   return (
-    <div className="flex items-center gradient-border bg-black rounded-full border-2 md:mt-2 mb-4 mt-3 md:mx-8 xl:mx-auto mx-4 xl:px-3 md:px-3 xl:py-2 md:py-2 p-2 xl:w-[calc(100vw-400px)] h-[11vw] md:h-[8.5vw] lg:h-[6vw] xl:h-[4.5vw]">
+    <div className="flex gap-3 lg:gap-4 items-center gradient-border bg-black rounded-full border-2 md:mt-2 mb-4 mt-3 md:mx-8 xl:mx-auto mx-4 xl:px-3 md:px-3 xl:py-2 md:py-2 p-2 xl:w-[calc(100vw-320px)] h-[11vw] md:h-[8.5vw] lg:h-[6vw] xl:h-[5vw]">
       {/* Input Field */}
       <input
         type="text"
@@ -43,27 +43,27 @@ const ChatInput = () => {
       />
 
       {/* Icons */}
-      <button className="">
+      <button className="size-[5vw] md:size-[4vw] lg:size-[3vw] xl:size-[2.7vw]">
         <img
           src={lens}
-          alt=""
-          className="size-[5vw] md:size-[4vw] lg:size-[3vw] xl:size-[2vw]"
+          alt="lens"
+          
         />
       </button>
-      <button className="">
+      <button className="size-[5vw] md:size-[4vw] lg:size-[3vw] xl:size-[2.5vw]">
         <img
           src={mike}
-          alt=""
-          className="size-[5vw] md:size-[4vw] lg:size-[3vw] xl:size-[2vw]"
+          alt="mike"
+          
         />
       </button>
 
       {/* Send Button */}
-      <button className="" onClick={() => navigate("/detail")}>
+      <button className="ml-1" onClick={() => navigate("/detail")}>
         <img
           src={send}
-          alt=""
-          className="md:ml-4 ml-2 size-[6vw] md:size-[6vw] lg:size-[4vw] xl:size-[3vw]"
+          alt="send"
+          className="size-[6vw] md:size-[6vw] lg:size-[4vw] xl:size-[3.5vw]"
         />
       </button>
     </div>
