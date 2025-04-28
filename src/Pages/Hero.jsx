@@ -106,7 +106,7 @@ const Hero = () => {
   return (
     <div className="relative pb-10 flex-1">
       {/* Main Container */}
-      <div className="relative h-[500px] flex items-center justify-center">
+      <div className="relative h-[440px] flex items-center justify-center">
         <div className="relative">
           <img
             src={robot}
