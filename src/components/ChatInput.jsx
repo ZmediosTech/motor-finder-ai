@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import send from "../assets/send.png";
-import lens from "../assets/lens.png";
+import lens from "../assets/google-lens.png";
 import mike from "../assets/mike.png";
 
 const ChatInput = () => {
