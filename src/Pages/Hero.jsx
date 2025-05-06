@@ -47,7 +47,7 @@ const Hero = () => {
           { x: "3.5%", y: "-28%" }, //popular
           { x: "-35%", y: "10%" }, //first suv
           { x: "15%", y: "-5%" }, //luxury
-          { x: "-17%", y: "30%" }, //rental
+          { x: "-17%", y: "23%" }, //rental
           { x: "17%", y: "32%" }, //for sell
         ]);
       } else if (width >= 1024) {
@@ -136,7 +136,7 @@ const Hero = () => {
   return (
     <div className="relative pb-10 flex-1">
       {/* Main Container */}
-      <div className="relative h-[50vh] flex items-center justify-center">
+      <div className="relative h-[440px] flex items-center justify-center">
         <div className="relative">
           <img
             src={robot}
