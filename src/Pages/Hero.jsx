@@ -21,6 +21,8 @@ const Hero = () => {
   const [positions, setPositions] = useState([]);
   const [isMobile, setIsMobile] = useState(false); // Track if it's a mobile device
   const [searchData, setSearchData] = useState("");
+  const [featuredImage, setFeaturedImage] = useState([]) 
+  console.log(featuredImage,"featuredImage")
   const { setListingData } = useListingData(); // Access the context
   useEffect(() => {
     const updateScreenSize = () => {
@@ -127,11 +129,23 @@ const Hero = () => {
       console.error("Error fetching listings:", error);
     }
   };
+
+ const fetchFeaturedListing = async ()=>{
+  const response = await fetch(`${API_URL}/public/sub-category/3`)
+  const data = await response.json();
+  setFeaturedImage(data?.data?.slice(0,7))
+
+ }
+
   useEffect(() => {
     if (token) {
       fetchListing();
     }
   }, [token]);
+
+  useEffect(()=>{
+    fetchFeaturedListing()
+  },[])
 
   return (
     <div className="relative pb-10 flex-1">
@@ -146,7 +160,7 @@ const Hero = () => {
         </div>
 
         {/* Animated Images */}
-        {images?.map((img, index) => (
+        {featuredImage?.map((img, index) => (
           <div
             key={index}
             className={isMobile ? "hidden" : "absolute"}
@@ -169,10 +183,13 @@ const Hero = () => {
             onClick={() => navigate("/detail")}
           >
             <img
-              src={img.src}
+            // `https://dgts1hwqn1vsh.cloudfront.net/${cardData?.logo}`
+ 
+              src={`https://dgts1hwqn1vsh.cloudfront.net/${img.icon}`}
               alt={img.alt}
               className="h-[10vw] sm:h-[10vw] md:h-[8vw] lg:h-[8vw] xl:h-[7.5vw]"
             />
+            {/* <p className="text-pink-300  text-2xl absolute top-4">{img.name}</p> */}
           </div>
         ))}
       </div>
