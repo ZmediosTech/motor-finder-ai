@@ -11,17 +11,19 @@ import Privacy from "./Pages/Privacy";
 import Help from "./Pages/Help";
 import AuthPage from "./Pages/Auth/Signup";
 import AgentDetails from "./Pages/AgentDetails";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   return (
     <Router>
+       <UserProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/buy" element={<Sell type="buy" />} />
         <Route path="/sell" element={<Sell type="sell" />} />
         <Route path="/rent" element={<Sell type="rent" />} />
-        <Route path="/detail" element={<Page2 />} />
+        <Route path="/detail/:id" element={<Page2 />} />
         <Route path="/detail1" element={<CompanyDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<Privacy />} />
@@ -29,6 +31,7 @@ function App() {
         <Route path="/signup" element={<AuthPage />} />
         <Route path="/agent" element={<AgentDetails />} />
       </Routes>
+      </UserProvider>
       <Footer />
     </Router>
   );
