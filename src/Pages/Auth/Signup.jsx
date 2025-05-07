@@ -24,62 +24,102 @@ export default function AuthPage() {
     },
   ];
   const [currentStep, setCurrentStep] = useState(0);
-  const speakQuestion = (text) => {
-    const synth = window.speechSynthesis;
+  // const speakQuestion = (text) => {
+  //   const synth = window.speechSynthesis;
 
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US";
-    utterance.rate = 1; // Speed (0.1 to 10)
-    utterance.pitch = 1; // Pitch (0 to 2)
-    utterance.onstart = () => setIsAudioPlaying(true);
-    utterance.onend = () => {
+  //   const utterance = new SpeechSynthesisUtterance(text);
+  //   utterance.lang = "en-US";
+  //   utterance.rate = 1; // Speed (0.1 to 10)
+  //   utterance.pitch = 1; // Pitch (0 to 2)
+  //   utterance.onstart = () => setIsAudioPlaying(true);
+  //   utterance.onend = () => {
+  //     setIsAudioPlaying(false);
+  //   };
+  //   if (femaleVoice) {
+  //     utterance.voice = femaleVoice;
+  //   }
+
+  //   synth.speak(utterance);
+  //   // window.speechSynthesis.speak(utterance);
+  // };
+
+ const speakQuestion = (text) => {
+  const synth = window.speechSynthesis;
+  const words = text.split(" ");
+  let index = 0;
+  setDisplayedText(""); // clear displayed text
+
+  setIsAudioPlaying(true);
+
+  const speakNextWord = () => {
+    if (index < words.length) {
+      const utterance = new SpeechSynthesisUtterance();
+      utterance.lang = "en-US";
+      utterance.rate = 3;    // Increase speed significantly
+      utterance.pitch = 1.2; // Normal, energetic tone
+      utterance.volume = 1.0; // Max volume
+
+      const word = words[index];
+      utterance.text = word;
+
+      utterance.onend = () => {
+        setDisplayedText((prev) => prev + (prev ? " " : "") + word);
+        index++;
+        setTimeout(speakNextWord, 1000); // 1 second delay
+      };
+
+      if (femaleVoice) {
+        utterance.voice = femaleVoice;
+      }
+
+      synth.speak(utterance);
+    } else {
       setIsAudioPlaying(false);
-    };
-    if (femaleVoice) {
-      utterance.voice = femaleVoice;
     }
-
-    synth.speak(utterance);
-    // window.speechSynthesis.speak(utterance);
   };
 
+  speakNextWord(); // start speaking first word
+};
 
-//   const speakQuestion = (text) => {
-//     const synth = window.speechSynthesis;
-//     const utterance = new SpeechSynthesisUtterance(text);
-//     utterance.lang = "en-US";
-//     utterance.rate = 1; // Speed (0.1 to 10)
-//     utterance.pitch = 1; // Pitch (0 to 2)
+  
 
-//     const words = text.split(' '); // Split the question into words
-//     let index = 0;
-    
-//     // Stream words one by one
-//     const interval = setInterval(() => {
-//       if (index < words.length) {
-//         setDisplayedText((prev) => prev + (prev ? " " : "") + words[index]);
-//         index++;
-//       } else {
-//         clearInterval(interval);
-//       }
-//     }, 300); // Adjust the speed of text display here
-    
-//     utterance.onstart = () => setIsAudioPlaying(true);
-//     utterance.onend = () => {
-//       setIsAudioPlaying(false);
-//     };
+  //   const speakQuestion = (text) => {
+  //     const synth = window.speechSynthesis;
+  //     const utterance = new SpeechSynthesisUtterance(text);
+  //     utterance.lang = "en-US";
+  //     utterance.rate = 1; // Speed (0.1 to 10)
+  //     utterance.pitch = 1; // Pitch (0 to 2)
 
-//     // Handle voice
-//     if (femaleVoice) {
-//       utterance.voice = femaleVoice;
-//     }
-    
-//     // Speak it
-//     synth.speak(utterance);
-// };
+  //     const words = text.split(' '); // Split the question into words
+  //     let index = 0;
 
+  //     // Stream words one by one
+  //     const interval = setInterval(() => {
+  //       if (index < words.length) {
+  //         setDisplayedText((prev) => prev + (prev ? " " : "") + words[index]);
+  //         index++;
+  //       } else {
+  //         clearInterval(interval);
+  //       }
+  //     }, 300); // Adjust the speed of text display here
+
+  //     utterance.onstart = () => setIsAudioPlaying(true);
+  //     utterance.onend = () => {
+  //       setIsAudioPlaying(false);
+  //     };
+
+  //     // Handle voice
+  //     if (femaleVoice) {
+  //       utterance.voice = femaleVoice;
+  //     }
+
+  //     // Speak it
+  //     synth.speak(utterance);
+  // };
 
   const [displayedText, setDisplayedText] = useState("");
+  console.log(displayedText, "displayedText");
+  const [welcomeText, setWelcomeText] = useState("");
   const [responses, setResponses] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
@@ -89,6 +129,7 @@ export default function AuthPage() {
   const [femaleVoice, setFemaleVoice] = useState(null);
   const welcomeMessage =
     "Hello Welcome to MotorsFinder.AI. Let’s get you started.";
+    console.log(currentStep,"currentStep")
   useEffect(() => {
     console.log(chatData[currentStep], "step");
     if (isWelcomeAudioCompleted == true) {
@@ -96,6 +137,7 @@ export default function AuthPage() {
       speakQuestion(chatData[currentStep].question);
     }
   }, [isWelcomeAudioCompleted, currentStep]);
+
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const queryValue = searchParams.get("query");
@@ -111,18 +153,18 @@ export default function AuthPage() {
 
     const utterance = new SpeechSynthesisUtterance(welcomeMessage);
     utterance.lang = "en-US";
-    utterance.rate = 1;
+    utterance.rate = 1.5;
     utterance.pitch = 1;
 
     setIsAudioPlaying(true);
     const interval = setInterval(() => {
       if (index < words.length) {
-        setDisplayedText((prev) => prev + (prev ? " " : "") + words[index]);
+        setWelcomeText((prev = "") => prev + (prev ? " " : "") + words[index]);
         index++;
       } else {
         clearInterval(interval);
       }
-    }, 300);
+    },300);
 
     // When speech ends
     utterance.onend = () => {
@@ -302,7 +344,7 @@ export default function AuthPage() {
     recognition.start();
   };
 
-  const realText = [...new Set(displayedText.split(" "))]
+  const realText = [...new Set(welcomeMessage.split(" "))]
     .filter((val) => val && val !== "undefined")
     .join(" ");
 
@@ -331,13 +373,16 @@ export default function AuthPage() {
                 </div>
               </div>
 
-              {displayedText && (
-                <div className="py-5 text-center px-4">
-                  <h3 className="text-white lg:text-3xl text-xl">
-                    Hello! {realText}
-                  </h3>
-                </div>
-              )}
+              {/* {displayedText && ( */}
+              <div className="py-5 text-center px-4">
+                <h3 className="text-white lg:text-3xl text-xl">
+                  {/* Hello! {realText} */}
+                  {/* {welcomeText} */}
+                  <p>Hello! {(welcomeText ?? "").replace("undefined", "")}</p>
+
+                </h3>
+              </div>
+              {/* )} */}
 
               {isWelcomeAudioCompleted && (
                 <div className="w-full flex flex-col min-h-[calc(55vh-50px)] pb-8">
@@ -418,7 +463,8 @@ export default function AuthPage() {
                             className="bg-gradient-to-r from-[#F800C0] to-[#FE8A70] py-3 md:px-8 px-5 rounded-[50px] md:max-w-3/4 max-w-10/12"
                           >
                             <p className="font-normal md:text-base text-xs">
-                             {chatData[currentStep].question}
+                              {/* {chatData[currentStep].question} */}
+                              {displayedText}
                             </p>
                           </div>
                         </div>
