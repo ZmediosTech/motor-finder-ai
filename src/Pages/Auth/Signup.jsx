@@ -24,6 +24,7 @@ export default function AuthPage() {
     },
   ];
   const [currentStep, setCurrentStep] = useState(0);
+  console.log(currentStep,"currentStep")
   // const speakQuestion = (text) => {
   //   const synth = window.speechSynthesis;
 
@@ -43,43 +44,48 @@ export default function AuthPage() {
   //   // window.speechSynthesis.speak(utterance);
   // };
 
- const speakQuestion = (text) => {
-  const synth = window.speechSynthesis;
-  const words = text.split(" ");
-  let index = 0;
-  setDisplayedText(""); // clear displayed text
-
-  setIsAudioPlaying(true);
-
-  const speakNextWord = () => {
-    if (index < words.length) {
-      const utterance = new SpeechSynthesisUtterance();
-      utterance.lang = "en-US";
-      utterance.rate = 3;    // Increase speed significantly
-      utterance.pitch = 1.2; // Normal, energetic tone
-      utterance.volume = 1.0; // Max volume
-
-      const word = words[index];
-      utterance.text = word;
-
-      utterance.onend = () => {
+  const speakQuestion = (text) => {
+    const synth = window.speechSynthesis;
+  
+    // Stop any current speech
+    synth.cancel();
+  
+    const words = text.split(" ");
+    let index = 0;
+  
+    // Setup voice
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "en-US";
+    utterance.rate = 1.5;     // Fast speech
+    utterance.pitch = 1.2;  // Energetic
+    utterance.volume = 1.0; // Max allowed
+    if (femaleVoice) {
+      utterance.voice = femaleVoice;
+    }
+  
+    // Start speaking
+    setIsAudioPlaying(true);
+    synth.speak(utterance);
+  
+    // Display words one-by-one in UI
+    setDisplayedText(""); // Clear UI
+    const displayInterval = setInterval(() => {
+      if (index < words.length) {
+        const word = words[index];
         setDisplayedText((prev) => prev + (prev ? " " : "") + word);
         index++;
-        setTimeout(speakNextWord, 1000); // 1 second delay
-      };
-
-      if (femaleVoice) {
-        utterance.voice = femaleVoice;
+      } else {
+        clearInterval(displayInterval);
       }
-
-      synth.speak(utterance);
-    } else {
+    }, 400); // Show words every 100ms (adjust as needed)
+  
+    utterance.onend = () => {
       setIsAudioPlaying(false);
-    }
+      setIsEditable(false)
+    };
   };
-
-  speakNextWord(); // start speaking first word
-};
+  
+  
 
   
 
@@ -123,16 +129,19 @@ export default function AuthPage() {
   const [responses, setResponses] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [iseditable,setIsEditable] = useState(false)
+  console.log(iseditable,"iseditable")
   console.log(isAudioPlaying, "isAudioPlaying");
   const [isWelcomeAudioCompleted, setIsWelcomeAudioCompleted] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [femaleVoice, setFemaleVoice] = useState(null);
+  const [editIndex, setEditIndex] = useState()
   const welcomeMessage =
     "Hello Welcome to MotorsFinder.AI. Let’s get you started.";
     console.log(currentStep,"currentStep")
   useEffect(() => {
     console.log(chatData[currentStep], "step");
-    if (isWelcomeAudioCompleted == true) {
+    if (isWelcomeAudioCompleted == true && iseditable == false) {
       setIsAudioPlaying(true);
       speakQuestion(chatData[currentStep].question);
     }
@@ -280,34 +289,58 @@ export default function AuthPage() {
   };
 
   const saveResponse = (answer) => {
-    if (currentStep === 3 && !isValidEmail(answer)) {
+    // Validate email when it's the email question
+    if (currentStep === 3 && !isValidEmail(answer) && iseditable == false) {
       const synth = window.speechSynthesis;
-      const utterThis = new SpeechSynthesisUtterance(
-        "Please provide a valid email"
-      );
-
+      const utterThis = new SpeechSynthesisUtterance("Please provide a valid email");
+  
       if (femaleVoice) {
         utterThis.voice = femaleVoice;
       }
-
+  
       synth.speak(utterThis);
       return;
     }
-
+  
+    // Create a copy of the responses array
     const newResponses = [...responses];
-    newResponses[currentStep] = {
-      question: chatData[currentStep].question,
-      answer,
-    };
-    setResponses(newResponses);
-    setInputValue("");
-    if (currentStep < chatData.length - 1) {
+    console.log(newResponses, "newResponses");
+  
+    if (iseditable) {
+      // Update the response for the specific question selected in edit mode
+      const questionIndex = editIndex; // This could be adjusted based on the edit mode logic
+      newResponses[questionIndex] = {
+        question: chatData[questionIndex].question,
+        answer,
+      };
+    } else {
+      // Standard flow: Save the answer to the current step
+      newResponses[currentStep] = {
+        question: chatData[currentStep].question,
+        answer,
+      };
+       if (currentStep < chatData.length - 1) {
       setCurrentStep((prev) => prev + 1);
     }
+    }
+  
+    // Update the responses state
+    setResponses(newResponses);
+    setInputValue(""); // Clear the input field
+    setIsEditable(false); // Disable edit mode
+  
+    // Move to the next question unless it's the last question
+    // if (currentStep < chatData.length - 1) {
+    //   setCurrentStep((prev) => prev + 1);
+    // }
   };
+  
 
   const handleRetype = (index) => {
-    setCurrentStep(index);
+    console.log(index,"index")
+    setEditIndex(index)
+    setIsEditable(true)
+  //  setCurrentStep(index);
     setInputValue(responses[index]?.answer || "");
   };
 
