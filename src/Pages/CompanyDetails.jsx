@@ -146,7 +146,7 @@ const CompanyDetails = () => {
 
           {/* Company Info */}
           <div className="text-white flex-1 w-full">
-            <div className="flex flex-wrap xl:flex-nowrap justify-between items-center sm:gap-4">
+            <div className="flex flex-wrap 2xl:flex-nowrap justify-between items-center sm:gap-4">
               <h2 className="text-lg md:text-xl lg:text-2xl xl:text-4xl font-bold whitespace-nowrap">
                 Company Name
               </h2>

@@ -12,7 +12,7 @@ const AgentCard = ({ agent }) => {
                 <img
                     src={agent.image}
                     alt={agent.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-[300px] object-cover"
                 />
                 <button className="absolute top-4 right-4 p-1.5">
                     <Heart className="w-5 h-5" fill="#fff" />
@@ -39,7 +39,7 @@ const AgentCard = ({ agent }) => {
 
                 {/* Chat Button */}
                 <button
-                    className="mt-4 w-full bg-gradient-to-b from-[#FE8A70] to-[#F800C0] text-white py-3 px-4 rounded-full font-medium hover:opacity-90 transition-opacity"
+                    className="mt-4 w-full bg-gradient-to-b from-[#FE8A70] to-[#F800C0] text-white py-3 px-4 rounded-full font-medium hover:opacity-90 transition-opacity whitespace-nowrap"
                     onClick={() => navigate("/agent")}
                 >
                     Chat with Us

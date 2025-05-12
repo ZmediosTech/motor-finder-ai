@@ -6,9 +6,9 @@ import { Heart } from "lucide-react";
 const CarCard = ({ car }) => {
   const navigate = useNavigate();
   return (
-    <div className="bg-[#010122] rounded-2xl overflow-hidden shadow-lg text-white relative">
+    <div className="bg-[#010122] rounded-2xl overflow-hidden shadow-lg text-white relative flex flex-col h-full">
       {/* Car Image */}
-      <div className="relative">
+      <div className="relative mb-4">
         <img
           src={car.image}
           alt={car.name}
@@ -28,16 +28,11 @@ const CarCard = ({ car }) => {
       </div>
 
       {/* Card Content */}
-      <div className="p-4">
-        <div className="flex items-start mb-3 gap-3 lg:flex-row flex-col">
-          <div>
-            <h3 className="md:text-lg font-semibold mb-2">{car.name}</h3>
-            <p className="text-sm font-light">{car.edition}</p>
-          </div>
-          <div className="text-right">
-            <p className="font-bold text-lg">{car.price}</p>
-          </div>
-        </div>
+      <div className="p-4 flex flex-col justify-between flex-grow">
+        
+            <h3 className="md:text-lg font-semibold mb-2">{car.name} - {car.price}</h3>
+            <p className="text-sm font-light mb-3">{car.edition}</p>
+         
 
         {/* Car Details */}
         <div className="flex gap-2 text-sm text-gray-300 mb-4">

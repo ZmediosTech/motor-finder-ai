@@ -36,7 +36,7 @@ const SortFilter = () => {
     return (
         <div
             ref={dropdownRef}
-            className="relative flex items-center box-shadow px-4 py-2.5 lg:py-2 2xl:text-[1vw] lg:text-lg font-medium text-white rounded-full border border-[#5B42FF] bg-gradient-to-r from-[#7670FF] to-[#5B42FF]"
+            className="relative flex items-center box-shadow px-4 py-2.5 lg:py-2 2xl:text-[1vw] lg:text-md font-medium text-white rounded-full border border-[#5B42FF] bg-gradient-to-r from-[#7670FF] to-[#5B42FF]"
         >
             <div
                 className="flex items-center justify-between cursor-pointer xl:gap-3 lg:gap-2 gap-2"

@@ -13,7 +13,8 @@ import CompanyCard from "../components/CompanyCard";
 
 const carList = [
   {
-    name: "sell-AED 345,000",
+    name: "sell",
+    price: "AED 345,000",
     edition: "cadliac Escalade premium luxury",
     image: car11,
     year: 2021,
@@ -21,7 +22,8 @@ const carList = [
     drive: "Left Hand",
   },
   {
-    name: "sell-AED 345,000",
+    name: "sell",
+    price: "AED 345,000",
     edition: "cadliac Escalade premium luxury",
     image: car2,
     year: 2022,
@@ -29,7 +31,8 @@ const carList = [
     drive: "Left Hand",
   },
   {
-    name: "sell-AED 345,000",
+    name: "sell",
+    price: "AED 345,000",
     edition: "cadliac Escalade premium luxury",
     image: car3,
     year: 2023,
@@ -37,7 +40,8 @@ const carList = [
     drive: "Left Hand",
   },
   {
-    name: "sell-AED 345,000",
+    name: "sell",
+    price: "AED 345,000",
     edition: "cadliac Escalade premium luxury",
     image: car4,
     year: 2021,
@@ -124,7 +128,7 @@ const Sell = ({ type }) => {
                 Cars for {pageType} 12424
               </h4>
               <div className="flex flex-row items-center justify-between md:w-auto w-full flex-grow">
-                <div className="flex gradient-border rounded-full box-shadow items-center 2xl:text-[1.2vw] lg:text-lg font-medium md:gap-1 lg:gap-3">
+                <div className="flex gradient-border rounded-full box-shadow items-center 2xl:text-[1.2vw] lg:text-md font-medium md:gap-1 lg:gap-3">
                   {tabs.map((btn) => (
                     <button
                       key={btn}
