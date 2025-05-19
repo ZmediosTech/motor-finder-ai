@@ -76,18 +76,20 @@ const Page2 = () => {
   const [loading, setLoading] = useState(false);
   const { listingData, setListingData } = useListingData();
   console.log(listingData, "listingData from context");
-const pathname = window.location.pathname;
-  const path = pathname.split("/").pop(); // Extract the ID from the URL 
+  const pathname = window.location.pathname;
+  const path = pathname.split("/").pop(); // Extract the ID from the URL
   // console.log(id,"id")
   const token = localStorage.getItem("token");
-  const searchData = localStorage.getItem("searchData") ;
+  const searchData = localStorage.getItem("searchData");
   console.log(searchData, "searchData from context");
   const fetchListing = async (path) => {
     let id = 3;
     try {
       setLoading(true);
       const response = await fetch(
-        `${API_URL}/public/search?page_num=0&page_size=10&search=${path ||searchData}&category_id=${id}`,
+        `${API_URL}/public/search?page_num=0&page_size=10&search=${
+          path || searchData
+        }&category_id=${id}`,
 
         {
           method: "GET",
@@ -109,7 +111,7 @@ const pathname = window.location.pathname;
   useEffect(() => {
     fetchListing(path);
   }, [path]);
-console.log(listingData?.listing_results,"manish")
+  console.log(listingData?.listing_results, "manish");
   return (
     <>
       {loading ? (
@@ -147,11 +149,11 @@ console.log(listingData?.listing_results,"manish")
                       </div>
                       <div className="absolute top-4 right-4 bg-white p-2 h-12 w-12 flex items-center justify-center rounded-full">
                         <span className="text-xs font-bold text-black">
-                        <img
-                        src={`https://dgts1hwqn1vsh.cloudfront.net/${item?.logo}`}
-                        alt="Luxury Car"
-                        className="  object-cover h-12 w-12 rounded-full"
-                      />
+                          <img
+                            src={`https://dgts1hwqn1vsh.cloudfront.net/${item?.logo}`}
+                            alt="Luxury Car"
+                            className="  object-cover h-12 w-12 rounded-full"
+                          />
                         </span>
                       </div>
                     </div>
@@ -161,7 +163,7 @@ console.log(listingData?.listing_results,"manish")
                         <span className="opacity-80 text-white">
                           {" "}
                           {/* / AED 2500 */}
-                        AED  {item.motor_listing?.daily_price}
+                          AED {item.motor_listing?.daily_price}
                         </span>
                       </p>
                       <p className="text-pink-500">
@@ -169,7 +171,6 @@ console.log(listingData?.listing_results,"manish")
                         <span className="opacity-80 text-white">
                           {" "}
                           / AED {item.motor_listing?.weekly_price}
-                          
                         </span>
                       </p>
                       <p className="text-pink-500">
@@ -177,7 +178,6 @@ console.log(listingData?.listing_results,"manish")
                         <span className="opacity-80 text-white">
                           {" "}
                           / AED {item.motor_listing?.monthly_price}
-
                         </span>
                       </p>
                     </div>
@@ -186,7 +186,7 @@ console.log(listingData?.listing_results,"manish")
                         Description
                       </h2>
                       <p className="opacity-80 leading-relaxed font-light text-sm md:text-xl text-gray-300 leading-relaxed font-light">
-                       {item?.description}
+                        {item?.description}
                       </p>
                     </div>
                     <div className="mt-4 border-t border-pink-500 pt-4">
@@ -196,11 +196,15 @@ console.log(listingData?.listing_results,"manish")
                       <div className="md:text-xl text-md flex flex-col space-y-2 font-light">
                         <p className="text-pink-500">
                           Body Type /
-                          <span className="opacity-80 text-white">{item.motor_listing?.body_type}</span>
+                          <span className="opacity-80 text-white">
+                            {item.motor_listing?.body_type}
+                          </span>
                         </p>
                         <p className="text-pink-500">
                           Salik / Toll Charges /{" "}
-                          <span className="opacity-80 text-white">{item.motor_listing?.toll_charges}</span>
+                          <span className="opacity-80 text-white">
+                            {item.motor_listing?.toll_charges}
+                          </span>
                         </p>
                         <p className="text-pink-500">
                           Model /
@@ -211,12 +215,14 @@ console.log(listingData?.listing_results,"manish")
                         <p className="text-pink-500">
                           Seating Capacity /
                           <span className="opacity-80 text-white">
-                           {item.motor_listing?.seating_capacity}
+                            {item.motor_listing?.seating_capacity}
                           </span>
                         </p>
                         <p className="text-pink-500">
                           Fits No. of Bags /
-                          <span className="opacity-80 text-white">{item.motor_listing?.no_of_bags}</span>
+                          <span className="opacity-80 text-white">
+                            {item.motor_listing?.no_of_bags}
+                          </span>
                         </p>
                         <p className="text-pink-500">
                           Exterior / Interior /

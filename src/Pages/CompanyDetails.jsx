@@ -57,7 +57,6 @@ const carList = [
   },
 ];
 
-
 const agentList = [
   {
     name: "Agent Name",
@@ -65,7 +64,7 @@ const agentList = [
     nationality: "Indian",
     listing: 202,
     review: 84,
-    image: agentImg1
+    image: agentImg1,
   },
   {
     name: "Agent Name",
@@ -73,7 +72,7 @@ const agentList = [
     nationality: "Indian",
     listing: 202,
     review: 84,
-    image: agentImg2
+    image: agentImg2,
   },
   {
     name: "Agent Name",
@@ -81,7 +80,7 @@ const agentList = [
     nationality: "Indian",
     listing: 202,
     review: 84,
-    image: agentImg2
+    image: agentImg2,
   },
   {
     name: "Agent Name",
@@ -89,7 +88,7 @@ const agentList = [
     nationality: "Indian",
     listing: 202,
     review: 84,
-    image: agentImg1
+    image: agentImg1,
   },
   {
     name: "Agent Name",
@@ -97,7 +96,7 @@ const agentList = [
     nationality: "Indian",
     listing: 202,
     review: 84,
-    image: agentImg1
+    image: agentImg1,
   },
   {
     name: "Agent Name",
@@ -105,8 +104,8 @@ const agentList = [
     nationality: "Indian",
     listing: 202,
     review: 84,
-    image: agentImg2
-  }
+    image: agentImg2,
+  },
 ];
 const CompanyDetails = () => {
   const tabs = ["Featured Motor Listing", "Motor Listing", "Agents"];
@@ -114,13 +113,11 @@ const CompanyDetails = () => {
   const renderTabContent = () => {
     switch (activeButton) {
       case "Featured Motor Listing":
-        return carList.slice(0, 4).map((car, index) => (
-          <CarCard key={index} car={car} />
-        ));
+        return carList
+          .slice(0, 4)
+          .map((car, index) => <CarCard key={index} car={car} />);
       case "Motor Listing":
-        return carList.map((car, index) => (
-          <CarCard key={index} car={car} />
-        ));
+        return carList.map((car, index) => <CarCard key={index} car={car} />);
       case "Agents":
         return agentList.map((agent, index) => (
           <AgentCard key={index} agent={agent} />
@@ -184,24 +181,36 @@ const CompanyDetails = () => {
 
             {/* Description (Hidden on small screens) */}
             <p className="text-xl text-gray-300 mt-4 leading-relaxed font-light lg:block hidden text-justify">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus euismod gravida. Morbi ultrices, quam ac scelerisque cursus, quam risus imperdiet ipsum, ac suscipit urna justo at est. Donec nisl purus, aliquet ut placerat non, tincidunt eu leo. Donec velit est, tempor nec lectus sed, sagittis hendrerit orci. Phasellus sit amet tempus velit. Phasellus ac urna at augue vehicula posuere ac id ex. Pellentesque varius vulputate elit, et tempus ligula tincidunt id. Proin tempus congue imperdiet. Mauris ut euismod purus. Mauris egestas vulputate ante sed imperdiet. In placerat euismod justo.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              maximus euismod gravida. Morbi ultrices, quam ac scelerisque
+              cursus, quam risus imperdiet ipsum, ac suscipit urna justo at est.
+              Donec nisl purus, aliquet ut placerat non, tincidunt eu leo. Donec
+              velit est, tempor nec lectus sed, sagittis hendrerit orci.
+              Phasellus sit amet tempus velit. Phasellus ac urna at augue
+              vehicula posuere ac id ex. Pellentesque varius vulputate elit, et
+              tempus ligula tincidunt id. Proin tempus congue imperdiet. Mauris
+              ut euismod purus. Mauris egestas vulputate ante sed imperdiet. In
+              placerat euismod justo.
             </p>
-
           </div>
           {/* Description (Visible on smaller screens) */}
           <p className="text-sm md:text-xl text-gray-300 leading-relaxed font-light lg:hidden text-justify flex-grow">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec maximus euismod gravida. Morbi ultrices, quam ac scelerisque cursus, quam risus imperdiet ipsum, ac suscipit urna justo at est. Donec nisl purus, aliquet ut placerat non, tincidunt eu leo. Donec velit est, tempor nec lectus sed, sagittis hendrerit orci. Phasellus sit amet tempus velit. Phasellus ac urna at augue vehicula posuere ac id ex. Pellentesque varius vulputate elit, et tempus ligula tincidunt id. Proin tempus congue imperdiet. Mauris ut euismod purus. Mauris egestas vulputate ante sed imperdiet. In placerat euismod justo.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+            maximus euismod gravida. Morbi ultrices, quam ac scelerisque cursus,
+            quam risus imperdiet ipsum, ac suscipit urna justo at est. Donec
+            nisl purus, aliquet ut placerat non, tincidunt eu leo. Donec velit
+            est, tempor nec lectus sed, sagittis hendrerit orci. Phasellus sit
+            amet tempus velit. Phasellus ac urna at augue vehicula posuere ac id
+            ex. Pellentesque varius vulputate elit, et tempus ligula tincidunt
+            id. Proin tempus congue imperdiet. Mauris ut euismod purus. Mauris
+            egestas vulputate ante sed imperdiet. In placerat euismod justo.
           </p>
         </div>
 
         <div className="flex flex-col xl:flex-row mx-2 md:mx-4 space-x-8 ">
           {/* Left Section */}
           <div className="w-full xl:w-[45%] flex flex-col space-y-8 lg:space-y-12 items-center py-8 md:py-16 justify-around lg:h-[calc(100vh-7rem)]">
-            <img
-              src={latina}
-              alt="Lina"
-              className="sm:size-72 size-60"
-            />
+            <img src={latina} alt="Lina" className="sm:size-72 size-60" />
             <div className="flex flex-col items-center">
               <h1 className="text-4xl md:text-5xl text-white">Hey, I’m Lina</h1>
               <h3 className=" text-[18px] md:text-3xl text-white">
@@ -221,15 +230,15 @@ const CompanyDetails = () => {
                     <button
                       key={btn}
                       onClick={() => setActiveButton(btn)}
-                      className={`px-2 md:px-4 py-3 md:py-2 rounded-full text-white transition-all duration-300 h-full ${activeButton === btn
-                        ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white"
-                        : "hover:text-gray-200"
-                        }`}
+                      className={`px-2 md:px-4 py-3 md:py-2 rounded-full text-white transition-all duration-300 h-full ${
+                        activeButton === btn
+                          ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white"
+                          : "hover:text-gray-200"
+                      }`}
                     >
                       {btn}
                     </button>
-                  )
-                  )}
+                  ))}
                 </div>
               </div>
 

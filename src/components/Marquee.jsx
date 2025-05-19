@@ -37,14 +37,15 @@ const Marquee = () => {
               className="group flex items-center flex-shrink-0 gap-4 py-2 px-4 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:bg-[#7670FF] hover:shadow-2xl"
               onClick={() => navigate("/detail1")}
             >
-
               <img
                 src={brand.logo}
                 alt={brand.name}
                 className="size-10 object-contain bg-white rounded-md p-1"
               />
               <div className="font-semibold whitespace-nowrap">
-                <p className="text-xs md:text-sm group-hover:text-white">{brand.name}</p>
+                <p className="text-xs md:text-sm group-hover:text-white">
+                  {brand.name}
+                </p>
                 <p className="text-[10px] md:text-xs text-gray-500 group-hover:text-white">
                   {brand.cars} Cars
                 </p>
@@ -52,7 +53,6 @@ const Marquee = () => {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );

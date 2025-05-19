@@ -8,7 +8,6 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
-  console.log(isLoggedIn, "isLoggedIn");
   const [menuOpen, setMenuOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -16,20 +15,9 @@ const Navbar = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
   const API_URL = import.meta.env.VITE_API_URL;
-
-  useEffect(() => {
-    const checkAuth = () => {
-      setIsLoggedIn(!!localStorage.getItem("token"));
-    };
-
-    // Listen for login/logout events
-    window.addEventListener("authChanged", checkAuth);
-
-    return () => {
-      window.removeEventListener("authChanged", checkAuth);
-    };
-  }, []);
+  const localStorageToken = localStorage.getItem("token");
 
   const handleAuthClick = () => {
     if (isLoggedIn) {
@@ -38,13 +26,19 @@ const Navbar = () => {
       window.dispatchEvent(new Event("authChanged")); // notify Navbar
     } else {
       window.dispatchEvent(new Event("authChanged")); // notify Navbar
-
       setIsOpen(true);
-      // navigate("/signup?query=yes");
     }
   };
 
-  const localStorageToken = localStorage.getItem("token");
+  useEffect(() => {
+    const checkAuth = () => {
+      setIsLoggedIn(!!localStorage.getItem("token"));
+    };
+    window.addEventListener("authChanged", checkAuth);
+    return () => {
+      window.removeEventListener("authChanged", checkAuth);
+    };
+  }, []);
 
   useEffect(() => {
     if (localStorageToken) {
@@ -54,9 +48,6 @@ const Navbar = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // prevent page reload
-    // setLoading(true);
-    // setError("");
-
     try {
       const response = await fetch(`${API_URL}/auth/login_motor`, {
         method: "POST",
@@ -74,7 +65,7 @@ const Navbar = () => {
       if (data.status == "SUCCESS") {
         console.log("Login successful:", data);
         localStorage.setItem("token", data.data?.access_token);
-      window.dispatchEvent(new Event("authChanged")); // notify Navbar
+        window.dispatchEvent(new Event("authChanged")); // notify Navbar
 
         setIsOpen(false);
         setEmail("");

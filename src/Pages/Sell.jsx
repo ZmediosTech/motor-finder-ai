@@ -4,7 +4,7 @@ import car11 from "../assets/car11.png";
 import car2 from "../assets/car2.png";
 import car3 from "../assets/car3.png";
 import car4 from "../assets/car4.png";
-import companyImage from "../assets/company.jpg"
+import companyImage from "../assets/company.jpg";
 import ChatInput2 from "../components/ChatInput2";
 import Marquee from "../components/Marquee";
 import CarCard from "../components/CarCard";
@@ -51,26 +51,26 @@ const companyList = [
     name: "Zmedios Pvt. Ltd.",
     address: "Sec 58 Noida",
     image: companyImage,
-    review: 5678
+    review: 5678,
   },
   {
     name: "Zmedios Pvt. Ltd.",
     address: "Sec 58 Noida",
     image: companyImage,
-    review: 5678
+    review: 5678,
   },
   {
     name: "Zmedios Pvt. Ltd.",
     address: "Sec 58 Noida",
     image: companyImage,
-    review: 5678
+    review: 5678,
   },
   {
     name: "Zmedios Pvt. Ltd.",
     address: "Sec 58 Noida",
     image: companyImage,
-    review: 5678
-  }
+    review: 5678,
+  },
 ];
 const Sell = ({ type }) => {
   const pageType = type.charAt(0).toUpperCase() + type.slice(1);
@@ -80,21 +80,19 @@ const Sell = ({ type }) => {
   const renderTabContent = () => {
     switch (activeButton) {
       case "Featured":
-        return carList.map((car, index) => (
-          <CarCard key={index} car={car} />
-        ));
+        return carList.map((car, index) => <CarCard key={index} car={car} />);
       case "Company":
         return companyList.map((company, index) => (
-          <CompanyCard key={index} company={company}/>
+          <CompanyCard key={index} company={company} />
         ));
       case "Listing":
-        return carList.slice(0, 4).map((car, index) => (
-          <CarCard key={index} car={car} />
-        ));
-        default:
-          return null;
+        return carList
+          .slice(0, 4)
+          .map((car, index) => <CarCard key={index} car={car} />);
+      default:
+        return null;
     }
-  }
+  };
 
   return (
     <>
@@ -129,10 +127,11 @@ const Sell = ({ type }) => {
                     <button
                       key={btn}
                       onClick={() => setActiveButton(btn)}
-                      className={`px-2 lg:px-4 py-2 rounded-full text-white transition-all duration-300 ${activeButton === btn
-                        ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white box-shadow border-0 border-[#5B42FF]"
-                        : "hover:text-gray-200"
-                        }`}
+                      className={`px-2 lg:px-4 py-2 rounded-full text-white transition-all duration-300 ${
+                        activeButton === btn
+                          ? "bg-gradient-to-r from-[#7670FF] to-[#5B42FF] text-white box-shadow border-0 border-[#5B42FF]"
+                          : "hover:text-gray-200"
+                      }`}
                     >
                       {btn}
                     </button>

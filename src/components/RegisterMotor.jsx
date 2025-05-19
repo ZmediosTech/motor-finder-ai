@@ -1,5 +1,4 @@
 import React from "react";
-import Register from "../assets/register.png";
 import WelcomeVideo from "../assets/AudioFile/motornew.mp4";
 import { useNavigate } from "react-router-dom";
 

@@ -1,72 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+
 import logo from "../../assets/latina.png";
 import send from "../../assets/send.png";
 import mike from "../../assets/mike.png";
+
 import SuccessImg from "../../assets/image.png";
 import { CiMicrophoneOff } from "react-icons/ci";
 import { Pencil } from "lucide-react";
+import { chatData } from "../../utils";
+
 export default function AuthPage() {
-  const chatData = [
-    { question: "Please enter your name?" },
-    {
-      question:
-        "Great! What would you like to list with us—products, services, or something else?",
-    },
-    { question: "Awesome! What’s the name of your business/ website URL?" },
-    {
-      question:
-        "Thank you! Lastly, could you provide your email? We’ll send you a link to complete your listing.",
-    },
-    {
-      question:
-        "You're all set! Keep an eye on your inbox for the next steps. Have a fantastic day!",
-    },
-  ];
   const [currentStep, setCurrentStep] = useState(0);
-  console.log(currentStep,"currentStep")
-  // const speakQuestion = (text) => {
-  //   const synth = window.speechSynthesis;
-
-  //   const utterance = new SpeechSynthesisUtterance(text);
-  //   utterance.lang = "en-US";
-  //   utterance.rate = 1; // Speed (0.1 to 10)
-  //   utterance.pitch = 1; // Pitch (0 to 2)
-  //   utterance.onstart = () => setIsAudioPlaying(true);
-  //   utterance.onend = () => {
-  //     setIsAudioPlaying(false);
-  //   };
-  //   if (femaleVoice) {
-  //     utterance.voice = femaleVoice;
-  //   }
-
-  //   synth.speak(utterance);
-  //   // window.speechSynthesis.speak(utterance);
-  // };
-
   const speakQuestion = (text) => {
     const synth = window.speechSynthesis;
-  
-    // Stop any current speech
     synth.cancel();
-  
     const words = text.split(" ");
     let index = 0;
-  
-    // Setup voice
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "en-US";
-    utterance.rate = 1.5;     // Fast speech
-    utterance.pitch = 1.2;  // Energetic
+    utterance.rate = 1.5; // Fast speech
+    utterance.pitch = 1.2; // Energetic
     utterance.volume = 1.0; // Max allowed
     if (femaleVoice) {
       utterance.voice = femaleVoice;
     }
-  
+
     // Start speaking
     setIsAudioPlaying(true);
     synth.speak(utterance);
-  
+
     // Display words one-by-one in UI
     setDisplayedText(""); // Clear UI
     const displayInterval = setInterval(() => {
@@ -78,74 +41,25 @@ export default function AuthPage() {
         clearInterval(displayInterval);
       }
     }, 400); // Show words every 100ms (adjust as needed)
-  
+
     utterance.onend = () => {
       setIsAudioPlaying(false);
-      setIsEditable(false)
+      setIsEditable(false);
     };
   };
-  
-  
-
-  
-
-  //   const speakQuestion = (text) => {
-  //     const synth = window.speechSynthesis;
-  //     const utterance = new SpeechSynthesisUtterance(text);
-  //     utterance.lang = "en-US";
-  //     utterance.rate = 1; // Speed (0.1 to 10)
-  //     utterance.pitch = 1; // Pitch (0 to 2)
-
-  //     const words = text.split(' '); // Split the question into words
-  //     let index = 0;
-
-  //     // Stream words one by one
-  //     const interval = setInterval(() => {
-  //       if (index < words.length) {
-  //         setDisplayedText((prev) => prev + (prev ? " " : "") + words[index]);
-  //         index++;
-  //       } else {
-  //         clearInterval(interval);
-  //       }
-  //     }, 300); // Adjust the speed of text display here
-
-  //     utterance.onstart = () => setIsAudioPlaying(true);
-  //     utterance.onend = () => {
-  //       setIsAudioPlaying(false);
-  //     };
-
-  //     // Handle voice
-  //     if (femaleVoice) {
-  //       utterance.voice = femaleVoice;
-  //     }
-
-  //     // Speak it
-  //     synth.speak(utterance);
-  // };
 
   const [displayedText, setDisplayedText] = useState("");
-  console.log(displayedText, "displayedText");
   const [welcomeText, setWelcomeText] = useState("");
   const [responses, setResponses] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-  const [iseditable,setIsEditable] = useState(false)
-  console.log(iseditable,"iseditable")
-  console.log(isAudioPlaying, "isAudioPlaying");
+  const [iseditable, setIsEditable] = useState(false);
   const [isWelcomeAudioCompleted, setIsWelcomeAudioCompleted] = useState(false);
   const [isListening, setIsListening] = useState(false);
   const [femaleVoice, setFemaleVoice] = useState(null);
-  const [editIndex, setEditIndex] = useState()
+  const [editIndex, setEditIndex] = useState();
   const welcomeMessage =
     "Hello Welcome to MotorsFinder.AI. Let’s get you started.";
-    console.log(currentStep,"currentStep")
-  useEffect(() => {
-    console.log(chatData[currentStep], "step");
-    if (isWelcomeAudioCompleted == true && iseditable == false) {
-      setIsAudioPlaying(true);
-      speakQuestion(chatData[currentStep].question);
-    }
-  }, [isWelcomeAudioCompleted, currentStep]);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -173,7 +87,7 @@ export default function AuthPage() {
       } else {
         clearInterval(interval);
       }
-    },300);
+    }, 300);
 
     // When speech ends
     utterance.onend = () => {
@@ -197,32 +111,6 @@ export default function AuthPage() {
 
     document.removeEventListener("click", handleUserInteraction);
   };
-  useEffect(() => {
-    if (queryValue && femaleVoice !== null) {
-      handleUserInteraction();
-    }
-  }, [queryValue, femaleVoice]);
-
-  const API_URL = import.meta.env.VITE_API_URL;
-
-  useEffect(() => {
-    const synth = window.speechSynthesis;
-
-    const loadVoices = () => {
-      const voices = synth.getVoices();
-      const female = voices.find((voice) =>
-        /female|woman|Google UK English Female|Samantha|Microsoft Zira/i.test(
-          voice.name
-        )
-      );
-      setFemaleVoice(female || voices[0]);
-    };
-
-    if (synth.onvoiceschanged !== undefined) {
-      synth.onvoiceschanged = loadVoices;
-    }
-    loadVoices();
-  }, []);
 
   const registerionData = async (name, service, url, email) => {
     const validCustomerServices = [
@@ -267,22 +155,12 @@ export default function AuthPage() {
     }
   };
 
-  useEffect(() => {
-    if (currentStep == 4) {
-      registerionData(
-        responses[0]?.answer,
-        responses[1]?.answer,
-        responses[2]?.answer,
-        responses[3]?.answer
-      );
-    }
-  }, [currentStep]);
-
   const handleInput = (e) => {
     if (e.key === "Enter" && inputValue.trim() !== "" && !isAudioPlaying) {
       saveResponse(inputValue);
     }
   };
+
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -292,20 +170,19 @@ export default function AuthPage() {
     // Validate email when it's the email question
     if (currentStep === 3 && !isValidEmail(answer) && iseditable == false) {
       const synth = window.speechSynthesis;
-      const utterThis = new SpeechSynthesisUtterance("Please provide a valid email");
-  
+      const utterThis = new SpeechSynthesisUtterance(
+        "Please provide a valid email"
+      );
       if (femaleVoice) {
         utterThis.voice = femaleVoice;
       }
-  
       synth.speak(utterThis);
       return;
     }
-  
     // Create a copy of the responses array
     const newResponses = [...responses];
     console.log(newResponses, "newResponses");
-  
+
     if (iseditable) {
       // Update the response for the specific question selected in edit mode
       const questionIndex = editIndex; // This could be adjusted based on the edit mode logic
@@ -319,28 +196,20 @@ export default function AuthPage() {
         question: chatData[currentStep].question,
         answer,
       };
-       if (currentStep < chatData.length - 1) {
-      setCurrentStep((prev) => prev + 1);
+      if (currentStep < chatData.length - 1) {
+        setCurrentStep((prev) => prev + 1);
+      }
     }
-    }
-  
     // Update the responses state
     setResponses(newResponses);
     setInputValue(""); // Clear the input field
     setIsEditable(false); // Disable edit mode
-  
-    // Move to the next question unless it's the last question
-    // if (currentStep < chatData.length - 1) {
-    //   setCurrentStep((prev) => prev + 1);
-    // }
   };
-  
 
   const handleRetype = (index) => {
-    console.log(index,"index")
-    setEditIndex(index)
-    setIsEditable(true)
-  //  setCurrentStep(index);
+    console.log(index, "index");
+    setEditIndex(index);
+    setIsEditable(true);
     setInputValue(responses[index]?.answer || "");
   };
 
@@ -377,9 +246,50 @@ export default function AuthPage() {
     recognition.start();
   };
 
-  const realText = [...new Set(welcomeMessage.split(" "))]
-    .filter((val) => val && val !== "undefined")
-    .join(" ");
+  useEffect(() => {
+    if (isWelcomeAudioCompleted == true && iseditable == false) {
+      setIsAudioPlaying(true);
+      speakQuestion(chatData[currentStep].question);
+    }
+  }, [isWelcomeAudioCompleted, currentStep]);
+
+  useEffect(() => {
+    if (queryValue && femaleVoice !== null) {
+      handleUserInteraction();
+    }
+  }, [queryValue, femaleVoice]);
+
+  const API_URL = import.meta.env.VITE_API_URL;
+
+  useEffect(() => {
+    const synth = window.speechSynthesis;
+
+    const loadVoices = () => {
+      const voices = synth.getVoices();
+      const female = voices.find((voice) =>
+        /female|woman|Google UK English Female|Samantha|Microsoft Zira/i.test(
+          voice.name
+        )
+      );
+      setFemaleVoice(female || voices[0]);
+    };
+
+    if (synth.onvoiceschanged !== undefined) {
+      synth.onvoiceschanged = loadVoices;
+    }
+    loadVoices();
+  }, []);
+
+  useEffect(() => {
+    if (currentStep == 4) {
+      registerionData(
+        responses[0]?.answer,
+        responses[1]?.answer,
+        responses[2]?.answer,
+        responses[3]?.answer
+      );
+    }
+  }, [currentStep]);
 
   useEffect(() => {
     window.scrollTo(0, document.body.scrollHeight);
@@ -412,7 +322,6 @@ export default function AuthPage() {
                   {/* Hello! {realText} */}
                   {/* {welcomeText} */}
                   <p>Hello! {(welcomeText ?? "").replace("undefined", "")}</p>
-
                 </h3>
               </div>
               {/* )} */}

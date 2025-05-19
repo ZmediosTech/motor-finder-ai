@@ -14,14 +14,7 @@ import appleStore from "../assets/download_apple.png";
 import playStore from "../assets/download_play.png";
 import huwaiStore from "../assets/download_huawei.png";
 
-// import { AccordionContent } from "@redix/accordion";
-
-// import classNames from "classnames";
-// import { ChevronDownIcon } from "@radix-ui/react-icons";
-// import "./styles.css";
 const Help = () => {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const toggleAccordion = () => setIsOpen(!isOpen);
   const [accordionStates, setAccordionStates] = useState({
     "item-1": false,
     "item-2": false,
@@ -68,7 +61,6 @@ const Help = () => {
                 to="mailto:support@motorsfinder.ai"
               >
                 support@motorsfinder.ai
- 
               </Link>
             </div>
           </div>
@@ -91,7 +83,6 @@ const Help = () => {
  "
               >
                 +971 55 5955102
- 
               </Link>
             </div>
           </div>
@@ -148,7 +139,6 @@ const Help = () => {
                 allowfullscreen
               ></iframe>
             </div>
-
           </div>
           <div className="card">
             <h2 className="2xl:text-5xl xl:text-4xl lg:text-3xl text-2xl font-normal pt-10  text-white lg:mb-[30px] mb-3">
@@ -918,30 +908,40 @@ const Help = () => {
               className="mySwiper"
             >
               <SwiperSlide className="text-white flex">
-                              <img src={swiperImg} alt="swiper" />
-                
+                <img src={swiperImg} alt="swiper" />
+
                 {/* <img src="../../src/assets/swiper.png" alt="swiper" /> */}
               </SwiperSlide>
               <SwiperSlide>
                 {" "}
                 {/* <img src="../../src/assets/swiper.png" alt="swiper" />
                  */}
-                               <img src={swiperImg} alt="swiper" />
-                 
+                <img src={swiperImg} alt="swiper" />
               </SwiperSlide>
               <SwiperSlide>
                 {" "}
                 {/* <img src="../../src/assets/swiper.png" alt="swiper" /> */}
-                           <img src={swiperImg} alt="swiper" />
-             
+                <img src={swiperImg} alt="swiper" />
               </SwiperSlide>
             </Swiper>
           </div>
           <div className="sm:my-6 m-3 sm:mx-8 flex justify-center">
             <div className="flex space-x-5 md:space-x-8 lg:space-x-10">
-              <img src={appleStore} alt="Apple Store" className="h-5 md:h-6 lg:h-auto" />
-              <img src={playStore} alt="Play Store" className="h-5 md:h-6 lg:h-auto" />
-              <img src={huwaiStore} alt="Huawei Store" className="h-5 md:h-6 lg:h-auto" />
+              <img
+                src={appleStore}
+                alt="Apple Store"
+                className="h-5 md:h-6 lg:h-auto"
+              />
+              <img
+                src={playStore}
+                alt="Play Store"
+                className="h-5 md:h-6 lg:h-auto"
+              />
+              <img
+                src={huwaiStore}
+                alt="Huawei Store"
+                className="h-5 md:h-6 lg:h-auto"
+              />
             </div>
           </div>
         </div>

@@ -14,15 +14,15 @@ import popularBrands from "../assets/popularBrands.png";
 import luxuryCars from "../assets/luxuryCars.png";
 import carsForSell from "../assets/carsForSell.png";
 import RegisterMotor from "../components/RegisterMotor";
-import { useListingData } from '../context/UserContext.jsx';
+import { useListingData } from "../context/UserContext.jsx";
 const Hero = () => {
   const navigate = useNavigate();
   const [animate, setAnimate] = useState(true);
   const [positions, setPositions] = useState([]);
   const [isMobile, setIsMobile] = useState(false); // Track if it's a mobile device
   const [searchData, setSearchData] = useState("");
-  const [featuredImage, setFeaturedImage] = useState([]) 
-  console.log(featuredImage,"featuredImage")
+  const [featuredImage, setFeaturedImage] = useState([]);
+  console.log(featuredImage, "featuredImage");
   const { setListingData } = useListingData(); // Access the context
   useEffect(() => {
     const updateScreenSize = () => {
@@ -121,21 +121,20 @@ const Hero = () => {
         }
       );
       const data = await response.json();
-      console.log(data,"data")
-      setListingData(data?.data)
-      localStorage.setItem("searchData",searchData)
+      console.log(data, "data");
+      setListingData(data?.data);
+      localStorage.setItem("searchData", searchData);
       console.log(data, "data");
     } catch (error) {
       console.error("Error fetching listings:", error);
     }
   };
 
- const fetchFeaturedListing = async ()=>{
-  const response = await fetch(`${API_URL}/public/sub-category/3`)
-  const data = await response.json();
-  setFeaturedImage(data?.data?.slice(0,7))
-
- }
+  const fetchFeaturedListing = async () => {
+    const response = await fetch(`${API_URL}/public/sub-category/3`);
+    const data = await response.json();
+    setFeaturedImage(data?.data?.slice(0, 7));
+  };
 
   useEffect(() => {
     if (token) {
@@ -143,9 +142,9 @@ const Hero = () => {
     }
   }, [token]);
 
-  useEffect(()=>{
-    fetchFeaturedListing()
-  },[])
+  useEffect(() => {
+    fetchFeaturedListing();
+  }, []);
 
   return (
     <div className="relative pb-10 flex-1">
@@ -183,8 +182,8 @@ const Hero = () => {
             onClick={() => navigate("/detail")}
           >
             <img
-            // `https://dgts1hwqn1vsh.cloudfront.net/${cardData?.logo}`
- 
+              // `https://dgts1hwqn1vsh.cloudfront.net/${cardData?.logo}`
+
               src={`https://dgts1hwqn1vsh.cloudfront.net/${img.icon}`}
               alt={img.alt}
               className="h-[10vw] sm:h-[10vw] md:h-[8vw] lg:h-[8vw] xl:h-[7.5vw]"
@@ -201,12 +200,11 @@ const Hero = () => {
         </h1>
       </div>
 
-      <ChatInput 
-      fetchListing={fetchListing}
-      
-      
-      setSearchData ={setSearchData} 
-      searchData ={searchData}/>
+      <ChatInput
+        fetchListing={fetchListing}
+        setSearchData={setSearchData}
+        searchData={searchData}
+      />
 
       {localStorage.getItem("token") ? "" : <RegisterMotor />}
     </div>

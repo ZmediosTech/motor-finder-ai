@@ -111,32 +111,27 @@ export default function AuthPage() {
     //   device_id: "",
     // };
 
-    const data = 
-      {
-        user_typ: "CUSTOMER",
-        name: '',
-        username: name,
-        platform_type: "Motarfinder",
-        business_type: service,
-        business_name: url,
-        email: email,
-        mobile: "",
-        device_type: "",
-        device_id: ""
-      
-    }
+    const data = {
+      user_typ: "CUSTOMER",
+      name: "",
+      username: name,
+      platform_type: "Motarfinder",
+      business_type: service,
+      business_name: url,
+      email: email,
+      mobile: "",
+      device_type: "",
+      device_id: "",
+    };
 
     try {
-      const response = await fetch(
-        `${API_URL}/auth/register`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch(`${API_URL}/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
       const result = await response.json();
       if (result.status === "SUCCESS") {
         console.log("Registration successful:", result);
