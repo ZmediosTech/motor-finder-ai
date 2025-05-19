@@ -3,6 +3,8 @@ import { Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
+import swiperImg from "../../src/assets/swiper.png";
+
 import appleStore from "../assets/download_apple.png";
 import playStore from "../assets/download_play.png";
 import huwaiStore from "../assets/download_huawei.png";
@@ -217,15 +219,21 @@ const Privacy = () => {
               }}
               className="mySwiper">
               <SwiperSlide className="text-white flex">
-                <img src="../../src/assets/swiper.png" alt="swiper" />
+                              <img src={swiperImg} alt="swiper" />
+                
+                {/* <img src="../../src/assets/swiper.png" alt="swiper" /> */}
               </SwiperSlide>
               <SwiperSlide>
                 {" "}
-                <img src="../../src/assets/swiper.png" alt="swiper" />
+                {/* <img src="../../src/assets/swiper.png" alt="swiper" /> */}
+                              <img src={swiperImg} alt="swiper" />
+                
               </SwiperSlide>
               <SwiperSlide>
                 {" "}
-                <img src="../../src/assets/swiper.png" alt="swiper" />
+                {/* <img src="../../src/assets/swiper.png" alt="swiper" /> */}
+                              <img src={swiperImg} alt="swiper" />
+                
               </SwiperSlide>
             </Swiper>
           </div>

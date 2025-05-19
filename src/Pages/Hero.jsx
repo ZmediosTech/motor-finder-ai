@@ -14,15 +14,16 @@ import popularBrands from "../assets/popularBrands.png";
 import luxuryCars from "../assets/luxuryCars.png";
 import carsForSell from "../assets/carsForSell.png";
 import RegisterMotor from "../components/RegisterMotor";
-
-
-
+import { useListingData } from '../context/UserContext.jsx';
 const Hero = () => {
   const navigate = useNavigate();
   const [animate, setAnimate] = useState(true);
   const [positions, setPositions] = useState([]);
   const [isMobile, setIsMobile] = useState(false); // Track if it's a mobile device
-
+  const [searchData, setSearchData] = useState("");
+  const [featuredImage, setFeaturedImage] = useState([]) 
+  console.log(featuredImage,"featuredImage")
+  const { setListingData } = useListingData(); // Access the context
   useEffect(() => {
     const updateScreenSize = () => {
       const width = window.innerWidth;
@@ -48,7 +49,7 @@ const Hero = () => {
           { x: "3.5%", y: "-28%" }, //popular
           { x: "-35%", y: "10%" }, //first suv
           { x: "15%", y: "-5%" }, //luxury
-          { x: "-17%", y: "30%" }, //rental
+          { x: "-17%", y: "23%" }, //rental
           { x: "17%", y: "32%" }, //for sell
         ]);
       } else if (width >= 1024) {
@@ -92,6 +93,7 @@ const Hero = () => {
       return () => clearInterval(interval); // Cleanup on unmount
     }
   }, [isMobile]); // Re-run the effect when isMobile changes
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const images = [
     { src: suv, alt: "SUV" },
@@ -102,11 +104,53 @@ const Hero = () => {
     { src: rentalCars, alt: "Rental Cars" },
     { src: carsForSell, alt: "Cars for Sale" },
   ];
+  const token = localStorage.getItem("token");
+
+  const fetchListing = async () => {
+    let id = 3;
+    try {
+      const response = await fetch(
+        `${API_URL}/public/search?page_num=0&page_size=10&search=${searchData}&category_id=${id}`,
+
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data,"data")
+      setListingData(data?.data)
+      localStorage.setItem("searchData",searchData)
+      console.log(data, "data");
+    } catch (error) {
+      console.error("Error fetching listings:", error);
+    }
+  };
+
+ const fetchFeaturedListing = async ()=>{
+  const response = await fetch(`${API_URL}/public/sub-category/3`)
+  const data = await response.json();
+  setFeaturedImage(data?.data?.slice(0,7))
+
+ }
+
+  useEffect(() => {
+    if (token) {
+      fetchListing();
+    }
+  }, [token]);
+
+  useEffect(()=>{
+    fetchFeaturedListing()
+  },[])
 
   return (
     <div className="relative pb-10 flex-1">
       {/* Main Container */}
-      <div className="relative h-[50vh] flex items-center justify-center">
+      <div className="relative h-[440px] flex items-center justify-center">
         <div className="relative">
           <img
             src={robot}
@@ -116,7 +160,7 @@ const Hero = () => {
         </div>
 
         {/* Animated Images */}
-        {images?.map((img, index) => (
+        {featuredImage?.map((img, index) => (
           <div
             key={index}
             className={isMobile ? "hidden" : "absolute"}
@@ -131,17 +175,21 @@ const Hero = () => {
                 ? "translate(-50%, -50%) scale(1)"
                 : "translate(-50%, -50%) scale(0.1)",
               opacity: animate ? 1 : 0,
-              transition: `all 0.8s cubic-bezier(0.25, 1, 0.5, 1) ${index * 0.1
-                }s`,
+              transition: `all 0.8s cubic-bezier(0.25, 1, 0.5, 1) ${
+                index * 0.1
+              }s`,
               cursor: "pointer",
             }}
             onClick={() => navigate("/detail")}
           >
             <img
-              src={img.src}
+            // `https://dgts1hwqn1vsh.cloudfront.net/${cardData?.logo}`
+ 
+              src={`https://dgts1hwqn1vsh.cloudfront.net/${img.icon}`}
               alt={img.alt}
               className="h-[10vw] sm:h-[10vw] md:h-[8vw] lg:h-[8vw] xl:h-[7.5vw]"
             />
+            {/* <p className="text-pink-300  text-2xl absolute top-4">{img.name}</p> */}
           </div>
         ))}
       </div>
@@ -153,8 +201,14 @@ const Hero = () => {
         </h1>
       </div>
 
-      <ChatInput />
-      <RegisterMotor />
+      <ChatInput 
+      fetchListing={fetchListing}
+      
+      
+      setSearchData ={setSearchData} 
+      searchData ={searchData}/>
+
+      {localStorage.getItem("token") ? "" : <RegisterMotor />}
     </div>
   );
 };

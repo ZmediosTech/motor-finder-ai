@@ -7,6 +7,8 @@ import "swiper/css/pagination";
 import * as React from "react";
 import { Tabs } from "radix-ui";
 import { Accordion } from "radix-ui";
+import swiperImg from "../../src/assets/swiper.png";
+
 import { AccordionContent, AccordionTrigger } from "@radix-ui/react-accordion";
 import appleStore from "../assets/download_apple.png";
 import playStore from "../assets/download_play.png";
@@ -63,9 +65,10 @@ const Help = () => {
               </p>
               <Link
                 className="text-white xl:text-2xl lg:text-xl text-sm font-[350]"
-                to="mailto:arihant@zmediostech.com"
+                to="mailto:support@motorsfinder.ai"
               >
-                arihant@zmediostech.com
+                support@motorsfinder.ai
+ 
               </Link>
             </div>
           </div>
@@ -84,9 +87,11 @@ const Help = () => {
               </p>
               <Link
                 className="text-white xl:text-2xl lg:text-xl  text-sm font-[350]"
-                to="tel:+918561073404"
+                to="tel:+971555955102
+ "
               >
-                +91 8561073404
+                +971 55 5955102
+ 
               </Link>
             </div>
           </div>
@@ -913,15 +918,22 @@ const Help = () => {
               className="mySwiper"
             >
               <SwiperSlide className="text-white flex">
-                <img src="../../src/assets/swiper.png" alt="swiper" />
+                              <img src={swiperImg} alt="swiper" />
+                
+                {/* <img src="../../src/assets/swiper.png" alt="swiper" /> */}
               </SwiperSlide>
               <SwiperSlide>
                 {" "}
-                <img src="../../src/assets/swiper.png" alt="swiper" />
+                {/* <img src="../../src/assets/swiper.png" alt="swiper" />
+                 */}
+                               <img src={swiperImg} alt="swiper" />
+                 
               </SwiperSlide>
               <SwiperSlide>
                 {" "}
-                <img src="../../src/assets/swiper.png" alt="swiper" />
+                {/* <img src="../../src/assets/swiper.png" alt="swiper" /> */}
+                           <img src={swiperImg} alt="swiper" />
+             
               </SwiperSlide>
             </Swiper>
           </div>
